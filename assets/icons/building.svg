@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 18 18">
+  <path d="M2.5 12h1v1h-1v-1zM4.5 12h1v1h-1v-1zM7.5 12h-1v1h1v-1zM7.5 10h-1v1h1v-1zM14.5 4h1v1h-1V4zM11.5 6h-1v1h1V6zM10.5 8h1v1h-1V8zM11.5 10h-1v1h1v-1zM10.5 12h1v1h-1v-1zM13.5 12h-1v1h1v-1zM12.5 10h1v1h-1v-1zM13.5 8h-1v1h1V8zM12.5 6h1v1h-1V6zM14.5 12h1v1h-1v-1zM15.5 10h-1v1h1v-1zM14.5 8h1v1h-1V8zM15.5 6h-1v1h1V6z"/>
+  <path fill-rule="evenodd" d="M17.5 1.5a.5.5 0 00-.7-.458l-8 3.5A.5.5 0 008.5 5v1.673L.8 10.042a.5.5 0 00-.3.458v6a.5.5 0 00.5.5h3a.5.5 0 00.5-.5V15h1v1.5a.5.5 0 00.5.5h6a.5.5 0 00.5-.5V15h1v1.5a.5.5 0 00.5.5h3a.5.5 0 00.5-.5v-15zm-16 9.327l7-3.062V16h-2v-1.5A.5.5 0 006 14H4a.5.5 0 00-.5.5V16h-2v-5.173zm10 3.673V16h-2V5.327l7-3.062V16h-2v-1.5a.5.5 0 00-.5-.5h-2a.5.5 0 00-.5.5z" clip-rule="evenodd"/>
+</svg>
