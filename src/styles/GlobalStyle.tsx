@@ -6,6 +6,7 @@ export default createGlobalStyle`
     margin: 0;
     background-color: ${props => props.theme.colors.bg};
     color: ${props => props.theme.colors.text};
+    font-size: ${props => props.theme.font.sizes.p};
     }
     * {
         margin: 0;
