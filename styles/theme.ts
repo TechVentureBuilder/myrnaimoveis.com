@@ -23,14 +23,14 @@ export const theme = {
     sizes: {
         xs: '0.5rem', // 8px
         s: '0.75rem', // 12px
-        m: '1rem',   // 16px
-        l: '2rem',  // 32px
+        m: '1rem',    // 16px
+        l: '2rem',    // 32px
         xl: '3rem',   // 48px
     },
     font: {
         families: {
-            sans: '"Outfit", sans-serif',
-            serif: '"Cormorant Garamond", serif',
+            sans: 'Outfit, sans-serif',
+            serif: `'Cormorant Garamond', serif`,
         },
         weights: {
             light: 300,
@@ -38,11 +38,11 @@ export const theme = {
             bold: 700,
         },
         sizes: {
-            s: '0.875rem',
-            p: '1rem',
-            h3: '1.5rem',
-            h2: '2.25rem',
-            h1: '4rem',
+            s: '0.875rem', // 14px
+            p: '1rem',     // 16px
+            h3: '1.5rem',  // 24px
+            h2: '2.25rem', // 36px
+            h1: '4rem',    // 64px
         },
     },
     border: {

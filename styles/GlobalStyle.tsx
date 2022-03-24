@@ -1,9 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
-    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;700&display=swap');
-
     body, html {
     padding: 0;
     margin: 0;
