@@ -9,7 +9,7 @@ type Props = {
 }
 
 const StyledButton = styled.button`
-  padding: ${props => `${props.theme.sizes.s} ${props.theme.sizes.m}`};
+  padding: ${props => props.theme.sizes.m};
   font-size: ${props => props.theme.font.sizes.s};
   font-family: ${props => props.theme.font.families.sans};
   background-color: ${props => props.theme.colors.main};
@@ -21,7 +21,11 @@ const StyledButton = styled.button`
   column-gap: ${props => props.theme.sizes.xs};
   transition: ${props => props.theme.transitions.fast};
   text-decoration: none !important;
+  width: fit-content;
   cursor: pointer;
+  &.fill {
+    width: 100%;
+  }
   svg {
     display: block;
     height: ${props => props.theme.sizes.m};

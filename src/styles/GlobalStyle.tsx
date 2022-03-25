@@ -39,4 +39,12 @@ export default createGlobalStyle`
         font-family: monospace;
         font-weight: 500;
     }
+    a {
+        color: ${props => props.theme.colors.main};
+    }
+    button, input {
+        max-height: ${props => props.theme.sizes.interaction};
+        min-height: ${props => props.theme.sizes.interaction};
+        min-width: ${props => props.theme.sizes.interaction};
+    }
 `

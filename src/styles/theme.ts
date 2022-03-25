@@ -26,6 +26,7 @@ export const theme = {
         m: '1rem',    // 16px
         l: '2rem',    // 32px
         xl: '3rem',   // 48px
+        interaction: '2.625rem'
     },
     screens: {
         s: '576px',
