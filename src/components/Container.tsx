@@ -6,8 +6,9 @@ type Props = {
 }
 
 const StyledDiv = styled.div`
-  width: ${props => props.theme.sizes.interaction};
+  width: ${props => props.theme.screens.xxl};
   padding: 0 ${props => props.theme.sizes.m};
+  margin: auto;
 `
 
 const Container = (props: Props) => {
