@@ -47,4 +47,11 @@ export default createGlobalStyle`
         min-height: ${props => props.theme.sizes.interaction};
         min-width: ${props => props.theme.sizes.interaction};
     }
+    input {
+        color: ${props=>props.theme.colors.text};
+        outline: none;
+        ::placeholder {
+            opacity: 1;
+        }
+    }
 `

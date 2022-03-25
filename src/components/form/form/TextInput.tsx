@@ -16,6 +16,18 @@ const InputWrapper = styled.div`
 const Input = styled.input`
     padding: ${props => props.theme.sizes.s} ${props => props.theme.sizes.m};
     display: block;
+    background-color: transparent;
+    border: ${props => props.theme.border.width} solid ${props => props.theme.colors.placeholder};
+    font-size: ${props=>props.theme.font.sizes.p};
+    transition: ${props=>props.theme.transitions.fast};
+    ::placeholder {
+        font-size: ${props=>props.theme.font.sizes.s};
+        color: ${props=>props.theme.colors.placeholder};
+        opacity: 1;
+    }
+    :hover {
+        border-color: ${props=>props.theme.colors.main};
+    }
 `
 
 const TextInput = (props: Props) => {
