@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { ReactSVG } from 'react-svg'
 import styled from 'styled-components'
@@ -47,6 +48,9 @@ const LinksWrapper = styled.div`
     :hover {
       color: ${props => props.theme.colors.primary.light};
     }
+    &.active {
+      color: ${props => props.theme.colors.main};
+    }
   }
   .logoLink {
     padding: 0;
@@ -87,6 +91,8 @@ const NavBar = (props: Props) => {
     }
   }, [navHeight, navRef])
 
+  const router = useRouter();
+
   return (
     <>
       <NavSpace height={navHeight!}>{navHeight!}</NavSpace>
@@ -98,14 +104,20 @@ const NavBar = (props: Props) => {
                 <ReactSVG src='assets/logo/logoLightHorizontal.svg' />
               </a>
             </Link>
-            <Link href={'/'} >
-              Início
+            <Link href={'/'}>
+              <a className={router.pathname == "/" ? "active" : ""}>
+                Início
+              </a>
             </Link>
             <Link href={'/catalogo'} >
-              Catálogo
+              <a className={router.pathname == "/catalogo" ? "active" : ""}>
+                Catálogo
+              </a>
             </Link>
             <Link href={'/sobre'} >
-              Sobre Nós
+              <a className={router.pathname == "/sobre" ? "active" : ""}>
+                Sobre Nós
+              </a>
             </Link>
           </LinksWrapper>
 
