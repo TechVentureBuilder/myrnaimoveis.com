@@ -65,8 +65,6 @@ const ButtonsWrapper = styled.div`
   align-items: center;
 `
 
-
-
 const NavSpace = styled.div<{height: number}>`
   width: 100%;
   height: ${props => props.height}px;
@@ -83,13 +81,11 @@ const NavBar = (props: Props) => {
     const handleNavResize = () => {
       setNavHeight(navRef!.clientHeight)
     }
-    console.log('adding event listener')
     window.addEventListener('resize', handleNavResize)
     return ()=>{
-      console.log('removing event listener')
       window.removeEventListener('resize', handleNavResize)
     }
-  }, [navRef])
+  }, [navHeight, navRef])
 
   return (
     <>
