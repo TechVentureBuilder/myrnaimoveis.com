@@ -7,8 +7,7 @@ import TextInput from '../components/form/TextInput'
 const Sobre: NextPage = (props) => {
   return (
     <Container>
-      <Button text='Teste' iconName='myrna' />
-      <TextInput label='Email' placeholder='type your email here'/>
+      <h1>Sobre Nós</h1>
     </Container>
   )
 }
