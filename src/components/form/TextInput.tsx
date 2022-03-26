@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import slugify from "slugify";
-import styled, { StyledComponent } from "styled-components";
+import styled from "styled-components";
 import Icon from "../Icon";
 import Label from "./Label";
 
