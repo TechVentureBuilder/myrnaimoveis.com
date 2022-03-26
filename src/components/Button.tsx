@@ -40,17 +40,18 @@ const StyledButton = styled.button`
 
   /* Variants */
   &.secondary {
-    background-color:  ${props => props.theme.colors.bg};
-    color: ${props => props.theme.colors.main};
+    background-color:  ${props => props.theme.colors.card};
+    color: ${props => props.theme.colors.text};
+    border-color: ${props => props.theme.colors.card};
     :hover {
       background-color: ${props => props.theme.colors.primary.dark};
-      color: ${props => props.theme.colors.white};
+      color: ${props => props.theme.colors.text};
     }
   }
   &.tertiary {
-    background-color: ${props => props.theme.colors.darker};
+    background-color: ${props => props.theme.colors.bg};
     color: ${props => props.theme.colors.text};
-    border-color: ${props => props.theme.colors.darker};
+    border-color: ${props => props.theme.colors.bg};
     :hover {
       border-color: ${props => props.theme.colors.darker};
       background-color: ${props => props.theme.colors.dark};
