@@ -34,8 +34,8 @@ const StyledButton = styled.button`
     padding: ${props => props.theme.sizes.s};
   }
   :hover {
-    background-color: ${props => props.theme.colors.primary.dark};
-    border-color: ${props => props.theme.colors.main};
+    border-color: ${props => props.theme.colors.primary.light};
+    background-color: ${props => props.theme.colors.main};
   }
 
   /* Variants */
@@ -44,7 +44,8 @@ const StyledButton = styled.button`
     color: ${props => props.theme.colors.text};
     border-color: ${props => props.theme.colors.card};
     :hover {
-      background-color: ${props => props.theme.colors.primary.dark};
+      background-color: ${props => props.theme.colors.dark};
+      border-color: ${props => props.theme.colors.darker};
       color: ${props => props.theme.colors.text};
     }
   }
@@ -54,16 +55,14 @@ const StyledButton = styled.button`
     border-color: ${props => props.theme.colors.bg};
     :hover {
       border-color: ${props => props.theme.colors.darker};
-      background-color: ${props => props.theme.colors.dark};
     }
   }
   &.danger {
-    background-color: red;
+    background-color: darkred;
     color: ${props => props.theme.colors.text};
-    border-color: red;
+    border-color: darkred;
     :hover {
       border-color: red;
-      background-color: darkred;
     }
   }
 `
