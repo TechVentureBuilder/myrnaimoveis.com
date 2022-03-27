@@ -7,10 +7,11 @@ import Label from './Label'
 type Props = {
 	name: string
 	label: string
-	placeholder?: string
 	iconName?: string
 	min: number
 	max: number
+	required?: boolean
+	defaultValue?: string
 }
 
 const Input = styled.input`
@@ -66,7 +67,7 @@ const InputWrapper = styled.div`
 `
 
 const NumberInput = (props: Props) => {
-	const [inputValue, setInputValue] = useState(0)
+	const [inputValue, setInputValue] = useState<number>()
 	const [isEmpty, setIsEmpty] = useState(true)
 
 	const handleInputChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
@@ -89,13 +90,15 @@ const NumberInput = (props: Props) => {
 			<Label text={props.label} htmlFor={props.name} />
 			<Input
 				id={props.name}
-				placeholder={props.placeholder}
+				placeholder={String(props.min)}
 				type="number"
 				className={props.iconName ? 'withIcon' : ''}
 				min={props.min}
 				max={props.max}
 				value={inputValue}
 				onChange={handleInputChange}
+				required={props.required}
+				defaultValue={props.defaultValue}
 			/>
 			{props.iconName ? <StyledIcon iconName={props.iconName} /> : ''}
 		</InputWrapper>

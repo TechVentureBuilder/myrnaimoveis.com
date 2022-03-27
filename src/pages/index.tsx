@@ -28,10 +28,9 @@ const Home: NextPage = (props) => {
 			<InputNumber
 				name="number"
 				label="Number"
-				placeholder="0"
 				min={0}
 				max={5}
-				iconName="arrowDown"
+				iconName="bed"
 			/>
 		</Container>
 	)

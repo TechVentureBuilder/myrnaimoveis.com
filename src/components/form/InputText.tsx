@@ -8,6 +8,8 @@ type Props = {
 	label: string
 	placeholder: string
 	iconName?: string
+	required?: boolean
+	defaultValue?: number
 }
 
 const Input = styled.input`
@@ -87,6 +89,8 @@ const InputText = (props: Props) => {
 				className={props.iconName ? 'withIcon' : ''}
 				onChangeCapture={handleInputChange}
 				name={props.name}
+				required={props.required}
+				defaultValue={props.defaultValue}
 			/>
 			{props.iconName ? <StyledIcon iconName={props.iconName} /> : ''}
 		</InputWrapper>
