@@ -21,7 +21,6 @@ const Input = styled.input`
 		${(props) => props.theme.colors.card};
 	font-size: ${(props) => props.theme.font.sizes.p};
 	transition: ${(props) => props.theme.transitions.fast};
-	text-align: center;
 	::placeholder {
 		font-size: ${(props) => props.theme.font.sizes.s};
 		color: ${(props) => props.theme.colors.placeholder};
@@ -61,48 +60,32 @@ const InputWrapper = styled.div`
     ${Input}:focus ~ ${StyledIcon} {
 		color: ${(props) => props.theme.colors.text};
 	}
-`
-
-const ButtonsWrapper = styled.div`
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	margin-top: -${(props) => props.theme.sizes.interaction};
-	pointer-events: none;
-	button {
-		pointer-events: all;
+	&.whiteIcon > ${StyledIcon} {
+		color: ${(props) => props.theme.colors.text} !important;
 	}
 `
 
 const NumberInput = (props: Props) => {
 	const [inputValue, setInputValue] = useState(0)
-
-	const handleIncrement: React.MouseEventHandler<HTMLButtonElement> = (e) => {
-		if (props.max !== null && inputValue >= props.max!) {
-			return
-		}
-		setInputValue((value) => value + 1)
-	}
-
-	const handleDecrement: React.MouseEventHandler<HTMLButtonElement> = (e) => {
-		if (props.min !== null && inputValue <= props.min!) {
-			return
-		}
-		setInputValue((value) => value - 1)
-	}
+	const [isEmpty, setIsEmpty] = useState(true)
 
 	const handleInputChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-		let finalValue = Number(e.target.value.replace(/\D/g, ''))
-		if (finalValue > props.max) {
+		if (e.currentTarget.value && e.currentTarget.value.length > 0 && isEmpty) {
+			setIsEmpty(false)
+		} else if (!e.currentTarget.value && !isEmpty) {
+			setIsEmpty(true)
+		}
+		let finalValue = e.currentTarget.valueAsNumber
+		if (finalValue >= props.max) {
 			finalValue = props.max
-		} else if (finalValue < props.min) {
+		} else if (finalValue <= props.min) {
 			finalValue = props.min
 		}
 		setInputValue(finalValue)
 	}
 
 	return (
-		<InputWrapper>
+		<InputWrapper className={isEmpty ? '' : 'whiteIcon'}>
 			<Label text={props.label} htmlFor={props.name} />
 			<Input
 				id={props.name}
@@ -115,10 +98,6 @@ const NumberInput = (props: Props) => {
 				onChange={handleInputChange}
 			/>
 			{props.iconName ? <StyledIcon iconName={props.iconName} /> : ''}
-			<ButtonsWrapper>
-				<Button iconName="chevronDown" onClick={handleDecrement} />
-				<Button iconName="chevronUp" onClick={handleIncrement} />
-			</ButtonsWrapper>
 		</InputWrapper>
 	)
 }

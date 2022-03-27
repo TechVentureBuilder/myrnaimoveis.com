@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Button from '../components/Button'
 import Container from '../components/Container'
-import NumberInput from '../components/form/NumberInput'
+import InputNumber from '../components/form/InputNumber'
 import InputText from '../components/form/InputText'
 
 const Home: NextPage = (props) => {
@@ -25,12 +25,13 @@ const Home: NextPage = (props) => {
 				iconName="envelope"
 			/>
 			<br />
-			<NumberInput
+			<InputNumber
 				name="number"
 				label="Number"
 				placeholder="0"
 				min={0}
 				max={5}
+				iconName="arrowDown"
 			/>
 		</Container>
 	)
