@@ -1,13 +1,13 @@
-import Link from "next/link";
-import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
-import { ReactSVG } from "react-svg";
-import styled from "styled-components";
-import Button from "./Button";
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import React, { useEffect, useState } from 'react'
+import { ReactSVG } from 'react-svg'
+import styled from 'styled-components'
+import Button from './Button'
 
 type Props = {
-	internal?: boolean;
-};
+	internal?: boolean
+}
 
 const NavWrapper = styled.div`
 	background-color: ${(props) => props.theme.colors.bg};
@@ -20,7 +20,7 @@ const NavWrapper = styled.div`
 	top: 0;
 	left: 0;
 	width: 100%;
-`;
+`
 
 const StyledNav = styled.nav`
 	width: ${(props) => props.theme.screens.xxl};
@@ -28,7 +28,7 @@ const StyledNav = styled.nav`
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-`;
+`
 
 const LinksWrapper = styled.div`
 	width: fit-content;
@@ -61,63 +61,63 @@ const LinksWrapper = styled.div`
 			width: auto;
 		}
 	}
-`;
+`
 
 const ButtonsWrapper = styled.div`
 	display: flex;
 	gap: ${(props) => props.theme.sizes.m};
 	align-items: center;
-`;
+`
 
 const NavSpace = styled.div<{ height: number }>`
 	width: 100%;
 	height: ${(props) => props.height}px;
-`;
+`
 
 const NavBar = (props: Props) => {
-	const [navRef, setNavRef] = useState<HTMLDivElement | null>(null);
-	const [navHeight, setNavHeight] = useState<number>(0);
+	const [navRef, setNavRef] = useState<HTMLDivElement | null>(null)
+	const [navHeight, setNavHeight] = useState<number>(0)
 
 	useEffect(() => {
 		if (navRef && navRef.clientHeight !== navHeight) {
-			setNavHeight(navRef!.clientHeight);
+			setNavHeight(navRef!.clientHeight)
 		}
 		const handleNavResize = () => {
-			setNavHeight(navRef!.clientHeight);
-		};
-		window.addEventListener("resize", handleNavResize);
+			setNavHeight(navRef!.clientHeight)
+		}
+		window.addEventListener('resize', handleNavResize)
 		return () => {
-			window.removeEventListener("resize", handleNavResize);
-		};
-	}, [navHeight, navRef]);
+			window.removeEventListener('resize', handleNavResize)
+		}
+	}, [navHeight, navRef])
 
-	const router = useRouter();
+	const router = useRouter()
 
 	return (
 		<>
 			<NavSpace height={navHeight!}>{navHeight!}</NavSpace>
 			<NavWrapper
 				ref={(navEl) => {
-					setNavRef(navEl);
+					setNavRef(navEl)
 				}}
 			>
 				<StyledNav>
 					<LinksWrapper>
-						<Link passHref={true} href={"/"}>
+						<Link passHref={true} href={'/'}>
 							<a className="logoLink">
 								<ReactSVG src="assets/logo/logoLightHorizontal.svg" />
 							</a>
 						</Link>
-						<Link href={"/"}>
-							<a className={router.pathname == "/" ? "active" : ""}>Início</a>
+						<Link href={'/'}>
+							<a className={router.pathname == '/' ? 'active' : ''}>Início</a>
 						</Link>
-						<Link href={"/catalogo"}>
-							<a className={router.pathname == "/catalogo" ? "active" : ""}>
+						<Link href={'/catalogo'}>
+							<a className={router.pathname == '/catalogo' ? 'active' : ''}>
 								Catálogo
 							</a>
 						</Link>
-						<Link href={"/sobre"}>
-							<a className={router.pathname == "/sobre" ? "active" : ""}>
+						<Link href={'/sobre'}>
+							<a className={router.pathname == '/sobre' ? 'active' : ''}>
 								Sobre Nós
 							</a>
 						</Link>
@@ -130,7 +130,7 @@ const NavBar = (props: Props) => {
 				</StyledNav>
 			</NavWrapper>
 		</>
-	);
-};
+	)
+}
 
-export default NavBar;
+export default NavBar

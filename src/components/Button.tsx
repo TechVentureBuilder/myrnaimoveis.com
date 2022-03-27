@@ -1,12 +1,13 @@
-import React from "react";
-import styled from "styled-components";
-import Icon from "./Icon";
+import React from 'react'
+import styled from 'styled-components'
+import Icon from './Icon'
 
 type Props = {
-	text?: string;
-	iconName?: string;
-	variant?: "primary" | "secondary" | "tertiary" | "danger";
-};
+	text?: string
+	iconName?: string
+	variant?: 'primary' | 'secondary' | 'tertiary' | 'danger'
+	onClick?: React.MouseEventHandler<HTMLButtonElement>
+}
 
 const StyledButton = styled.button`
 	padding: ${(props) => props.theme.sizes.m};
@@ -65,20 +66,20 @@ const StyledButton = styled.button`
 			border-color: red;
 		}
 	}
-`;
+`
 
 const Button = (props: Props) => {
 	const className = `
-    ${!props.text && props.iconName ? "onlyIcon" : ""}
-    ${props.variant !== "primary" ? props.variant : ""}
-  `;
+    ${!props.text && props.iconName ? 'onlyIcon' : ''}
+    ${props.variant !== 'primary' ? props.variant : ''}
+  `
 
 	return (
-		<StyledButton className={className}>
-			{props.iconName ? <Icon iconName={props.iconName}></Icon> : ""}
-			{props.text ? props.text : ""}
+		<StyledButton className={className} onClick={props.onClick}>
+			{props.iconName ? <Icon iconName={props.iconName}></Icon> : ''}
+			{props.text ? props.text : ''}
 		</StyledButton>
-	);
-};
+	)
+}
 
-export default Button;
+export default Button

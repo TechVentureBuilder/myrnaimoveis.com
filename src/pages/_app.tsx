@@ -1,7 +1,7 @@
-import type { AppProps } from "next/app";
-import "../styles/fonts.css"; // Fonts
-import ThemeComponent from "../styles/ThemeComponent"; // Website Theme
-import NavBar from "../components/NavBar";
+import type { AppProps } from 'next/app'
+import '../styles/fonts.css' // Fonts
+import ThemeComponent from '../styles/ThemeComponent' // Website Theme
+import NavBar from '../components/NavBar'
 
 function MyApp({ Component, pageProps }: AppProps) {
 	return (
@@ -11,7 +11,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 				<Component {...pageProps} />
 			</>
 		</ThemeComponent>
-	);
+	)
 }
 
-export default MyApp;
+export default MyApp

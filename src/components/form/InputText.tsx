@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-import slugify from "slugify";
-import styled from "styled-components";
-import Icon from "../Icon";
-import Label from "./Label";
+import React, { useState } from 'react'
+import styled from 'styled-components'
+import Icon from '../Icon'
+import Label from './Label'
 
 type Props = {
-	label: string;
-	placeholder: string;
-	iconName?: string;
-};
+	name: string
+	label: string
+	placeholder: string
+	iconName?: string
+}
 
 const Input = styled.input`
 	padding: ${(props) => props.theme.sizes.s} ${(props) => props.theme.sizes.m};
@@ -35,11 +35,11 @@ const Input = styled.input`
 			${props.theme.sizes.m} * 2 + ${props.theme.sizes.s}
 		)`};
 	}
-`;
+`
 
 const StyledIcon = styled(Icon)`
 	transition: ${(props) => props.theme.transitions.fast};
-`;
+`
 
 const InputWrapper = styled.div`
 	display: flex;
@@ -60,37 +60,37 @@ const InputWrapper = styled.div`
 	&.whiteIcon > ${StyledIcon} {
 		color: ${(props) => props.theme.colors.text} !important;
 	}
-`;
+`
 
-const TextInput = (props: Props) => {
-	const inputId = slugify(props.label);
-	const [isEmpty, setIsEmpty] = useState(true);
+const InputText = (props: Props) => {
+	const [isEmpty, setIsEmpty] = useState(true)
 
 	const handleInputChange: React.FormEventHandler<HTMLInputElement> = (e) => {
 		if (e.currentTarget.value && e.currentTarget.value.length > 0 && isEmpty) {
-			setIsEmpty(false);
-			console.log("false");
+			setIsEmpty(false)
+			console.log('false')
 		} else if (!e.currentTarget.value && !isEmpty) {
-			setIsEmpty(true);
-			console.log("true");
+			setIsEmpty(true)
+			console.log('true')
 		} else {
-			console.log("entrou");
+			console.log('entrou')
 		}
-	};
+	}
 
 	return (
-		<InputWrapper className={isEmpty ? "" : "whiteIcon"}>
-			<Label text={props.label} htmlFor={inputId} />
+		<InputWrapper className={isEmpty ? '' : 'whiteIcon'}>
+			<Label text={props.label} htmlFor={props.name} />
 			<Input
-				id={inputId}
+				id={props.name}
 				placeholder={props.placeholder}
 				type="text"
-				className={props.iconName ? "withIcon" : ""}
+				className={props.iconName ? 'withIcon' : ''}
 				onChangeCapture={handleInputChange}
+				name={props.name}
 			/>
-			{props.iconName ? <StyledIcon iconName={props.iconName} /> : ""}
+			{props.iconName ? <StyledIcon iconName={props.iconName} /> : ''}
 		</InputWrapper>
-	);
-};
+	)
+}
 
-export default TextInput;
+export default InputText

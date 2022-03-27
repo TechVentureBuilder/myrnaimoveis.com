@@ -1,10 +1,10 @@
-import React from "react";
-import { ReactSVG } from "react-svg";
+import React from 'react'
+import { ReactSVG } from 'react-svg'
 
 type Props = {
-	iconName: string;
-	className?: string;
-};
+	iconName: string
+	className?: string
+}
 
 const Icon = (props: Props) => {
 	return (
@@ -12,7 +12,7 @@ const Icon = (props: Props) => {
 			src={`/assets/icons/${props.iconName}.svg`}
 			className={props.className}
 		/>
-	);
-};
+	)
+}
 
-export default Icon;
+export default Icon

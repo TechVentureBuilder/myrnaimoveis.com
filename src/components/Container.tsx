@@ -1,19 +1,19 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react'
+import styled from 'styled-components'
 
 type Props = {
-	children: JSX.Element | JSX.Element[];
-};
+	children: JSX.Element | JSX.Element[]
+}
 
 const StyledDiv = styled.div`
 	width: 100%;
 	max-width: ${(props) => props.theme.screens.xxl};
 	padding: 0 ${(props) => props.theme.sizes.m};
 	margin: auto;
-`;
+`
 
 const Container = (props: Props) => {
-	return <StyledDiv>{props.children}</StyledDiv>;
-};
+	return <StyledDiv>{props.children}</StyledDiv>
+}
 
-export default Container;
+export default Container

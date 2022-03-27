@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components'
 
 export default createGlobalStyle`
     body, html {
@@ -54,4 +54,4 @@ export default createGlobalStyle`
             opacity: 1;
         }
     }
-`;
+`
