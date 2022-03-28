@@ -3,6 +3,7 @@ import Button from '../components/Button'
 import Container from '../components/Container'
 import InputNumber from '../components/form/InputNumber'
 import InputText from '../components/form/InputText'
+import Select from '../components/form/Select'
 
 const Home: NextPage = (props) => {
 	return (
@@ -31,6 +32,13 @@ const Home: NextPage = (props) => {
 				min={0}
 				max={5}
 				iconName="bed"
+			/>
+			<br />
+			<Select
+				label="Bairro"
+				placeholder="Selecione o Bairro"
+				name="bairro"
+				iconName="local"
 			/>
 		</Container>
 	)

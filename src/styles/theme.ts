@@ -71,7 +71,9 @@ export const theme = {
 	},
 	transitions: {
 		slow: '700ms ease-in-out',
+		slower: '550ms ease-in-out',
 		normal: '400ms ease-in-out',
+		faster: '250ms ease-in-out',
 		fast: '100ms ease-in-out',
 	},
 }
