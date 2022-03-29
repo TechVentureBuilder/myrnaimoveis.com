@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import slugify from 'slugify'
 import styled from 'styled-components'
 import Icon from '../Icon'
 import Label from './Label'
@@ -10,9 +11,13 @@ type Props = {
 	iconName?: string
 	required?: boolean
 	defaultValue?: number
+	options: {
+		display: string
+		value: string // Must be a lowercase slugified version of the display text.
+	}[]
 }
 
-const Input = styled.input`
+const DisplayInput = styled.input`
 	padding: ${(props) => props.theme.sizes.s} ${(props) => props.theme.sizes.m};
 	display: block;
 	background-color: transparent;
@@ -55,8 +60,8 @@ const InputWrapper = styled.div`
 		left: ${(props) => props.theme.sizes.m};
 		color: ${(props) => props.theme.colors.placeholder};
 	}
-	${Input}:hover ~ ${StyledIcon},
-    ${Input}:focus ~ ${StyledIcon} {
+	${DisplayInput}:hover ~ ${StyledIcon},
+    ${DisplayInput}:focus ~ ${StyledIcon} {
 		color: ${(props) => props.theme.colors.text};
 	}
 	&.whiteIcon > ${StyledIcon} {
@@ -68,29 +73,51 @@ const OptionsPositioner = styled.div`
 	width: 100%;
 	height: 0;
 	position: relative;
-	background-color: red;
 `
 
+// prettier-ignore
 const Options = styled.div`
 	background-color: ${(props) => props.theme.colors.card};
 	width: 100%;
 	position: absolute;
 	/* top: ; */
-	height: calc(${(props) => props.theme.sizes.interaction} * 4);
+	height: calc(${(props) => `${props.theme.sizes.interaction} * 3 + ${props.theme.sizes.interaction} / 2`});
 	transition: ${(props) => props.theme.transitions.faster};
 	opacity: 1;
 	pointer-events: all;
+	display: flex;
+	flex-direction: column;
+	overflow-y: scroll;
 	&.hidden {
 		background-color: ${(props) => props.theme.colors.bg};
 		pointer-events: none;
 		opacity: 0;
-		height: calc(-${(props) => props.theme.sizes.interaction} * 4);
+		height: 0;
+	}
+`
+
+const Option = styled.div`
+	min-height: ${(props) => props.theme.sizes.interaction};
+	background-color: transparent;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding-left: ${(props) => props.theme.sizes.m};
+	user-select: none;
+	:hover {
+		background-color: ${(props) => props.theme.colors.primary.dark};
+	}
+	&.active {
+		background-color: ${(props) => props.theme.colors.main};
 	}
 `
 
 const Select = (props: Props) => {
-	const [isEmpty, setIsEmpty] = useState(true)
+	const [isEmpty, setIsEmpty] = useState(props.defaultValue ? false : true)
 	const [isHidden, setIsHidden] = useState(true)
+	const [value, setValue] = useState<string | undefined>(undefined)
+	const [display, setDisplay] = useState<string | undefined>('Teste')
+	const [filteredOptions, setFilteredOptions] = useState(props.options)
 
 	const handleInputChange: React.FormEventHandler<HTMLInputElement> = (e) => {
 		if (e.currentTarget.value && e.currentTarget.value.length > 0 && isEmpty) {
@@ -99,15 +126,17 @@ const Select = (props: Props) => {
 		} else if (!e.currentTarget.value && !isEmpty) {
 			setIsEmpty(true)
 			console.log('true')
-		} else {
-			console.log('entrou')
 		}
+		const newFilteredOptions = props.options.filter((option) =>
+			option.value.includes(slugify(e.currentTarget.value, { lower: true }))
+		)
+		setFilteredOptions(newFilteredOptions)
 	}
 
 	return (
 		<InputWrapper className={isEmpty ? '' : 'whiteIcon'}>
 			<Label text={props.label} htmlFor={props.name} />
-			<Input
+			<DisplayInput
 				id={props.name}
 				placeholder={props.placeholder}
 				type="text"
@@ -116,12 +145,40 @@ const Select = (props: Props) => {
 				name={props.name}
 				required={props.required}
 				defaultValue={props.defaultValue}
-				onFocus={() => setIsHidden(false)}
-				onBlur={() => setIsHidden(true)}
+				value={display}
+				onFocus={(e) => {
+					e.currentTarget.select()
+					setIsHidden(false)
+					setDisplay(undefined)
+				}}
+				onBlur={() => {
+					setIsHidden(true)
+					if (value) {
+						const correctOption = props.options.find((option) =>
+							option.value.includes(value)
+						)
+						setDisplay(correctOption?.display)
+						setFilteredOptions(props.options)
+					}
+				}}
 			/>
 			{props.iconName ? <StyledIcon iconName={props.iconName} /> : ''}
 			<OptionsPositioner>
-				<Options className={isHidden ? 'hidden' : ''}></Options>
+				<Options className={isHidden ? 'hidden' : ''}>
+					{filteredOptions.map((option, index) => (
+						<Option
+							key={index}
+							onMouseDown={() => {
+								setValue(option.value)
+								setDisplay(option.display)
+								setFilteredOptions(props.options)
+							}}
+							className={option.value === value ? 'active' : ''}
+						>
+							{option.display}
+						</Option>
+					))}
+				</Options>
 			</OptionsPositioner>
 		</InputWrapper>
 	)

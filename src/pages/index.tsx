@@ -39,6 +39,36 @@ const Home: NextPage = (props) => {
 				placeholder="Selecione o Bairro"
 				name="bairro"
 				iconName="local"
+				options={[
+					{
+						display: 'Ipiranga',
+						value: 'ipiranga',
+					},
+					{
+						display: 'Vila Mariana',
+						value: 'vila-mariana',
+					},
+					{
+						display: 'Morumbi',
+						value: 'morumbi',
+					},
+					{
+						display: 'Ibirapuera',
+						value: 'ibirapuera',
+					},
+					{
+						display: 'Bosque da Saúde',
+						value: 'bosque-da-saude',
+					},
+					{
+						display: 'Moema',
+						value: 'moema',
+					},
+					{
+						display: 'Mooca',
+						value: 'mooca',
+					},
+				]}
 			/>
 		</Container>
 	)
