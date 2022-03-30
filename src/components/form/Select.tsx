@@ -69,6 +69,11 @@ const InputWrapper = styled.div`
 	}
 `
 
+const ValueInput = styled.input`
+	position: absolute;
+	visibility: hidden;
+`
+
 const OptionsPositioner = styled.div`
 	width: 100%;
 	height: 0;
@@ -80,8 +85,7 @@ const Options = styled.div`
 	background-color: ${(props) => props.theme.colors.card};
 	width: 100%;
 	position: absolute;
-	/* top: ; */
-	height: calc(${(props) => `${props.theme.sizes.interaction} * 3 + ${props.theme.sizes.interaction} / 2`});
+	max-height: calc(${(props) => `${props.theme.sizes.interaction} * 3 + ${props.theme.sizes.interaction} / 2`});
 	transition: ${(props) => props.theme.transitions.faster};
 	opacity: 1;
 	pointer-events: all;
@@ -89,10 +93,10 @@ const Options = styled.div`
 	flex-direction: column;
 	overflow-y: scroll;
 	&.hidden {
-		background-color: ${(props) => props.theme.colors.bg};
+		transition: ${(props) => props.theme.transitions.faster};
 		pointer-events: none;
 		opacity: 0;
-		height: 0;
+		max-height: 0;
 	}
 `
 
@@ -116,16 +120,14 @@ const Select = (props: Props) => {
 	const [isEmpty, setIsEmpty] = useState(props.defaultValue ? false : true)
 	const [isHidden, setIsHidden] = useState(true)
 	const [value, setValue] = useState<string | undefined>(undefined)
-	const [display, setDisplay] = useState<string | undefined>('Teste')
+	const [display, setDisplay] = useState<string | undefined>(undefined)
 	const [filteredOptions, setFilteredOptions] = useState(props.options)
 
 	const handleInputChange: React.FormEventHandler<HTMLInputElement> = (e) => {
 		if (e.currentTarget.value && e.currentTarget.value.length > 0 && isEmpty) {
 			setIsEmpty(false)
-			console.log('false')
 		} else if (!e.currentTarget.value && !isEmpty) {
 			setIsEmpty(true)
-			console.log('true')
 		}
 		const newFilteredOptions = props.options.filter((option) =>
 			option.value.includes(slugify(e.currentTarget.value, { lower: true }))
@@ -142,8 +144,6 @@ const Select = (props: Props) => {
 				type="text"
 				className={props.iconName ? 'withIcon' : ''}
 				onChangeCapture={handleInputChange}
-				name={props.name}
-				required={props.required}
 				defaultValue={props.defaultValue}
 				value={display}
 				onFocus={(e) => {
@@ -158,10 +158,12 @@ const Select = (props: Props) => {
 							option.value.includes(value)
 						)
 						setDisplay(correctOption?.display)
+						setIsEmpty(false)
 						setFilteredOptions(props.options)
 					}
 				}}
 			/>
+			<ValueInput name={props.name} required={props.required} value={value} />
 			{props.iconName ? <StyledIcon iconName={props.iconName} /> : ''}
 			<OptionsPositioner>
 				<Options className={isHidden ? 'hidden' : ''}>
@@ -172,6 +174,7 @@ const Select = (props: Props) => {
 								setValue(option.value)
 								setDisplay(option.display)
 								setFilteredOptions(props.options)
+								setIsEmpty(false)
 							}}
 							className={option.value === value ? 'active' : ''}
 						>
