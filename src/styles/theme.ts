@@ -46,7 +46,7 @@ export const theme = {
 		m: "48rem",
 		l: "62rem",
 		xl: "75rem",
-		xxl: "1400px",
+		xxl: "87.5rem",
 	},
 	font: {
 		families: {
