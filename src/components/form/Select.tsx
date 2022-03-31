@@ -65,7 +65,7 @@ const InputWrapper = styled.div`
 		color: ${(props) => props.theme.colors.text};
 	}
 	&.whiteIcon > ${StyledIcon} {
-		color: ${(props) => props.theme.colors.text} !important;
+		color: ${(props) => props.theme.colors.text};
 	}
 `
 

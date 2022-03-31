@@ -21,7 +21,7 @@ const StyledButton = styled.button`
 	align-items: center;
 	column-gap: ${(props) => props.theme.sizes.xs};
 	transition: ${(props) => props.theme.transitions.fast};
-	text-decoration: none !important;
+	text-decoration: none;
 	width: fit-content;
 	cursor: pointer;
 	&.fill {

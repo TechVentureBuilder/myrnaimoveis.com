@@ -57,7 +57,7 @@ const LinksWrapper = styled.div`
 		margin-right: ${(props) => props.theme.sizes.m};
 		svg {
 			display: block;
-			height: 24px;
+			height: ${(props) => props.theme.sizes.l};
 			width: auto;
 		}
 	}

@@ -35,16 +35,17 @@ export const theme = {
 	sizes: {
 		xs: "0.5rem", // 8px
 		s: "0.75rem", // 12px
-		m: "1rem", // 16px
-		l: "2rem", // 32px
-		xl: "3rem", // 48px
-		interaction: "2.625rem",
+		m: "1rem",    // 16px
+		l: "1.5rem",  // 24px
+		xl: "2rem",   // 32px
+		xxl: "3rem",  // 48px
+		interaction: "2.625rem", // 42px
 	},
 	screens: {
-		s: "576px",
-		m: "768px",
-		l: "992px",
-		xl: "1200px",
+		s: "36rem",
+		m: "48rem",
+		l: "62rem",
+		xl: "75rem",
 		xxl: "1400px",
 	},
 	font: {
