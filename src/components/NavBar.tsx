@@ -1,9 +1,9 @@
-import Link from 'next/link'
-import { useRouter } from 'next/router'
-import React, { useEffect, useState } from 'react'
-import { ReactSVG } from 'react-svg'
-import styled from 'styled-components'
-import Button from './Button'
+import Link from "next/link"
+import { useRouter } from "next/router"
+import React, { useEffect, useState } from "react"
+import { ReactSVG } from "react-svg"
+import styled from "styled-components"
+import Button from "./Button"
 
 type Props = {
 	internal?: boolean
@@ -85,9 +85,9 @@ const NavBar = (props: Props) => {
 		const handleNavResize = () => {
 			setNavHeight(navRef!.clientHeight)
 		}
-		window.addEventListener('resize', handleNavResize)
+		window.addEventListener("resize", handleNavResize)
 		return () => {
-			window.removeEventListener('resize', handleNavResize)
+			window.removeEventListener("resize", handleNavResize)
 		}
 	}, [navHeight, navRef])
 
@@ -103,21 +103,21 @@ const NavBar = (props: Props) => {
 			>
 				<StyledNav>
 					<LinksWrapper>
-						<Link passHref={true} href={'/'}>
+						<Link passHref={true} href={"/"}>
 							<a className="logoLink">
 								<ReactSVG src="assets/logo/logoLightHorizontal.svg" />
 							</a>
 						</Link>
-						<Link href={'/'}>
-							<a className={router.pathname == '/' ? 'active' : ''}>Início</a>
+						<Link href={"/"}>
+							<a className={router.pathname == "/" ? "active" : ""}>Início</a>
 						</Link>
-						<Link href={'/catalogo'}>
-							<a className={router.pathname == '/catalogo' ? 'active' : ''}>
+						<Link href={"/catalogo"}>
+							<a className={router.pathname == "/catalogo" ? "active" : ""}>
 								Catálogo
 							</a>
 						</Link>
-						<Link href={'/sobre'}>
-							<a className={router.pathname == '/sobre' ? 'active' : ''}>
+						<Link href={"/sobre"}>
+							<a className={router.pathname == "/sobre" ? "active" : ""}>
 								Sobre Nós
 							</a>
 						</Link>

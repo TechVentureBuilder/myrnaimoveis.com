@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
-import slugify from 'slugify'
-import styled from 'styled-components'
-import Icon from '../Icon'
-import Label from './Label'
+import React, { useState } from "react"
+import slugify from "slugify"
+import styled from "styled-components"
+import Icon from "../Icon"
+import Label from "./Label"
 
 type Props = {
 	name: string
@@ -136,13 +136,13 @@ const Select = (props: Props) => {
 	}
 
 	return (
-		<InputWrapper className={isEmpty ? '' : 'whiteIcon'}>
+		<InputWrapper className={isEmpty ? "" : "whiteIcon"}>
 			<Label text={props.label} htmlFor={props.name} />
 			<DisplayInput
 				id={props.name}
 				placeholder={props.placeholder}
 				type="text"
-				className={props.iconName ? 'withIcon' : ''}
+				className={props.iconName ? "withIcon" : ""}
 				onChangeCapture={handleInputChange}
 				defaultValue={props.defaultValue}
 				value={display}
@@ -164,9 +164,9 @@ const Select = (props: Props) => {
 				}}
 			/>
 			<ValueInput name={props.name} required={props.required} value={value} />
-			{props.iconName ? <StyledIcon iconName={props.iconName} /> : ''}
+			{props.iconName ? <StyledIcon iconName={props.iconName} /> : ""}
 			<OptionsPositioner>
-				<Options className={isHidden ? 'hidden' : ''}>
+				<Options className={isHidden ? "hidden" : ""}>
 					{filteredOptions.map((option, index) => (
 						<Option
 							key={index}
@@ -176,7 +176,7 @@ const Select = (props: Props) => {
 								setFilteredOptions(props.options)
 								setIsEmpty(false)
 							}}
-							className={option.value === value ? 'active' : ''}
+							className={option.value === value ? "active" : ""}
 						>
 							{option.display}
 						</Option>

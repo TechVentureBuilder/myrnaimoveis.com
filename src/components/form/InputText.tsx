@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
-import Icon from '../Icon'
-import Label from './Label'
+import React, { useState } from "react"
+import styled from "styled-components"
+import Icon from "../Icon"
+import Label from "./Label"
 
 type Props = {
 	name: string
@@ -70,29 +70,29 @@ const InputText = (props: Props) => {
 	const handleInputChange: React.FormEventHandler<HTMLInputElement> = (e) => {
 		if (e.currentTarget.value && e.currentTarget.value.length > 0 && isEmpty) {
 			setIsEmpty(false)
-			console.log('false')
+			console.log("false")
 		} else if (!e.currentTarget.value && !isEmpty) {
 			setIsEmpty(true)
-			console.log('true')
+			console.log("true")
 		} else {
-			console.log('entrou')
+			console.log("entrou")
 		}
 	}
 
 	return (
-		<InputWrapper className={isEmpty ? '' : 'whiteIcon'}>
+		<InputWrapper className={isEmpty ? "" : "whiteIcon"}>
 			<Label text={props.label} htmlFor={props.name} />
 			<Input
 				id={props.name}
 				placeholder={props.placeholder}
 				type="text"
-				className={props.iconName ? 'withIcon' : ''}
+				className={props.iconName ? "withIcon" : ""}
 				onChangeCapture={handleInputChange}
 				name={props.name}
 				required={props.required}
 				defaultValue={props.defaultValue}
 			/>
-			{props.iconName ? <StyledIcon iconName={props.iconName} /> : ''}
+			{props.iconName ? <StyledIcon iconName={props.iconName} /> : ""}
 		</InputWrapper>
 	)
 }

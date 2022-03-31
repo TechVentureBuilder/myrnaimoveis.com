@@ -1,6 +1,6 @@
-import { ThemeProvider } from 'styled-components'
-import GlobalStyle from './GlobalStyle'
-import theme from './theme'
+import { ThemeProvider } from "styled-components"
+import GlobalStyle from "./GlobalStyle"
+import theme from "./theme"
 
 type Props = {
 	children: JSX.Element

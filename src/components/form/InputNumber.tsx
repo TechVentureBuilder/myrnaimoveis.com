@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
-import Button from '../Button'
-import Icon from '../Icon'
-import Label from './Label'
+import React, { useState } from "react"
+import styled from "styled-components"
+import Button from "../Button"
+import Icon from "../Icon"
+import Label from "./Label"
 
 type Props = {
 	name: string
@@ -86,13 +86,13 @@ const NumberInput = (props: Props) => {
 	}
 
 	return (
-		<InputWrapper className={isEmpty ? '' : 'whiteIcon'}>
+		<InputWrapper className={isEmpty ? "" : "whiteIcon"}>
 			<Label text={props.label} htmlFor={props.name} />
 			<Input
 				id={props.name}
 				placeholder={String(props.min)}
 				type="number"
-				className={props.iconName ? 'withIcon' : ''}
+				className={props.iconName ? "withIcon" : ""}
 				min={props.min}
 				max={props.max}
 				value={inputValue}
@@ -100,7 +100,7 @@ const NumberInput = (props: Props) => {
 				required={props.required}
 				defaultValue={props.defaultValue}
 			/>
-			{props.iconName ? <StyledIcon iconName={props.iconName} /> : ''}
+			{props.iconName ? <StyledIcon iconName={props.iconName} /> : ""}
 		</InputWrapper>
 	)
 }

@@ -1,11 +1,11 @@
-import React from 'react'
-import styled from 'styled-components'
-import Icon from './Icon'
+import React from "react"
+import styled from "styled-components"
+import Icon from "./Icon"
 
 type Props = {
 	text?: string
 	iconName?: string
-	variant?: 'primary' | 'secondary' | 'tertiary' | 'danger'
+	variant?: "primary" | "secondary" | "tertiary" | "danger"
 	onClick?: React.MouseEventHandler<HTMLButtonElement>
 }
 
@@ -70,14 +70,14 @@ const StyledButton = styled.button`
 
 const Button = (props: Props) => {
 	const className = `
-    ${!props.text && props.iconName ? 'onlyIcon' : ''}
-    ${props.variant !== 'primary' ? props.variant : ''}
+    ${!props.text && props.iconName ? "onlyIcon" : ""}
+    ${props.variant !== "primary" ? props.variant : ""}
   `
 
 	return (
 		<StyledButton className={className} onClick={props.onClick}>
-			{props.iconName ? <Icon iconName={props.iconName}></Icon> : ''}
-			{props.text ? props.text : ''}
+			{props.iconName ? <Icon iconName={props.iconName}></Icon> : ""}
+			{props.text ? props.text : ""}
 		</StyledButton>
 	)
 }
