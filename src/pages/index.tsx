@@ -4,6 +4,7 @@ import Container from "../components/Container"
 import InputNumber from "../components/form/InputNumber"
 import InputText from "../components/form/InputText"
 import Select from "../components/form/Select"
+import Pagination from "../components/Pagination"
 
 const Home: NextPage = (props) => {
 	return (
@@ -70,6 +71,7 @@ const Home: NextPage = (props) => {
 					},
 				]}
 			/>
+			<Pagination page={7} amount={10}></Pagination>
 		</Container>
 	)
 }
