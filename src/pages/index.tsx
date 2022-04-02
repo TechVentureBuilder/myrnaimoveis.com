@@ -71,7 +71,7 @@ const Home: NextPage = (props) => {
 					},
 				]}
 			/>
-			<Pagination page={7} amount={10}></Pagination>
+			<Pagination page={5} amount={9}></Pagination>
 		</Container>
 	)
 }

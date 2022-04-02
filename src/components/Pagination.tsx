@@ -8,15 +8,16 @@ type Props = {
 }
 
 const PaginationWrapper = styled.div`
-	background-color: red;
 	width: 100%;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
-	gap: ${(props) => props.theme.sizes.m};
+	gap: ${(props) => props.theme.sizes.xs};
 	a {
-		background-color: ${(props) => props.theme.colors.card};
+		background-color: ${(props) => props.theme.colors.bg};
+		border: ${(props) => props.theme.border.width} solid
+			${(props) => props.theme.colors.card};
 		color: ${(props) => props.theme.colors.text};
 		display: flex;
 		justify-content: center;
@@ -31,38 +32,45 @@ const PaginationWrapper = styled.div`
 `
 
 const Pagination = (props: Props) => {
-	const after = []
-	for (let i = props.amount - 1; i < props.amount + 1; i++) {
-		if (props.amount - 2 == props.page) {
-			after.push(i)
-		} else if (after.length < 1) {
-			after.push("...")
+	let pagesList: Array<number> = []
+
+	if (props.amount > 5) {
+		pagesList.push(props.page)
+
+		for (let i = 1; props.page - i > 0; i++) {
+			if (pagesList.length < 3) {
+				pagesList.unshift(props.page - i)
+			}
+		}
+
+		if (props.page < props.amount) {
+			for (let i = props.page + 1; pagesList.length < 5; i++) {
+				if (props.page == props.amount - 1) {
+					if (props.page == props.amount - 1) {
+						pagesList.push(i)
+						pagesList.unshift(pagesList[0] - 1)
+					}
+					break
+				} else {
+					pagesList.push(i)
+				}
+			}
 		} else {
-			after.push(i)
+			for (let j = pagesList[0] - 1; j > 0 && pagesList.length < 5; j--) {
+				pagesList.unshift(j)
+			}
+		}
+	} else {
+		for (let i = 0; i < 5; i++) {
+			pagesList.unshift(5 - i)
 		}
 	}
 
-	const before = []
-	for (let i = props.page - 2; i < props.page; i++) {}
-
 	return (
 		<PaginationWrapper>
-			{/* Prev Pages Group */}
-			{before.map((page, index) => (
+			{pagesList.map((page, index) => (
 				<Link href={`/${page}`} key={index}>
-					{`${page}`}
-				</Link>
-			))}
-
-			{/* Current Page Indicator */}
-			<Link href={"/"}>
-				<a className="current">{props.page}</a>
-			</Link>
-
-			{/* Next Pages Group */}
-			{after.map((page, index) => (
-				<Link href={`/${page}`} key={index}>
-					{`${page}`}
+					<a className={page == props.page ? "current" : ""}>{page}</a>
 				</Link>
 			))}
 		</PaginationWrapper>
