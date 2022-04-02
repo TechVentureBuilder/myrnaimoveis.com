@@ -6,6 +6,9 @@ type Props = {
 	text?: string
 	iconName?: string
 	variant?: "primary" | "secondary" | "tertiary" | "danger"
+	className?: string
+	fill?: boolean
+	type: "button" | "submit" | "reset" | undefined
 	onClick?: React.MouseEventHandler<HTMLButtonElement>
 }
 
@@ -26,6 +29,7 @@ const StyledButton = styled.button`
 	cursor: pointer;
 	&.fill {
 		width: 100%;
+		justify-content: center;
 	}
 	svg {
 		display: block;
@@ -72,10 +76,15 @@ const Button = (props: Props) => {
 	const className = `
     ${!props.text && props.iconName ? "onlyIcon" : ""}
     ${props.variant !== "primary" ? props.variant : ""}
+		${props.fill == true ? "fill" : ""}
   `
 
 	return (
-		<StyledButton className={className} onClick={props.onClick}>
+		<StyledButton
+			className={className + (props.className ? " " + props.className : "")}
+			onClick={props.onClick}
+			type={props.type}
+		>
 			{props.iconName ? <Icon iconName={props.iconName}></Icon> : ""}
 			{props.text ? props.text : ""}
 		</StyledButton>

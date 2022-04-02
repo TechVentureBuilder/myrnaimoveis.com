@@ -1,22 +1,39 @@
 import type { NextPage } from "next"
 import Button from "../components/Button"
+import ContactPopup from "../components/ContactPopup"
 import Container from "../components/Container"
 import InputNumber from "../components/form/InputNumber"
 import InputText from "../components/form/InputText"
 import Select from "../components/form/Select"
 import Pagination from "../components/Pagination"
+import Popup from "../components/Popup"
 
 const Home: NextPage = (props) => {
 	return (
 		<Container>
 			<h1>Início</h1>
-			<Button text="Botão Primário" iconName="myrna" />
+			<Button type="button" text="Botão Primário" iconName="myrna" />
 			<br />
-			<Button text="Botão Secundário" iconName="myrna" variant="secondary" />
+			<Button
+				type="button"
+				text="Botão Secundário"
+				iconName="myrna"
+				variant="secondary"
+			/>
 			<br />
-			<Button text="Botão Terciário" iconName="myrna" variant="tertiary" />
+			<Button
+				type="button"
+				text="Botão Terciário"
+				iconName="myrna"
+				variant="tertiary"
+			/>
 			<br />
-			<Button text="Botão Perigo" iconName="myrna" variant="danger" />
+			<Button
+				type="button"
+				text="Botão Perigo"
+				iconName="myrna"
+				variant="danger"
+			/>
 			<br />
 			<InputText name="name" label="Nome" placeholder="Digite aqui seu nome" />
 			<br />
@@ -72,6 +89,7 @@ const Home: NextPage = (props) => {
 				]}
 			/>
 			<Pagination page={5} amount={9}></Pagination>
+			<ContactPopup></ContactPopup>
 		</Container>
 	)
 }
