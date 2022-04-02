@@ -1,6 +1,8 @@
 import Link from "next/link"
 import React from "react"
 import styled from "styled-components"
+import Button from "./Button"
+import Icon from "./Icon"
 
 type Props = {
 	page: number
@@ -16,8 +18,8 @@ const PaginationWrapper = styled.div`
 	gap: ${(props) => props.theme.sizes.xs};
 	a {
 		background-color: ${(props) => props.theme.colors.bg};
-		border: ${(props) => props.theme.border.width} solid
-			${(props) => props.theme.colors.card};
+		border: ${(props) => props.theme.border.width} solid;
+		border-color: ${(props) => props.theme.colors.bg};
 		color: ${(props) => props.theme.colors.text};
 		display: flex;
 		justify-content: center;
@@ -25,8 +27,14 @@ const PaginationWrapper = styled.div`
 		height: ${(props) => props.theme.sizes.interaction};
 		width: ${(props) => props.theme.sizes.interaction};
 		text-decoration: none;
+		transition: ${(props) => props.theme.transitions.fast};
+		:hover {
+			border-color: ${(props) => props.theme.colors.darker};
+		}
 		&.current {
 			background-color: ${(props) => props.theme.colors.main};
+			border-color: ${(props) => props.theme.colors.main};
+			pointer-events: none;
 		}
 	}
 `
@@ -34,6 +42,7 @@ const PaginationWrapper = styled.div`
 const Pagination = (props: Props) => {
 	let pagesList: Array<number> = []
 
+	// fills pagesList
 	if (props.amount > 5) {
 		pagesList.push(props.page)
 
@@ -68,11 +77,31 @@ const Pagination = (props: Props) => {
 
 	return (
 		<PaginationWrapper>
+			{props.page > 1 ? (
+				<Link href={`/${props.page - 1}`}>
+					<a>
+						<Button iconName="chevronLeft" variant="secondary"></Button>
+					</a>
+				</Link>
+			) : (
+				""
+			)}
+
 			{pagesList.map((page, index) => (
-				<Link href={`/${page}`} key={index}>
+				<Link href={`/${page != props.page ? page : ""}`} key={index}>
 					<a className={page == props.page ? "current" : ""}>{page}</a>
 				</Link>
 			))}
+
+			{props.page < props.amount ? (
+				<Link href={`/${props.page + 1}`}>
+					<a>
+						<Button iconName="chevronRight" variant="secondary"></Button>
+					</a>
+				</Link>
+			) : (
+				""
+			)}
 		</PaginationWrapper>
 	)
 }
