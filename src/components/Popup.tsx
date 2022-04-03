@@ -1,10 +1,7 @@
 import React from "react"
 import styled from "styled-components"
+import { usePopup } from "../contexts/PopupContext"
 import Button from "./Button"
-
-type Props = {
-	children: any
-}
 
 const PopupWrapper = styled.div`
 	top: 0;
@@ -16,6 +13,7 @@ const PopupWrapper = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	z-index: 3;
 `
 
 const StyledPopup = styled.div`
@@ -34,11 +32,23 @@ const CloseButton = styled(Button)`
 	right: calc(-${(props) => props.theme.sizes.interaction} / 2);
 `
 
-const Popup = (props: Props) => {
+type Props = {
+	opened: boolean
+}
+
+const Popup: React.FC<Props> = (props) => {
+	const { setOpened } = usePopup()
+
+	if (props.opened == false) return null
+
 	return (
 		<PopupWrapper>
 			<StyledPopup>
-				<CloseButton iconName="close" type="button"></CloseButton>
+				<CloseButton
+					iconName="close"
+					type="button"
+					onClick={() => setOpened(false)}
+				/>
 				{props.children}
 			</StyledPopup>
 		</PopupWrapper>

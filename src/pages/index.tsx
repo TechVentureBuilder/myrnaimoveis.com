@@ -1,12 +1,11 @@
 import type { NextPage } from "next"
 import Button from "../components/Button"
-import ContactPopup from "../components/ContactPopup"
+import ContactPopup from "../components/Contact"
 import Container from "../components/Container"
 import InputNumber from "../components/form/InputNumber"
 import InputText from "../components/form/InputText"
 import Select from "../components/form/Select"
 import Pagination from "../components/Pagination"
-import Popup from "../components/Popup"
 
 const Home: NextPage = (props) => {
 	return (
@@ -33,15 +32,6 @@ const Home: NextPage = (props) => {
 				text="Botão Perigo"
 				iconName="myrna"
 				variant="danger"
-			/>
-			<br />
-			<InputText name="name" label="Nome" placeholder="Digite aqui seu nome" />
-			<br />
-			<InputText
-				name="email"
-				label="Email"
-				placeholder="Digite seu email"
-				iconName="envelope"
 			/>
 			<br />
 			<InputNumber

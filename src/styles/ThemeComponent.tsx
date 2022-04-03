@@ -3,7 +3,7 @@ import GlobalStyle from "./GlobalStyle"
 import theme from "./theme"
 
 type Props = {
-	children: JSX.Element
+	children: any
 }
 
 const ThemeComponent = ({ children }: Props) => {

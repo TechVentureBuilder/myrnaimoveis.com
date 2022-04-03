@@ -1,9 +1,13 @@
 import Link from "next/link"
 import { useRouter } from "next/router"
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { ReactSVG } from "react-svg"
 import styled from "styled-components"
+import { usePopup } from "../contexts/PopupContext"
 import Button from "./Button"
+import Contact from "./Contact"
+import Popup from "./Popup"
+import Search from "./Search"
 
 type Props = {
 	internal?: boolean
@@ -20,6 +24,7 @@ const NavWrapper = styled.div`
 	top: 0;
 	left: 0;
 	width: 100%;
+	z-index: 2;
 `
 
 const StyledNav = styled.nav`
@@ -75,15 +80,15 @@ const NavSpace = styled.div<{ height: number }>`
 `
 
 const NavBar = (props: Props) => {
-	const [navRef, setNavRef] = useState<HTMLDivElement | null>(null)
+	const navRef = useRef<HTMLDivElement>(null)
 	const [navHeight, setNavHeight] = useState<number>(0)
 
 	useEffect(() => {
-		if (navRef && navRef.clientHeight !== navHeight) {
-			setNavHeight(navRef!.clientHeight)
+		if (navRef.current && navRef.current.clientHeight !== navHeight) {
+			setNavHeight(navRef.current.clientHeight)
 		}
 		const handleNavResize = () => {
-			setNavHeight(navRef!.clientHeight)
+			setNavHeight(navRef.current!.clientHeight)
 		}
 		window.addEventListener("resize", handleNavResize)
 		return () => {
@@ -93,14 +98,12 @@ const NavBar = (props: Props) => {
 
 	const router = useRouter()
 
+	const { opened, setOpened, content, setContent } = usePopup()
+
 	return (
 		<>
 			<NavSpace height={navHeight!}>{navHeight!}</NavSpace>
-			<NavWrapper
-				ref={(navEl) => {
-					setNavRef(navEl)
-				}}
-			>
+			<NavWrapper ref={navRef}>
 				<StyledNav>
 					<LinksWrapper>
 						<Link passHref={true} href={"/"}>
@@ -124,11 +127,29 @@ const NavBar = (props: Props) => {
 					</LinksWrapper>
 
 					<ButtonsWrapper>
-						<Button iconName="search" variant="secondary" />
-						<Button iconName="chat" variant="primary" text="Fale Conosco" />
+						<Button
+							iconName="search"
+							variant="secondary"
+							type="button"
+							onClick={() => {
+								setContent(<Search />)
+								setOpened(true)
+							}}
+						/>
+						<Button
+							iconName="chat"
+							variant="primary"
+							type="button"
+							text="Fale Conosco"
+							onClick={() => {
+								setContent(<Contact />)
+								setOpened(true)
+							}}
+						/>
 					</ButtonsWrapper>
 				</StyledNav>
 			</NavWrapper>
+			<Popup opened={opened}>{content}</Popup>
 		</>
 	)
 }

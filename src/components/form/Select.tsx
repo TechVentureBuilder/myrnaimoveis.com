@@ -92,6 +92,7 @@ const Options = styled.div`
 	display: flex;
 	flex-direction: column;
 	overflow-y: scroll;
+	z-index: 1;
 	&.hidden {
 		transition: ${(props) => props.theme.transitions.faster};
 		pointer-events: none;
