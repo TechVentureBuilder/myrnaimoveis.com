@@ -9,6 +9,8 @@ type PopupProps = {
 
 const PopupContext = React.createContext<PopupProps>({} as PopupProps)
 
+export const usePopup = () => useContext(PopupContext)
+
 type Props = {
 	children: any
 }
@@ -25,5 +27,3 @@ const PopupProvider = (props: Props) => {
 }
 
 export default PopupProvider
-
-export const usePopup = () => useContext(PopupContext)
