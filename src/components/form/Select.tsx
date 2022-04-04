@@ -6,8 +6,8 @@ import Label from "./Label"
 
 type Props = {
 	name: string
-	label: string
 	placeholder: string
+	label?: string
 	iconName?: string
 	required?: boolean
 	defaultValue?: number
@@ -138,7 +138,7 @@ const Select = (props: Props) => {
 
 	return (
 		<InputWrapper className={isEmpty ? "" : "whiteIcon"}>
-			<Label text={props.label} htmlFor={props.name} />
+			{props.label ? <Label text={props.label} htmlFor={props.name} /> : null}
 			<DisplayInput
 				id={props.name}
 				placeholder={props.placeholder}
