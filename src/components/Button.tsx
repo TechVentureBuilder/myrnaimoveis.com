@@ -26,6 +26,7 @@ const StyledButton = styled.button`
 	transition: ${(props) => props.theme.transitions.fast};
 	text-decoration: none;
 	width: fit-content;
+	min-width: min-content;
 	cursor: pointer;
 	&.fill {
 		width: 100%;

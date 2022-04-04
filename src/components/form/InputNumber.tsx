@@ -22,6 +22,7 @@ const Input = styled.input`
 		${(props) => props.theme.colors.card};
 	font-size: ${(props) => props.theme.font.sizes.p};
 	transition: ${(props) => props.theme.transitions.fast};
+	width: 100%;
 	::placeholder {
 		font-size: ${(props) => props.theme.font.sizes.s};
 		color: ${(props) => props.theme.colors.placeholder};
@@ -43,6 +44,7 @@ const Input = styled.input`
 
 const StyledIcon = styled(Icon)`
 	transition: ${(props) => props.theme.transitions.fast};
+	pointer-events: none;
 `
 
 const InputWrapper = styled.div`
@@ -90,6 +92,7 @@ const InputNumber = (props: Props) => {
 			<Label text={props.label} htmlFor={props.name} />
 			<Input
 				id={props.name}
+				name={props.name}
 				placeholder={String(props.min)}
 				type="number"
 				className={props.iconName ? "withIcon" : ""}

@@ -41,6 +41,7 @@ const Input = styled.input`
 
 const StyledIcon = styled(Icon)`
 	transition: ${(props) => props.theme.transitions.fast};
+	pointer-events: none;
 `
 
 const InputWrapper = styled.div`

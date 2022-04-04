@@ -1,48 +1,43 @@
 import type { NextPage } from "next"
-import Button from "../components/Button"
-import ContactPopup from "../components/Contact"
+import styled from "styled-components"
 import Container from "../components/Container"
-import InputNumber from "../components/form/InputNumber"
-import Pagination from "../components/Pagination"
+import Search from "../components/Search"
+
+const StyledHome = styled.div``
+
+const Hero = styled.div`
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	background-color: ${(props) => props.theme.colors.card};
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	gap: ${(props) => props.theme.sizes.m};
+	padding: ${(props) => props.theme.sizes.m};
+	h1 {
+		text-align: center;
+	}
+`
+
+const SearchCard = styled.div`
+	background-color: ${(props) => props.theme.colors.bg};
+	padding: ${(props) => props.theme.sizes.m};
+`
 
 const Home: NextPage = (props) => {
 	return (
-		<Container>
-			<h1>Início</h1>
-			<Button type="button" text="Botão Primário" iconName="myrna" />
-			<br />
-			<Button
-				type="button"
-				text="Botão Secundário"
-				iconName="myrna"
-				variant="secondary"
-			/>
-			<br />
-			<Button
-				type="button"
-				text="Botão Terciário"
-				iconName="myrna"
-				variant="tertiary"
-			/>
-			<br />
-			<Button
-				type="button"
-				text="Botão Perigo"
-				iconName="myrna"
-				variant="danger"
-			/>
-			<br />
-			<InputNumber
-				name="number"
-				label="Number"
-				min={0}
-				max={5}
-				iconName="bed"
-			/>
-			<br />
-			<Pagination page={5} amount={9}></Pagination>
-			<ContactPopup></ContactPopup>
-		</Container>
+		<StyledHome>
+			<Hero>
+				<h1>Sonhos para chamar de lar</h1>
+				<SearchCard>
+					<Search direction="row" />
+				</SearchCard>
+			</Hero>
+		</StyledHome>
 	)
 }
 

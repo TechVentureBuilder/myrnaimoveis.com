@@ -8,9 +8,28 @@ const SearchForm = styled.form`
 	display: flex;
 	flex-direction: column;
 	gap: ${(props) => props.theme.sizes.m};
+	&.row {
+		display: grid;
+		grid-template-columns: 14rem 14rem 14rem 6rem auto;
+		h3 {
+			display: none;
+		}
+		button {
+			margin-top: auto;
+			margin-bottom: 0;
+		}
+		@media (max-width: ${(props) => props.theme.screens.xl}) {
+			display: flex;
+			flex-direction: column;
+		}
+	}
 `
 
-const Search: React.FC = (props) => {
+type Props = {
+	direction?: "row" | "column"
+}
+
+const Search: React.FC<Props> = (props) => {
 	const neighborhoods = [
 		{
 			display: "Ipiranga",
@@ -69,7 +88,10 @@ const Search: React.FC = (props) => {
 	]
 
 	return (
-		<SearchForm action="/catalogo">
+		<SearchForm
+			action="/catalogo"
+			className={props.direction == "row" ? "row" : ""}
+		>
 			<h3>Buscar no catálogo</h3>
 			<Select
 				label="Categoria"
