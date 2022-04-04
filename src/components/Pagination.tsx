@@ -80,7 +80,11 @@ const Pagination = (props: Props) => {
 			{props.page > 1 ? (
 				<Link href={`/${props.page - 1}`}>
 					<a>
-						<Button iconName="chevronLeft" variant="secondary"></Button>
+						<Button
+							type="button"
+							iconName="chevronLeft"
+							variant="secondary"
+						></Button>
 					</a>
 				</Link>
 			) : (
@@ -96,7 +100,11 @@ const Pagination = (props: Props) => {
 			{props.page < props.amount ? (
 				<Link href={`/${props.page + 1}`}>
 					<a>
-						<Button iconName="chevronRight" variant="secondary"></Button>
+						<Button
+							type="button"
+							iconName="chevronRight"
+							variant="secondary"
+						></Button>
 					</a>
 				</Link>
 			) : (
