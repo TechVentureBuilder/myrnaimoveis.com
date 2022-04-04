@@ -69,7 +69,7 @@ const Search: React.FC = (props) => {
 	]
 
 	return (
-		<SearchForm>
+		<SearchForm action="/catalogo">
 			<h3>Buscar no catálogo</h3>
 			<Select
 				label="Categoria"
