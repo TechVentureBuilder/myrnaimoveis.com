@@ -66,7 +66,7 @@ const InputWrapper = styled.div`
 	}
 `
 
-const NumberInput = (props: Props) => {
+const InputNumber = (props: Props) => {
 	const [inputValue, setInputValue] = useState<number>()
 	const [isEmpty, setIsEmpty] = useState(true)
 
@@ -105,4 +105,4 @@ const NumberInput = (props: Props) => {
 	)
 }
 
-export default NumberInput
+export default InputNumber
