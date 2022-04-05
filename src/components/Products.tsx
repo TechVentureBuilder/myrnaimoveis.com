@@ -6,20 +6,32 @@ import Icon from "./Icon"
 
 const ProductsContainer = styled(Container)`
 	text-align: center;
-	padding: ${(props) => props.theme.sizes.l} ${(props) => props.theme.sizes.m}
-		${(props) => props.theme.sizes.xxl} ${(props) => props.theme.sizes.m};
+	padding-top: ${(props) => props.theme.sizes.l};
+	padding-bottom: ${(props) => props.theme.sizes.xxl};
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	gap: ${(props) => props.theme.sizes.xl};
-	box-sizing: border-box;
+	align-items: center;
+	gap: ${(props) => props.theme.sizes.l};
 `
 
 const ProductsGrid = styled.div`
+	width: 100%;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	gap: ${(props) => props.theme.sizes.m};
-	box-sizing: border-box;
+	@media (max-width: ${(props) => props.theme.screens.xxl}) {
+		grid-template-columns: 1fr 1fr;
+	}
+	@media (max-width: ${(props) => props.theme.screens.xl}) {
+		grid-template-columns: 1fr 1fr;
+	}
+	@media (max-width: ${(props) => props.theme.screens.l}) {
+		grid-template-columns: 1fr 1fr;
+	}
+	@media (max-width: ${(props) => props.theme.screens.m}) {
+		grid-template-columns: 1fr;
+	}
 	a {
 		text-decoration: none;
 		color: ${(props) => props.theme.colors.text};
@@ -27,6 +39,7 @@ const ProductsGrid = styled.div`
 `
 
 const Product = styled.div`
+	width: 100%;
 	background-color: ${(props) => props.theme.colors.card};
 	border: ${(props) => props.theme.border.width} solid;
 	border-color: ${(props) => props.theme.colors.card};
@@ -36,6 +49,10 @@ const Product = styled.div`
 	flex-direction: column;
 	gap: ${(props) => props.theme.sizes.m};
 	text-align: start;
+	transition: ${(props) => props.theme.transitions.fast};
+	:hover {
+		border-color: ${(props) => props.theme.colors.main};
+	}
 `
 
 const ProductImage = styled.div`
@@ -47,9 +64,21 @@ const ProductImage = styled.div`
 const Local = styled.div`
 	display: flex;
 	flex-direction: row;
-	justify-content: start;
 	align-items: center;
-	height: fit-content;
+	gap: ${(props) => props.theme.sizes.xs};
+`
+
+const Details = styled.div`
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: ${(props) => props.theme.sizes.l};
+`
+
+const Detail = styled.div`
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 	gap: ${(props) => props.theme.sizes.xs};
 `
 
@@ -88,6 +117,27 @@ const Products: React.FC<Props> = (props) => {
 										{product.neighborhood} - {product.city}, {product.state}
 									</p>
 								</Local>
+								<Details>
+									<Detail>
+										<Icon iconName="size" />
+										<p>
+											{product.area.min} a {product.area.max}m²
+										</p>
+									</Detail>
+									<Detail>
+										<Icon iconName="bed" />
+										<p>
+											{product.bedrooms.min} a {product.bedrooms.max} Quartos
+										</p>
+									</Detail>
+									<Detail>
+										<Icon iconName="bathtub" />
+										<p>
+											{product.bathrooms.min} a {product.bathrooms.max}{" "}
+											Banheiros
+										</p>
+									</Detail>
+								</Details>
 							</Product>
 						</a>
 					</Link>
