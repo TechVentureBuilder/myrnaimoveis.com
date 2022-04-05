@@ -40,6 +40,10 @@ export const theme = {
 		xl: "2rem",   // 32px
 		xxl: "3rem",  // 48px
 		interaction: "2.625rem", // 42px
+		icon: {
+			small: "1.125rem",
+			big: "1.5rem"
+		}
 	},
 	screens: {
 		s: "36rem",

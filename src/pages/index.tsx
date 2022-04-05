@@ -2,6 +2,7 @@ import type { NextPage } from "next"
 import styled from "styled-components"
 import Container from "../components/Container"
 import Icon from "../components/Icon"
+import Products, { Product } from "../components/Products"
 import Search from "../components/Search"
 
 const HeroBackground = styled.section`
@@ -18,7 +19,7 @@ const Hero = styled.div`
 	flex-direction: column;
 	gap: ${(props) => props.theme.sizes.m};
 	padding: ${(props) => props.theme.sizes.xl} ${(props) => props.theme.sizes.m};
-	min-height: 75vh;
+	min-height: 50vh;
 	position: relative;
 	h1 {
 		text-align: center;
@@ -56,6 +57,21 @@ const Feature = styled.div`
 `
 
 const Home: NextPage = (props) => {
+	let products = []
+	for (let i = 0; i < 6; i++) {
+		products.push({
+			name: "Nome do Empreendimento",
+			slug: "nome-do-empreendimento",
+			neighborhood: "Nome do Bairro",
+			city: "Nome da Cidade",
+			state: "Sigla do Estado",
+			area: { min: 123, max: 321 },
+			bedrooms: { min: 1, max: 6 },
+			bathrooms: { min: 1, max: 6 },
+			price: 1000000,
+		} as Product)
+	}
+
 	return (
 		<>
 			<HeroBackground>
@@ -96,6 +112,7 @@ const Home: NextPage = (props) => {
 					</FeaturesGroup>
 				</Container>
 			</FeaturesBackground>
+			<Products title="Destaques" products={products}></Products>
 		</>
 	)
 }

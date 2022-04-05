@@ -9,10 +9,14 @@ type Props = {
 }
 
 const StyledIcon = styled(ReactSVG)`
+	max-height: ${(props) => props.theme.sizes.icon.small};
+	max-width: ${(props) => props.theme.sizes.icon.small};
 	&.big {
+		max-height: ${(props) => props.theme.sizes.icon.big};
+		max-width: ${(props) => props.theme.sizes.icon.big};
 		svg {
-			height: ${(props) => props.theme.sizes.l};
-			width: ${(props) => props.theme.sizes.l};
+			height: ${(props) => props.theme.sizes.icon.big};
+			width: ${(props) => props.theme.sizes.icon.big};
 		}
 	}
 `

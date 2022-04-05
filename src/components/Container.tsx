@@ -3,6 +3,7 @@ import styled from "styled-components"
 
 type Props = {
 	children: JSX.Element | JSX.Element[]
+	className?: string
 }
 
 const StyledDiv = styled.div`
@@ -13,7 +14,7 @@ const StyledDiv = styled.div`
 `
 
 const Container = (props: Props) => {
-	return <StyledDiv>{props.children}</StyledDiv>
+	return <StyledDiv className={props.className}>{props.children}</StyledDiv>
 }
 
 export default Container
