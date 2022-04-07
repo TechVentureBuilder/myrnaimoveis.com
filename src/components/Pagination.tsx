@@ -78,7 +78,7 @@ const Pagination = (props: Props) => {
 	return (
 		<PaginationWrapper>
 			{props.page > 1 ? (
-				<Link href={`/${props.page - 1}`}>
+				<Link href={`catalogo/${props.page - 1}`}>
 					<a>
 						<Button
 							type="button"
@@ -92,13 +92,13 @@ const Pagination = (props: Props) => {
 			)}
 
 			{pagesList.map((page, index) => (
-				<Link href={`/${page != props.page ? page : ""}`} key={index}>
+				<Link href={`catalogo/${page != props.page ? page : ""}`} key={index}>
 					<a className={page == props.page ? "current" : ""}>{page}</a>
 				</Link>
 			))}
 
 			{props.page < props.amount ? (
-				<Link href={`/${props.page + 1}`}>
+				<Link href={`catalogo/${props.page + 1}`}>
 					<a>
 						<Button
 							type="button"

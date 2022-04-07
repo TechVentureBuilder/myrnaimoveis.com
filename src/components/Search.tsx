@@ -10,17 +10,21 @@ const SearchForm = styled.form`
 	gap: ${(props) => props.theme.sizes.m};
 	&.row {
 		display: grid;
-		grid-template-columns: 14rem 14rem 14rem 6rem auto;
+		grid-template-columns: 14rem 14rem 6rem auto;
 		h3 {
 			display: none;
 		}
 		button {
 			margin-top: auto;
 			margin-bottom: 0;
+			width: max-content;
 		}
-		@media (max-width: ${(props) => props.theme.screens.xl}) {
+		@media (max-width: ${(props) => props.theme.screens.m}) {
 			display: flex;
 			flex-direction: column;
+			button {
+				width: inherit;
+			}
 		}
 	}
 `
@@ -93,13 +97,13 @@ const Search: React.FC<Props> = (props) => {
 			className={props.direction == "row" ? "row" : ""}
 		>
 			<h3>Buscar no catálogo</h3>
-			<Select
+			{/* <Select
 				label="Categoria"
 				name="category"
 				options={categories}
 				placeholder="Selecione uma categoria"
 				iconName="building"
-			/>
+			/> */}
 			<Select
 				label="Cidade"
 				name="city"

@@ -6,8 +6,8 @@ import Icon from "./Icon"
 
 const ProductsContainer = styled(Container)`
 	text-align: center;
-	padding-top: ${(props) => props.theme.sizes.l};
-	padding-bottom: ${(props) => props.theme.sizes.xxl};
+	padding-top: ${(props) => props.theme.sizes.m};
+	padding-bottom: ${(props) => props.theme.sizes.m};
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -38,6 +38,15 @@ const ProductsGrid = styled.div`
 	}
 `
 
+const ProductImage = styled.div`
+	width: 100%;
+	height: 16rem;
+	background-color: ${(props) => props.theme.colors.bg};
+	background-size: 100%;
+	background-position: center;
+	transition: ${(props) => props.theme.transitions.faster};
+`
+
 const Product = styled.div`
 	width: 100%;
 	background-color: ${(props) => props.theme.colors.card};
@@ -52,13 +61,10 @@ const Product = styled.div`
 	transition: ${(props) => props.theme.transitions.fast};
 	:hover {
 		border-color: ${(props) => props.theme.colors.main};
+		${ProductImage} {
+			background-size: 105%;
+		}
 	}
-`
-
-const ProductImage = styled.div`
-	width: 100%;
-	height: 16rem;
-	background-color: ${(props) => props.theme.colors.bg};
 `
 
 const Local = styled.div`
@@ -96,14 +102,22 @@ export type Product = {
 }
 
 type Props = {
-	title: string
+	title?: string
 	products: Array<Product>
 }
 
 const Products: React.FC<Props> = (props) => {
+	const Title = () => {
+		if (!props.title) {
+			return null
+		}
+
+		return <h2>{props.title}</h2>
+	}
+
 	return (
 		<ProductsContainer>
-			<h2>{props.title}</h2>
+			<Title />
 			<ProductsGrid>
 				{props.products.map((product, index) => (
 					<Link href={"/product"} key={index}>

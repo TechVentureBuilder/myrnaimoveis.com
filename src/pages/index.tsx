@@ -35,6 +35,7 @@ const FeaturesBackground = styled.section`
 	width: 100%;
 	padding: 0 ${(props) => props.theme.sizes.m};
 	background-color: ${(props) => props.theme.colors.card};
+	margin-bottom: ${(props) => props.theme.sizes.m};
 `
 
 const FeaturesGroup = styled.div`
