@@ -120,7 +120,7 @@ const Products: React.FC<Props> = (props) => {
 			<Title />
 			<ProductsGrid>
 				{props.products.map((product, index) => (
-					<Link href={"/product"} key={index}>
+					<Link href={"/produto/" + product.slug} key={index}>
 						<a target={"_blank"}>
 							<Product>
 								<ProductImage style={{ backgroundImage: product.image }} />

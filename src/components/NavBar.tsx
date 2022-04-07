@@ -108,7 +108,7 @@ const NavBar = (props: Props) => {
 					<LinksWrapper>
 						<Link passHref={true} href={"/"}>
 							<a className="logoLink">
-								<ReactSVG src="assets/logo/logoLightHorizontal.svg" />
+								<ReactSVG src="/assets/logo/logoLightHorizontal.svg" />
 							</a>
 						</Link>
 						<Link href={"/"}>
