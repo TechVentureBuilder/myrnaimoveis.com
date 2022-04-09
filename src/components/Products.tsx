@@ -3,6 +3,7 @@ import React from "react"
 import styled from "styled-components"
 import Container from "./Container"
 import Icon from "./Icon"
+import { Product } from "../types/Product"
 
 const ProductsContainer = styled(Container)`
 	text-align: center;
@@ -87,19 +88,6 @@ const Detail = styled.div`
 	align-items: center;
 	gap: ${(props) => props.theme.sizes.xs};
 `
-
-export type Product = {
-	name: string
-	slug: string
-	neighborhood: string
-	city: string
-	state: string
-	area: { min: number; max: number }
-	bedrooms: { min: number; max: number }
-	bathrooms: { min: number; max: number }
-	price: number
-	image: string
-}
 
 type Props = {
 	title?: string

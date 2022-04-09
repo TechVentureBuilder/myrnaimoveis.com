@@ -2,8 +2,9 @@ import type { NextPage } from "next"
 import styled from "styled-components"
 import Container from "../components/Container"
 import Icon from "../components/Icon"
-import Products, { Product } from "../components/Products"
+import Products from "../components/Products"
 import Search from "../components/Search"
+import { Product } from "../types/Product"
 
 const HeroBackground = styled.section`
 	background-image: url("assets/img/hero.jpg");
