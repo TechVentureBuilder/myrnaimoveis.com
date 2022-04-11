@@ -76,25 +76,6 @@ const Sobre: NextPage = (props) => {
 
 	return (
 		<ProductContainer>
-			<Swiper
-				className="swiper"
-				modules={[Navigation, Pagination, Thumbs]}
-				pagination={{ clickable: true }}
-				centeredSlides={true}
-				slidesPerView={1}
-				thumbs={{ swiper: thumbsSwiper }}
-			>
-				{productInfo.images?.map((image, index) => (
-					<SwiperSlide className="swiper-slide" key={index}>
-						<Image
-							src={image.url}
-							alt={image.alt}
-							layout="fill"
-							objectFit="contain"
-						></Image>
-					</SwiperSlide>
-				))}
-			</Swiper>
 			<h2>{productInfo.name}</h2>
 			<div className="sub-info">
 				{/* <div className="sub-info-left"> */}
