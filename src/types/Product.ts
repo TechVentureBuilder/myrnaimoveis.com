@@ -9,6 +9,6 @@ export type Product = {
 	bathrooms: { min: number; max: number }
 	price: number
 	image?: string
-  images?: Array<{alt:string, url: string}>
+  images?: Array<{alt:string, url: string, width: number, height: number}>
   description?: string
 }
