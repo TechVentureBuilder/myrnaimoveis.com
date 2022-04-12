@@ -7,7 +7,7 @@ import { Product } from "../../types/Product"
 import { useState } from "react"
 import Gallery from "../../components/Gallery"
 
-const Sobre: NextPage = (props) => {
+const Product: NextPage = (props) => {
 	const router = useRouter()
 	const { slug } = router.query
 
@@ -97,7 +97,7 @@ const Sobre: NextPage = (props) => {
 	)
 }
 
-export default Sobre
+export default Product
 
 const ProductContainer = styled(Container)`
 	padding: ${(props) => props.theme.sizes.m};
