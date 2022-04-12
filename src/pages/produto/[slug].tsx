@@ -1,15 +1,11 @@
 import type { NextPage } from "next"
 import { useRouter } from "next/router"
-import Image from "next/image"
 import styled from "styled-components"
 import Container from "../../components/Container"
 import Icon from "../../components/Icon"
 import { Product } from "../../types/Product"
-import "swiper/css"
-import "swiper/css/navigation"
-import "swiper/css/pagination"
-import "swiper/css/thumbs"
 import { useState } from "react"
+import Gallery from "../../components/Gallery"
 
 const Sobre: NextPage = (props) => {
 	const router = useRouter()
@@ -69,6 +65,18 @@ const Sobre: NextPage = (props) => {
 				width: 800,
 				height: 600,
 			},
+			{
+				alt: "image",
+				url: "https://picsum.photos/800/600",
+				width: 800,
+				height: 600,
+			},
+			{
+				alt: "image",
+				url: "https://picsum.photos/800/600",
+				width: 800,
+				height: 600,
+			},
 		],
 	}
 
@@ -76,7 +84,7 @@ const Sobre: NextPage = (props) => {
 
 	return (
 		<ProductContainer>
-			<h2>{productInfo.name}</h2>
+			<h1>{productInfo.name}</h1>
 			<div className="sub-info">
 				{/* <div className="sub-info-left"> */}
 				<Icon iconName="local" />
@@ -84,6 +92,7 @@ const Sobre: NextPage = (props) => {
 				{/* </div> */}
 				{/* <div className="sub-info-right">R${productInfo.price}</div> */}
 			</div>
+			<Gallery images={productInfo.images!} />
 		</ProductContainer>
 	)
 }
@@ -91,12 +100,11 @@ const Sobre: NextPage = (props) => {
 export default Sobre
 
 const ProductContainer = styled(Container)`
-	padding: 0 ${(props) => props.theme.sizes.m} ${(props) => props.theme.sizes.m}
-		${(props) => props.theme.sizes.m} ${(props) => props.theme.sizes.m};
+	padding: ${(props) => props.theme.sizes.m};
 	display: flex;
 	flex-direction: column;
 	gap: ${(props) => props.theme.sizes.m};
-	h2 {
+	h1 {
 		text-align: center;
 	}
 	.sub-info {
@@ -105,18 +113,6 @@ const ProductContainer = styled(Container)`
 		justify-content: center;
 		align-items: center;
 		gap: ${(props) => props.theme.sizes.xs};
-	}
-	.swiper {
-		width: 100%;
-		height: 50vh;
-	}
-	.swiper-slide {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: fit-content;
-		img {
-			display: block;
-		}
+		color: ${(props) => props.theme.colors.primary.lighter};
 	}
 `
