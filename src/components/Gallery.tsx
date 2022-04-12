@@ -1,7 +1,13 @@
 import Image from "next/image"
 import React from "react"
 import styled from "styled-components"
-import Container from "./Container"
+import { Swiper, SwiperSlide } from "swiper/react"
+import { Grid, Pagination } from "swiper"
+
+// Import Swiper styles
+import "swiper/css"
+import "swiper/css/grid"
+import "swiper/css/pagination"
 
 type Props = {
 	images: Array<{
@@ -14,51 +20,40 @@ type Props = {
 
 const Gallery: React.FC<Props> = (props) => {
 	return (
-		<StyledGallery>
+		<StyledGallery
+			slidesPerView={3}
+			grid={{
+				rows: 2,
+			}}
+			spaceBetween={1}
+			pagination={{
+				clickable: true,
+			}}
+			modules={[Grid, Pagination]}
+			className="mySwiper"
+		>
 			{props.images.map((image, index) => (
-				<div className="gallery-item" key={index}>
+				<SwiperSlide className="gallery-item" key={index}>
 					<Image
 						src={image.url}
 						alt={image.alt}
 						layout="fill"
 						objectFit="cover"
 					/>
-				</div>
+				</SwiperSlide>
 			))}
 		</StyledGallery>
 	)
 }
 
-const StyledGallery = styled.div`
+const StyledGallery = styled(Swiper)`
 	width: 100%;
-	display: flex;
-	flex-wrap: wrap;
-	flex-grow: 1;
+	height: 50vh;
 	position: relative;
-	justify-content: center;
-	align-items: center;
 	.gallery-item {
-		position: relative;
-		width: 20%;
-		height: 20vh;
-		min-height: 200px;
-		box-sizing: border-box;
-		::after {
-			content: "";
-			border-left: 1px solid ${(props) => props.theme.colors.bg};
-			border-top: 1px solid ${(props) => props.theme.colors.bg};
-			position: absolute;
-			width: 100%;
-			height: 100%;
-			top: 0;
-			left: 0;
-		}
-	}
-	.gallery-item:first-of-type {
-		::after {
-			content: "";
-			border-left: none;
-		}
+		height: calc((50vh - 1px) / 2);
+		border-top: 1px solid black;
+		border-left: 1px solid black;
 	}
 `
 

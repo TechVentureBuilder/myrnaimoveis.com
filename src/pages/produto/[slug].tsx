@@ -84,7 +84,7 @@ const Sobre: NextPage = (props) => {
 
 	return (
 		<ProductContainer>
-			<h1>{productInfo.name}</h1>
+			<h2>{productInfo.name}</h2>
 			<div className="sub-info">
 				{/* <div className="sub-info-left"> */}
 				<Icon iconName="local" />
@@ -103,8 +103,8 @@ const ProductContainer = styled(Container)`
 	padding: ${(props) => props.theme.sizes.m};
 	display: flex;
 	flex-direction: column;
-	gap: ${(props) => props.theme.sizes.m};
-	h1 {
+	gap: ${(props) => props.theme.sizes.l};
+	h2 {
 		text-align: center;
 	}
 	.sub-info {
