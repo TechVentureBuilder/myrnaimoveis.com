@@ -10,5 +10,6 @@ export type Product = {
 	price: number
 	image?: string
   images?: Array<{alt:string, url: string, width: number, height: number}>
-  description?: string
+  description?: string,
+	features?: Array<string>
 }

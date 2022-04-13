@@ -73,6 +73,18 @@ const StyledGallery = styled(Swiper)`
 		background-color: ${(props) => props.theme.colors.primary.lighter};
 		outline: 2px solid ${(props) => props.theme.colors.main};
 	}
+	@media (max-width: ${(props) => props.theme.screens.l}) {
+		height: 30vh;
+		.gallery-item {
+			height: calc((30vh - 1px) / 2);
+		}
+	}
+	@media (max-width: ${(props) => props.theme.screens.m}) {
+		height: 20vh;
+		.gallery-item {
+			height: calc((20vh - 1px) / 2);
+		}
+	}
 `
 
 export default Gallery
