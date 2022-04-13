@@ -2,7 +2,7 @@ import Image from "next/image"
 import React from "react"
 import styled from "styled-components"
 import { Swiper, SwiperSlide } from "swiper/react"
-import { Grid, Pagination } from "swiper"
+import { Grid, Navigation, Pagination } from "swiper"
 
 // Import Swiper styles
 import "swiper/css"
@@ -29,7 +29,7 @@ const Gallery: React.FC<Props> = (props) => {
 			pagination={{
 				clickable: true,
 			}}
-			modules={[Grid, Pagination]}
+			modules={[Grid, Pagination, Navigation]}
 			className="mySwiper"
 		>
 			{props.images.map((image, index) => (
@@ -54,6 +54,24 @@ const StyledGallery = styled(Swiper)`
 		height: calc((50vh - 1px) / 2);
 		border-top: 1px solid black;
 		border-left: 1px solid black;
+		/* cursor: pointer; */
+		img {
+			transition: ${(props) => props.theme.transitions.faster};
+		}
+	}
+	.gallery-item:hover {
+		img {
+			transform: scale(1.1);
+		}
+	}
+	.swiper-pagination-bullet {
+		border-radius: 0;
+		outline: 0px solid ${(props) => props.theme.colors.main};
+		transition: ${(props) => props.theme.transitions.faster};
+	}
+	.swiper-pagination-bullet-active {
+		background-color: ${(props) => props.theme.colors.primary.lighter};
+		outline: 2px solid ${(props) => props.theme.colors.main};
 	}
 `
 
