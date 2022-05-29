@@ -20,7 +20,7 @@ const Hero = styled.div`
 	flex-direction: column;
 	gap: ${(props) => props.theme.sizes.m};
 	padding: ${(props) => props.theme.sizes.xl} ${(props) => props.theme.sizes.m};
-	min-height: 50vh;
+	min-height: 75vh;
 	position: relative;
 	h1 {
 		text-align: center;
