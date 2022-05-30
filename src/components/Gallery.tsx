@@ -11,32 +11,28 @@ import "swiper/css/pagination"
 
 type Props = {
 	images: Array<{
-		alt: string
-		url: string
-		width: number
-		height: number
+		description: string
+		data: string
+		type: string
 	}>
 }
 
 const Gallery: React.FC<Props> = (props) => {
 	return (
 		<StyledGallery
-			slidesPerView={3}
-			grid={{
-				rows: 2,
-			}}
+			slidesPerView={1}
 			spaceBetween={1}
 			pagination={{
 				clickable: true,
 			}}
-			modules={[Grid, Pagination, Navigation]}
+			modules={[Pagination, Navigation]}
 			className="mySwiper"
 		>
 			{props.images.map((image, index) => (
 				<SwiperSlide className="gallery-item" key={index}>
 					<Image
-						src={image.url}
-						alt={image.alt}
+						src={image.data}
+						alt={image.description}
 						layout="fill"
 						objectFit="cover"
 					/>
@@ -48,42 +44,43 @@ const Gallery: React.FC<Props> = (props) => {
 
 const StyledGallery = styled(Swiper)`
 	width: 100%;
-	height: 50vh;
+	height: 60vh;
 	position: relative;
 	.gallery-item {
-		height: calc((50vh - 1px) / 2);
+		height: 100%;
 		border-top: 1px solid black;
 		border-left: 1px solid black;
-		/* cursor: pointer; */
+		cursor: grab;
 		img {
 			transition: ${(props) => props.theme.transitions.faster};
 		}
 	}
 	.gallery-item:hover {
 		img {
-			transform: scale(1.1);
+			transform: scale(1.02);
 		}
 	}
 	.swiper-pagination-bullet {
 		border-radius: 0;
-		outline: 0px solid ${(props) => props.theme.colors.main};
+		opacity: 1;
+		background-color: ${(props) => props.theme.colors.darker};
+		outline: 2px solid ${(props) => props.theme.colors.dark};
 		transition: ${(props) => props.theme.transitions.faster};
+		transform: scale(1);
 	}
 	.swiper-pagination-bullet-active {
 		background-color: ${(props) => props.theme.colors.primary.lighter};
 		outline: 2px solid ${(props) => props.theme.colors.main};
+		transform: rotate(45deg);
 	}
 	@media (max-width: ${(props) => props.theme.screens.l}) {
-		height: 30vh;
-		.gallery-item {
-			height: calc((30vh - 1px) / 2);
-		}
+		height: 50vh;
 	}
 	@media (max-width: ${(props) => props.theme.screens.m}) {
-		height: 20vh;
-		.gallery-item {
-			height: calc((20vh - 1px) / 2);
-		}
+		height: 40vh;
+	}
+	@media (max-width: ${(props) => props.theme.screens.s}) {
+		height: 30vh;
 	}
 `
 
