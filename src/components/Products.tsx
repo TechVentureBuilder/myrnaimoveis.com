@@ -1,9 +1,10 @@
 import Link from "next/link"
-import React from "react"
+import React, { useEffect, useState } from "react"
 import styled from "styled-components"
 import Container from "./Container"
 import Icon from "./Icon"
 import { Product } from "../types/Product"
+import axios from "axios"
 
 const ProductsContainer = styled(Container)`
 	text-align: center;
@@ -47,6 +48,37 @@ const ProductImage = styled.div`
 	background-position: center;
 	transition: ${(props) => props.theme.transitions.faster};
 `
+
+type ProductImageProps = {
+	productId: string
+}
+
+const ProductImageLoaded = (props: ProductImageProps) => {
+	const [imageData, setImageData] = useState("")
+
+	useEffect(() => {
+		axios
+			.get("http://localhost:8080/thumbs", {
+				params: {
+					_id: props.productId,
+				},
+			})
+			.then((result) => {
+				setImageData(result.data.thumb)
+			})
+			.catch((err) => {
+				console.log(err)
+			})
+	}, [props.productId])
+
+	return (
+		<ProductImage
+			style={{
+				backgroundImage: `url(${imageData})`,
+			}}
+		></ProductImage>
+	)
+}
 
 const Product = styled.div`
 	width: 100%;
@@ -111,19 +143,20 @@ const Products: React.FC<Props> = (props) => {
 					<Link href={"/produto/" + product.slug} key={index}>
 						<a target={"_blank"}>
 							<Product>
-								<ProductImage style={{ backgroundImage: product.image }} />
+								<ProductImageLoaded productId={product._id!} />
 								<h3>{product.name}</h3>
 								<Local>
 									<Icon iconName="local" />
 									<p>
-										{product.neighborhood} - {product.city}, {product.state}
+										{product.address.neighborhood} - {product.address.city},{" "}
+										{product.address.state}
 									</p>
 								</Local>
 								<Details>
 									<Detail>
 										<Icon iconName="size" />
 										<p>
-											{product.area.min} a {product.area.max}m²
+											{product.size.min} a {product.size.max}m²
 										</p>
 									</Detail>
 									<Detail>

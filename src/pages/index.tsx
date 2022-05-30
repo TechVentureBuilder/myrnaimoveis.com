@@ -1,4 +1,6 @@
-import type { NextPage } from "next"
+import axios from "axios"
+import type { GetServerSideProps, NextPage, NextPageContext } from "next"
+import { ContextType, useState } from "react"
 import styled from "styled-components"
 import Container from "../components/Container"
 import Icon from "../components/Icon"
@@ -10,6 +12,29 @@ const HeroBackground = styled.section`
 	background-image: url("assets/img/hero.jpg");
 	background-position: center;
 `
+
+export const getServerSideProps: GetServerSideProps = async () => {
+	let products: []
+	await axios
+		.get("http://localhost:8080/products", {
+			params: {
+				limit: 12,
+				page: 1,
+			},
+		})
+		.then((result) => {
+			console.log(result.data)
+			products = result.data.products
+		})
+		.catch((err) => {
+			console.log(err)
+		})
+	return {
+		props: {
+			products: products!,
+		},
+	}
+}
 
 const Hero = styled.div`
 	background-color: ${(props) => props.theme.colors.card}bf;
@@ -58,21 +83,14 @@ const Feature = styled.div`
 	text-align: center;
 `
 
-const Home: NextPage = (props) => {
-	let products = []
-	for (let i = 0; i < 6; i++) {
-		products.push({
-			name: "Nome do Empreendimento",
-			slug: "nome-do-empreendimento",
-			neighborhood: "Nome do Bairro",
-			city: "Nome da Cidade",
-			state: "Sigla do Estado",
-			area: { min: 123, max: 321 },
-			bedrooms: { min: 1, max: 6 },
-			bathrooms: { min: 1, max: 6 },
-			price: 1000000,
-		} as Product)
-	}
+type Props = {
+	products: []
+}
+
+const Home: NextPage<Props> = (props) => {
+	console.log(props.products)
+
+	const products = props.products
 
 	return (
 		<>
