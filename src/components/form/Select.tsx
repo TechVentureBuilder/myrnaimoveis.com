@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import slugify from "slugify"
 import styled from "styled-components"
 import Icon from "../Icon"
@@ -11,10 +11,8 @@ type Props = {
 	iconName?: string
 	required?: boolean
 	defaultValue?: number
-	options: {
-		display: string
-		value: string // Must be a lowercase slugified version of the display text.
-	}[]
+	options: string[]
+	onChange?: Function
 }
 
 const DisplayInput = styled.input`
@@ -132,10 +130,21 @@ const Select = (props: Props) => {
 			setIsEmpty(true)
 		}
 		const newFilteredOptions = props.options.filter((option) =>
-			option.value.includes(slugify(e.currentTarget.value, { lower: true }))
+			slugify(option, { lower: true }).includes(
+				slugify(e.currentTarget.value, { lower: true })
+			)
 		)
 		setFilteredOptions(newFilteredOptions)
+		if (props.onChange) {
+			props.onChange(e.currentTarget.value)
+		}
 	}
+
+	useEffect(() => {
+		if (props.options.length > 0) {
+			setFilteredOptions(props.options)
+		}
+	}, [props.options])
 
 	return (
 		<InputWrapper className={isEmpty ? "" : "whiteIcon"}>
@@ -157,9 +166,9 @@ const Select = (props: Props) => {
 					setIsHidden(true)
 					if (value) {
 						const correctOption = props.options.find((option) =>
-							option.value.includes(value)
+							option.includes(value)
 						)
-						setDisplay(correctOption?.display)
+						setDisplay(correctOption)
 						setIsEmpty(false)
 						setFilteredOptions(props.options)
 					}
@@ -173,14 +182,14 @@ const Select = (props: Props) => {
 						<Option
 							key={index}
 							onMouseDown={() => {
-								setValue(option.value)
-								setDisplay(option.display)
+								setValue(option)
+								setDisplay(option)
 								setFilteredOptions(props.options)
 								setIsEmpty(false)
 							}}
-							className={option.value === value ? "active" : ""}
+							className={option === value ? "active" : ""}
 						>
-							{option.display}
+							{option}
 						</Option>
 					))}
 				</Options>

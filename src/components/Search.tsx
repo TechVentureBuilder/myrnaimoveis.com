@@ -1,4 +1,5 @@
-import React from "react"
+import axios from "axios"
+import React, { useEffect, useState } from "react"
 import styled from "styled-components"
 import Button from "./Button"
 import InputNumber from "./form/InputNumber"
@@ -34,62 +35,42 @@ type Props = {
 }
 
 const Search: React.FC<Props> = (props) => {
-	const neighborhoods = [
-		{
-			display: "Ipiranga",
-			value: "ipiranga",
-		},
-		{
-			display: "Vila Mariana",
-			value: "vila-mariana",
-		},
-		{
-			display: "Morumbi",
-			value: "morumbi",
-		},
-		{
-			display: "Ibirapuera",
-			value: "ibirapuera",
-		},
-		{
-			display: "Bosque da Saúde",
-			value: "bosque-da-saude",
-		},
-		{
-			display: "Moema",
-			value: "moema",
-		},
-		{
-			display: "Mooca",
-			value: "mooca",
-		},
-	]
+	const [cities, setCities] = useState([])
+	const [neighborhoods, setNeighborhoods] = useState([])
 
-	const cities = [
-		{
-			display: "São Paulo - SP",
-			value: "sao-paulo-sp",
-		},
-		{
-			display: "Rio de Janeiro - RJ",
-			value: "rio-de-janeiro-rj",
-		},
-	]
+	useEffect(() => {
+		axios
+			.get("http://localhost:8080/cities")
+			.then((result) => {
+				setCities(result.data.cities)
+			})
+			.catch((err) => {
+				console.log(err)
+			})
+		axios
+			.get("http://localhost:8080/neighborhoods")
+			.then((result) => {
+				setNeighborhoods(result.data.neighborhoods)
+			})
+			.catch((err) => {
+				console.log(err)
+			})
+	}, [])
 
-	const categories = [
-		{
-			display: "Apartamento",
-			value: "apartment",
-		},
-		{
-			display: "Studio",
-			value: "studio",
-		},
-		{
-			display: "Loft",
-			value: "loft",
-		},
-	]
+	const getNeighborhoodsInCity = async (city: string) => {
+		await axios
+			.get("http://localhost:8080/neighborhoods", {
+				params: {
+					city: city,
+				},
+			})
+			.then((result) => {
+				setNeighborhoods(result.data.neighborhoods)
+			})
+			.catch((err) => {
+				console.log(err)
+			})
+	}
 
 	return (
 		<SearchForm
@@ -97,23 +78,17 @@ const Search: React.FC<Props> = (props) => {
 			className={props.direction == "row" ? "row" : ""}
 		>
 			<h3>Buscar no catálogo</h3>
-			{/* <Select
-				label="Categoria"
-				name="category"
-				options={categories}
-				placeholder="Selecione uma categoria"
-				iconName="building"
-			/> */}
 			<Select
 				label="Cidade"
-				name="city"
+				name="cidade"
 				options={cities}
 				placeholder="Selecione uma cidade"
 				iconName="local"
+				onChange={getNeighborhoodsInCity}
 			/>
 			<Select
 				label="Bairro"
-				name="neighborhood"
+				name="bairro"
 				options={neighborhoods}
 				placeholder="Selecione um bairro"
 				iconName="local"
@@ -122,7 +97,7 @@ const Search: React.FC<Props> = (props) => {
 				label="Quartos"
 				max={6}
 				min={1}
-				name="bedrooms"
+				name="quartos"
 				iconName="bed"
 			/>
 			<Button

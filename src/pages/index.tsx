@@ -14,7 +14,7 @@ const HeroBackground = styled.section`
 `
 
 export const getServerSideProps: GetServerSideProps = async () => {
-	let products: []
+	let products: Array<Product> = []
 	await axios
 		.get("http://localhost:8080/products", {
 			params: {
@@ -30,7 +30,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 		})
 	return {
 		props: {
-			products: products!,
+			products: products ? products : null,
 		},
 	}
 }
