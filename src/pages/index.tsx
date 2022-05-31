@@ -23,7 +23,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
 			},
 		})
 		.then((result) => {
-			console.log(result.data)
 			products = result.data.products
 		})
 		.catch((err) => {
@@ -88,8 +87,6 @@ type Props = {
 }
 
 const Home: NextPage<Props> = (props) => {
-	console.log(props.products)
-
 	const products = props.products
 
 	return (
