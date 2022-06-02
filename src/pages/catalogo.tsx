@@ -16,19 +16,36 @@ const CatalogoContainer = styled(Container)`
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
 	let products: Array<Product> = []
+	let pages: number = 1
 	if (context.query.cidade || context.query.bairro || context.query.quartos) {
 		await axios
 			.post("http://localhost:8080/products/search", {
-				data: {
-					city: context.query.cidade,
-					neighborhood: context.query.bairro,
-					bedrooms: context.query.quartos,
-					limit: 12,
-					page: context.query.pagina ? context.query.pagina : 1,
-				},
+				limit: 12,
+				page: context.query.pagina ? Number(context.query.pagina) : 1,
+				city: context.query.cidade,
+				neighborhood: context.query.bairro,
+				bedrooms: context.query.quartos,
 			})
 			.then((result) => {
+				console.log("QUARTOS: " + context.query.quartos)
 				products = result.data.products
+				console.log(result.data)
+				pages = result.data.totalPages
+			})
+			.catch((err) => {
+				console.log(err)
+			})
+	} else {
+		await axios
+			.post("http://localhost:8080/products/search", {
+				limit: 12,
+				page: context.query.pagina ? Number(context.query.pagina) : 1,
+			})
+			.then((result) => {
+				console.log("QUARTOS: " + context.query.quartos)
+				products = result.data.products
+				console.log(result.data)
+				pages = result.data.totalPages
 			})
 			.catch((err) => {
 				console.log(err)
@@ -38,6 +55,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 	return {
 		props: {
 			products: products,
+			pages: pages,
 			query: {
 				city: context.query.cidade ? context.query.cidade : null,
 				neighborhood: context.query.bairro ? context.query.bairro : null,
@@ -50,6 +68,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 type Props = {
 	products: Array<Product>
+	pages: number
 	query: {
 		city: string
 		neighborhood: string
@@ -65,7 +84,7 @@ const Catalogo: NextPage<Props> = (props) => {
 				<Search direction="row"></Search>
 			</CatalogoContainer>
 			<Products products={props.products}></Products>
-			<Pagination amount={6} page={props.query.page} />
+			<Pagination amount={props.pages} page={props.query.page} />
 		</>
 	)
 }
