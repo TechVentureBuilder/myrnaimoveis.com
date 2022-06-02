@@ -27,9 +27,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 				bedrooms: context.query.quartos,
 			})
 			.then((result) => {
-				console.log("QUARTOS: " + context.query.quartos)
 				products = result.data.products
-				console.log(result.data)
 				pages = result.data.totalPages
 			})
 			.catch((err) => {
@@ -42,9 +40,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 				page: context.query.pagina ? Number(context.query.pagina) : 1,
 			})
 			.then((result) => {
-				console.log("QUARTOS: " + context.query.quartos)
 				products = result.data.products
-				console.log(result.data)
 				pages = result.data.totalPages
 			})
 			.catch((err) => {

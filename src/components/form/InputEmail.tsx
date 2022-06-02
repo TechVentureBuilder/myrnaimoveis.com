@@ -69,12 +69,8 @@ const InputEmail = (props: Props) => {
 	const handleInputChange: React.FormEventHandler<HTMLInputElement> = (e) => {
 		if (e.currentTarget.value && e.currentTarget.value.length > 0 && isEmpty) {
 			setIsEmpty(false)
-			console.log("false")
 		} else if (!e.currentTarget.value && !isEmpty) {
 			setIsEmpty(true)
-			console.log("true")
-		} else {
-			console.log("entrou")
 		}
 	}
 
