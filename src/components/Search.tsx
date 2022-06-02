@@ -1,6 +1,6 @@
-import axios from "axios"
 import React, { useEffect, useState } from "react"
 import styled from "styled-components"
+import api from "../api"
 import Button from "./Button"
 import InputNumber from "./form/InputNumber"
 import Select from "./form/Select"
@@ -39,16 +39,16 @@ const Search: React.FC<Props> = (props) => {
 	const [neighborhoods, setNeighborhoods] = useState([])
 
 	useEffect(() => {
-		axios
-			.get("http://localhost:8080/cities")
+		api
+			.get("/cities")
 			.then((result) => {
 				setCities(result.data.cities)
 			})
 			.catch((err) => {
 				console.log(err)
 			})
-		axios
-			.get("http://localhost:8080/neighborhoods")
+		api
+			.get("/neighborhoods")
 			.then((result) => {
 				setNeighborhoods(result.data.neighborhoods)
 			})
@@ -58,8 +58,8 @@ const Search: React.FC<Props> = (props) => {
 	}, [])
 
 	const getNeighborhoodsInCity = async (city: string) => {
-		await axios
-			.get("http://localhost:8080/neighborhoods", {
+		await api
+			.get("/neighborhoods", {
 				params: {
 					city: city,
 				},

@@ -1,6 +1,6 @@
-import axios from "axios"
 import type { GetServerSideProps, NextPage } from "next"
 import styled from "styled-components"
+import api from "../api"
 import Container from "../components/Container"
 import Pagination from "../components/Pagination"
 import Products from "../components/Products"
@@ -18,8 +18,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 	let products: Array<Product> = []
 	let pages: number = 1
 	if (context.query.cidade || context.query.bairro || context.query.quartos) {
-		await axios
-			.post("http://localhost:8080/products/search", {
+		await api
+			.post("/products/search", {
 				limit: 12,
 				page: context.query.pagina ? Number(context.query.pagina) : 1,
 				city: context.query.cidade,
@@ -36,8 +36,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 				console.log(err)
 			})
 	} else {
-		await axios
-			.post("http://localhost:8080/products/search", {
+		await api
+			.post("/products/search", {
 				limit: 12,
 				page: context.query.pagina ? Number(context.query.pagina) : 1,
 			})

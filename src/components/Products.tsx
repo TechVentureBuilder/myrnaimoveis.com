@@ -4,7 +4,7 @@ import styled from "styled-components"
 import Container from "./Container"
 import Icon from "./Icon"
 import { Product } from "../types/Product"
-import axios from "axios"
+import api from "../api"
 
 const ProductsContainer = styled(Container)`
 	text-align: center;
@@ -57,8 +57,8 @@ const ProductImageLoaded = (props: ProductImageProps) => {
 	const [imageData, setImageData] = useState("")
 
 	useEffect(() => {
-		axios
-			.get("http://localhost:8080/thumbs", {
+		api
+			.get("/thumbs", {
 				params: {
 					_id: props.productId,
 				},

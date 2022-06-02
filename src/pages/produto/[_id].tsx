@@ -6,12 +6,12 @@ import { Product } from "../../types/Product"
 import { useState } from "react"
 import Gallery from "../../components/Gallery"
 import Contact from "../../components/Contact"
-import axios from "axios"
+import api from "../../api"
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
 	let productInfo
-	await axios
-		.get("http://localhost:8080/products", {
+	await api
+		.get("/products", {
 			params: {
 				_id: context.params!._id,
 			},

@@ -1,7 +1,6 @@
-import axios from "axios"
 import type { GetServerSideProps, NextPage, NextPageContext } from "next"
-import { ContextType, useState } from "react"
 import styled from "styled-components"
+import api from "../api"
 import Container from "../components/Container"
 import Icon from "../components/Icon"
 import Products from "../components/Products"
@@ -15,8 +14,8 @@ const HeroBackground = styled.section`
 
 export const getServerSideProps: GetServerSideProps = async () => {
 	let products: Array<Product> = []
-	await axios
-		.get("http://localhost:8080/products", {
+	await api
+		.get("/products", {
 			params: {
 				limit: 12,
 				page: 1,
