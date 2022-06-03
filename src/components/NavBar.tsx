@@ -33,6 +33,18 @@ const StyledNav = styled.nav`
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+	.mobile-contact-button {
+		display: none;
+		@media (max-width: ${(props) => props.theme.screens.s}) {
+			display: block;
+		}
+	}
+	.desktop-contact-button {
+		display: block;
+		@media (max-width: ${(props) => props.theme.screens.s}) {
+			display: none;
+		}
+	}
 `
 
 const LinksWrapper = styled.div`
@@ -56,8 +68,14 @@ const LinksWrapper = styled.div`
 		&.active {
 			color: ${(props) => props.theme.colors.main};
 		}
+		@media (max-width: ${(props) => props.theme.screens.s}) {
+			display: none;
+		}
 	}
 	.logoLink {
+		@media (max-width: ${(props) => props.theme.screens.s}) {
+			display: block;
+		}
 		padding: 0;
 		margin-right: ${(props) => props.theme.sizes.m};
 		svg {
@@ -145,6 +163,17 @@ const NavBar = (props: Props) => {
 								setContent(<Contact />)
 								setOpened(true)
 							}}
+							className={"desktop-contact-button"}
+						/>
+						<Button
+							iconName="chat"
+							variant="primary"
+							type="button"
+							onClick={() => {
+								setContent(<Contact />)
+								setOpened(true)
+							}}
+							className={"mobile-contact-button"}
 						/>
 					</ButtonsWrapper>
 				</StyledNav>

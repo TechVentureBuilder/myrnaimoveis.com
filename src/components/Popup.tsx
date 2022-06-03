@@ -8,7 +8,7 @@ const PopupWrapper = styled.div`
 	left: 0;
 	position: fixed;
 	width: 100%;
-	height: 100vh;
+	height: 100%;
 	background-color: ${(props) => props.theme.colors.card}bf;
 	display: flex;
 	justify-content: center;
@@ -24,6 +24,31 @@ const StyledPopup = styled.div`
 	opacity: 1;
 	position: relative;
 	padding: ${(props) => props.theme.sizes.m};
+	@media (max-width: ${(props) => props.theme.screens.s}) {
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		:nth-child(1) {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			display: flex;
+			align-items: center;
+			form {
+				width: 100%;
+				height: fit-content;
+			}
+			button {
+				top: 0;
+				right: 0;
+			}
+		}
+	}
+	@media (max-height: 600px) {
+		:nth-child(1) {
+			align-items: start;
+		}
+	}
 `
 
 const CloseButton = styled(Button)`
