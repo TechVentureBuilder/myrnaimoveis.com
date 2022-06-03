@@ -77,7 +77,14 @@ const Catalogo: NextPage<Props> = (props) => {
 	return (
 		<>
 			<CatalogoContainer>
-				<Search direction="row"></Search>
+				<Search
+					direction="row"
+					initial={{
+						city: props.query.city,
+						neighborhood: props.query.neighborhood,
+						bedrooms: props.query.bedrooms,
+					}}
+				></Search>
 			</CatalogoContainer>
 			<Products products={props.products}></Products>
 			<Pagination amount={props.pages} page={props.query.page} />

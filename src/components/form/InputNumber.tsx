@@ -11,7 +11,7 @@ type Props = {
 	min: number
 	max: number
 	required?: boolean
-	defaultValue?: string
+	defaultValue?: number
 }
 
 const Input = styled.input`

@@ -32,6 +32,11 @@ const SearchForm = styled.form`
 
 type Props = {
 	direction?: "row" | "column"
+	initial?: {
+		city?: string
+		neighborhood?: string
+		bedrooms?: number
+	}
 }
 
 const Search: React.FC<Props> = (props) => {
@@ -85,6 +90,9 @@ const Search: React.FC<Props> = (props) => {
 				placeholder="Selecione uma cidade"
 				iconName="local"
 				onChange={getNeighborhoodsInCity}
+				defaultValue={
+					props.initial && props.initial.city ? props.initial.city : undefined
+				}
 			/>
 			<Select
 				label="Bairro"
@@ -92,6 +100,11 @@ const Search: React.FC<Props> = (props) => {
 				options={neighborhoods}
 				placeholder="Selecione um bairro"
 				iconName="local"
+				defaultValue={
+					props.initial && props.initial.neighborhood
+						? props.initial.neighborhood
+						: undefined
+				}
 			/>
 			<InputNumber
 				label="Quartos"
@@ -99,6 +112,11 @@ const Search: React.FC<Props> = (props) => {
 				min={1}
 				name="quartos"
 				iconName="bed"
+				defaultValue={
+					props.initial && props.initial.neighborhood
+						? Number(props.initial.bedrooms)
+						: undefined
+				}
 			/>
 			<Button
 				type="submit"

@@ -10,7 +10,7 @@ type Props = {
 	label?: string
 	iconName?: string
 	required?: boolean
-	defaultValue?: number
+	defaultValue?: string
 	options: string[]
 	onChange?: Function
 }
@@ -119,7 +119,7 @@ const Option = styled.div`
 const Select = (props: Props) => {
 	const [isEmpty, setIsEmpty] = useState(props.defaultValue ? false : true)
 	const [isHidden, setIsHidden] = useState(true)
-	const [value, setValue] = useState<string | undefined>(undefined)
+	const [value, setValue] = useState<string | undefined>(props.defaultValue)
 	const [display, setDisplay] = useState<string | undefined>(undefined)
 	const [filteredOptions, setFilteredOptions] = useState(props.options)
 
