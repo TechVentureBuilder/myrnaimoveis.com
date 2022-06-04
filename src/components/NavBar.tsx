@@ -40,7 +40,7 @@ const StyledNav = styled.nav`
 		}
 	}
 	.desktop-contact-button {
-		display: block;
+		display: inherit;
 		@media (max-width: ${(props) => props.theme.screens.s}) {
 			display: none;
 		}
