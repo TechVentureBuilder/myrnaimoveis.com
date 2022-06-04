@@ -34,6 +34,7 @@ const StyledPopup = styled.div`
 			height: 100%;
 			display: flex;
 			align-items: center;
+			overflow-y: auto;
 			form {
 				width: 100%;
 				height: fit-content;
