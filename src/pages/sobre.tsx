@@ -25,7 +25,7 @@ const Sobre: NextPage = (props) => {
 			<p>
 				A Myrna Imóveis é uma empresa do ramo imobiliário sediada na cidade de
 				São Paulo que busca oferecer os melhores preços e as melhores
-				oportunidades do mercado, com atendimento especializado para que buscam
+				oportunidades do mercado, com atendimento especializado para quem busca
 				realizar o sonho da casa própria ou mudar de vida investindo em imóveis.
 				<br />
 				<br />
