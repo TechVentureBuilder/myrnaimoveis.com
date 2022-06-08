@@ -26,7 +26,7 @@ const PopupWrapper = styled.div`
 
 const StyledPopup = styled.div`
 	width: 400px;
-	min-height: 300px;
+	min-height: 200px;
 	background-color: ${(props) => props.theme.colors.bg};
 	margin: auto;
 	opacity: 1;
