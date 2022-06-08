@@ -97,6 +97,33 @@ const NavSpace = styled.div<{ height: number }>`
 	height: ${(props) => props.height}px;
 `
 
+const MobileMenuButton = styled(Button)`
+	display: none;
+	@media (max-width: ${(props) => props.theme.screens.s}) {
+		display: block;
+		margin-right: ${(props) => props.theme.sizes.s};
+	}
+`
+
+const MobileMenu = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	height: 100%;
+	width: 100%;
+	gap: ${(props) => props.theme.sizes.xl};
+	a {
+		font-size: ${(props) => props.theme.font.sizes.h3};
+		text-decoration: none;
+		color: ${(props) => props.theme.colors.text};
+		&.active {
+			color: ${(props) => props.theme.colors.main};
+			text-decoration: underline;
+		}
+	}
+`
+
 const NavBar = (props: Props) => {
 	const navRef = useRef<HTMLDivElement>(null)
 	const [navHeight, setNavHeight] = useState<number>(0)
@@ -124,6 +151,44 @@ const NavBar = (props: Props) => {
 			<NavWrapper ref={navRef}>
 				<StyledNav>
 					<LinksWrapper>
+						<MobileMenuButton
+							type="button"
+							className="mobile-menu"
+							iconName="menu"
+							variant="tertiary"
+							onClick={() => {
+								setOpened(true)
+								setContent(
+									<MobileMenu
+										onClick={() => {
+											setOpened(false)
+										}}
+									>
+										<Link href={"/"}>
+											<a className={router.pathname == "/" ? "active" : ""}>
+												Início
+											</a>
+										</Link>
+										<Link href={"/catalogo"}>
+											<a
+												className={
+													router.pathname == "/catalogo" ? "active" : ""
+												}
+											>
+												Catálogo
+											</a>
+										</Link>
+										<Link href={"/sobre"}>
+											<a
+												className={router.pathname == "/sobre" ? "active" : ""}
+											>
+												Sobre Nós
+											</a>
+										</Link>
+									</MobileMenu>
+								)
+							}}
+						/>
 						<Link passHref={true} href={"/"}>
 							<a className="logoLink">
 								<ReactSVG src="/assets/logo/logoLightHorizontal.svg" />
