@@ -61,7 +61,7 @@ const CloseButton = styled(Button)`
 	top: calc(-${(props) => props.theme.sizes.interaction} / 2);
 	right: calc(-${(props) => props.theme.sizes.interaction} / 2);
 	@media (max-width: ${(props) => props.theme.screens.s}) {
-		top: ${(props) => props.theme.sizes.m};
+		top: ${(props) => props.theme.sizes.xs};
 		right: ${(props) => props.theme.sizes.m};
 	}
 `
