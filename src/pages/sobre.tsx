@@ -74,19 +74,19 @@ const Sobre: NextPage = (props) => {
 			<p>
 				<b>CNPJ</b>
 				<br />
-				12.345.678/0009-10
+				40.841.676/0001-22
 			</p>
 			<br />
 			<p>
 				<b>Nome da Empresa</b>
 				<br />
-				Myrna Negócios Imóbiliátios LTDA
+				Myrna Negócios Imóbiliátios LTDA.
 			</p>
 			<br />
 			<p>
 				<b>CRECI</b>
 				<br />
-				12345-J
+				54346-J
 			</p>
 		</StyledContainer>
 	)
