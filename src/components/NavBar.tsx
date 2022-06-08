@@ -119,7 +119,6 @@ const MobileMenu = styled.div`
 		color: ${(props) => props.theme.colors.text};
 		&.active {
 			color: ${(props) => props.theme.colors.main};
-			text-decoration: underline;
 		}
 	}
 `
