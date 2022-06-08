@@ -14,6 +14,9 @@ const StyledForm = styled.form`
 	display: flex;
 	flex-direction: column;
 	gap: ${(props) => props.theme.sizes.m};
+	@media (max-width: ${(props) => props.theme.screens.s}) {
+		margin-top: auto;
+	}
 `
 
 const OtherContacts = styled.div`

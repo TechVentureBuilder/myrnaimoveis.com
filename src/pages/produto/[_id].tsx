@@ -52,7 +52,7 @@ const Product: NextPage<Props> = (props) => {
 			<div className="info-grid">
 				<div className="info">
 					<h3>Descrição</h3>
-					<p>{productInfo.description}</p>
+					<p className="description">{productInfo.description}</p>
 					<h3>Diferenciais</h3>
 					<div className="features">
 						{productInfo.features?.map((feature, index) => (
@@ -112,6 +112,9 @@ const ProductContainer = styled(Container)`
 			display: flex;
 			gap: ${(props) => props.theme.sizes.xs};
 		}
+	}
+	.description {
+		white-space: pre-line;
 	}
 	@media (max-width: ${(props) => props.theme.screens.xxl}) {
 		.features {
