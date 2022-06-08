@@ -14,6 +14,14 @@ const PopupWrapper = styled.div`
 	justify-content: center;
 	align-items: center;
 	z-index: 3;
+	transition: ${(props) => props.theme.transitions.faster};
+	&.hidden {
+		visibility: hidden;
+		pointer-events: none;
+		user-select: none;
+		opacity: 0;
+		transform: scale(1.1);
+	}
 `
 
 const StyledPopup = styled.div`
@@ -58,6 +66,14 @@ const CloseButton = styled(Button)`
 	right: calc(-${(props) => props.theme.sizes.interaction} / 2);
 `
 
+const PopupBehind = styled.div`
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+`
+
 type Props = {
 	opened: boolean
 }
@@ -65,10 +81,9 @@ type Props = {
 const Popup: React.FC<Props> = (props) => {
 	const { setOpened } = usePopup()
 
-	if (props.opened == false) return null
-
 	return (
-		<PopupWrapper>
+		<PopupWrapper className={props.opened == false ? "hidden" : ""}>
+			<PopupBehind onClick={() => setOpened(false)} />
 			<StyledPopup>
 				<CloseButton
 					iconName="close"

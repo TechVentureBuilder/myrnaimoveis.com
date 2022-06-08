@@ -20,8 +20,21 @@ const OtherContacts = styled.div`
 `
 
 const Contact: React.FC = () => {
+	const formRef = React.useRef(null)
+
+	const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
+		e.preventDefault()
+		const formData = new FormData(formRef.current!)
+		const data = {
+			name: formData.get("name"),
+			email: formData.get("email"),
+			message: formData.get("message"),
+		}
+		console.log(data)
+	}
+
 	return (
-		<StyledForm action="" target="">
+		<StyledForm action="" target="" ref={formRef} onSubmit={handleSubmit}>
 			<h3>Entrar em contato</h3>
 			<InputText
 				label="Nome"
