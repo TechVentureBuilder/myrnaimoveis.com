@@ -47,10 +47,6 @@ const StyledPopup = styled.div`
 				width: 100%;
 				height: fit-content;
 			}
-			button {
-				top: 0;
-				right: 0;
-			}
 		}
 	}
 	@media (max-height: 600px) {
@@ -64,6 +60,10 @@ const CloseButton = styled(Button)`
 	position: absolute;
 	top: calc(-${(props) => props.theme.sizes.interaction} / 2);
 	right: calc(-${(props) => props.theme.sizes.interaction} / 2);
+	@media (max-width: ${(props) => props.theme.screens.s}) {
+		top: ${(props) => props.theme.sizes.m};
+		right: ${(props) => props.theme.sizes.m};
+	}
 `
 
 const PopupBehind = styled.div`
