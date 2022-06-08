@@ -10,6 +10,8 @@ import { Product } from "../types/Product"
 const HeroBackground = styled.section`
 	background-image: url("assets/img/hero.jpg");
 	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
 `
 
 export const getServerSideProps: GetServerSideProps = async () => {
