@@ -41,7 +41,7 @@ const Sobre: NextPage = (props) => {
 				<Image
 					alt=""
 					src="/assets/img/fundadora.jpg"
-					width={270}
+					width={220}
 					height={360}
 				/>
 				<br />
