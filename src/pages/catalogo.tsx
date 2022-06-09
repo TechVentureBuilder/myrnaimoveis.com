@@ -7,13 +7,6 @@ import Products from "../components/Products"
 import Search from "../components/Search"
 import { Product } from "../types/Product"
 
-const CatalogoContainer = styled(Container)`
-	padding-top: ${(props) => props.theme.sizes.m};
-	display: flex;
-	flex-direction: column;
-	gap: ${(props) => props.theme.sizes.m};
-`
-
 export const getServerSideProps: GetServerSideProps = async (context) => {
 	let products: Array<Product> = []
 	let pages: number = 1
@@ -75,7 +68,7 @@ type Props = {
 
 const Catalogo: NextPage<Props> = (props) => {
 	return (
-		<>
+		<CatalogoPagina>
 			<CatalogoContainer>
 				<Search
 					direction="row"
@@ -87,9 +80,31 @@ const Catalogo: NextPage<Props> = (props) => {
 				></Search>
 			</CatalogoContainer>
 			<Products products={props.products}></Products>
-			<Pagination amount={props.pages} page={props.query.page} />
-		</>
+			{props.products.length > 0 ? (
+				<Pagination amount={props.pages} page={props.query.page} />
+			) : (
+				<NoResults>
+					Caro cliente, infelizmente ainda não temos um imóvel assim em nosso
+					sistema.
+				</NoResults>
+			)}
+		</CatalogoPagina>
 	)
 }
+
+const CatalogoPagina = styled.div`
+	margin-bottom: ${(props) => props.theme.sizes.xl};
+`
+
+const CatalogoContainer = styled(Container)`
+	padding-top: ${(props) => props.theme.sizes.m};
+	display: flex;
+	flex-direction: column;
+	gap: ${(props) => props.theme.sizes.m};
+`
+
+const NoResults = styled.p`
+	text-align: center;
+`
 
 export default Catalogo
