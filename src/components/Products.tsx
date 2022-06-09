@@ -156,20 +156,39 @@ const Products: React.FC<Props> = (props) => {
 									<Detail>
 										<Icon iconName="size" />
 										<p>
-											{product.size.min} a {product.size.max}m²
+											{product.size.min !== product.size.max ? (
+												<>
+													{product.size.min} a {product.size.max}m²
+												</>
+											) : (
+												<>{product.size.max}m²</>
+											)}
 										</p>
 									</Detail>
 									<Detail>
 										<Icon iconName="bed" />
 										<p>
-											{product.bedrooms.min} a {product.bedrooms.max} Quartos
+											{product.bedrooms.min !== product.bedrooms.max ? (
+												<>
+													{product.bedrooms.min} a {product.bedrooms.max}{" "}
+													Quartos
+												</>
+											) : (
+												<>{product.bedrooms.max} Quartos</>
+											)}
 										</p>
 									</Detail>
 									<Detail>
 										<Icon iconName="bathtub" />
 										<p>
-											{product.bathrooms.min} a {product.bathrooms.max}{" "}
-											Banheiros
+											{product.bathrooms.min !== product.bathrooms.max ? (
+												<>
+													{product.bathrooms.min} a {product.bathrooms.max}{" "}
+													Banheiros
+												</>
+											) : (
+												<>{product.bathrooms.max} Banheiros</>
+											)}
 										</p>
 									</Detail>
 								</Details>
