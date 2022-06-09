@@ -17,6 +17,7 @@ const PaginationWrapper = styled.div`
 	justify-content: center;
 	align-items: center;
 	gap: ${(props) => props.theme.sizes.xl};
+	margin-bottom: ${(props) => props.theme.sizes.xl};
 	a {
 		text-decoration: none;
 	}

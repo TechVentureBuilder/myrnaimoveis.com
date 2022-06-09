@@ -40,7 +40,7 @@ const Sobre: NextPage = (props) => {
 			<p className="centered">
 				<Image
 					alt=""
-					src="/assets/img/foto-fundadora.jpg"
+					src="/assets/img/fundadora.jpg"
 					width={270}
 					height={360}
 				/>
