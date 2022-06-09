@@ -3,40 +3,46 @@ import styled from "styled-components"
 import Container from "../../components/Container"
 import Icon from "../../components/Icon"
 import { Product } from "../../types/Product"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Gallery from "../../components/Gallery"
 import Contact from "../../components/Contact"
 import api from "../../api"
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-	let productInfo
-	await api
-		.get("/products", {
-			params: {
-				_id: context.params!._id,
-			},
-		})
-		.then((result) => {
-			productInfo = result.data.product
-		})
-		.catch((err) => {
-			console.log(err)
-		})
 	return {
 		props: {
-			productInfo: productInfo,
+			_id: context.params!._id,
 		},
 	}
 }
 
 type Props = {
-	productInfo: Product
+	_id: string
 }
 
 const Product: NextPage<Props> = (props) => {
+	const [productInfo, setProductInfo] = useState<Product>()
+
+	useEffect(() => {
+		api
+			.get("/products", {
+				params: {
+					_id: props._id,
+				},
+			})
+			.then((result) => {
+				setProductInfo(result.data.product)
+			})
+			.catch((err) => {
+				console.log(err)
+			})
+	}, [props._id])
+
 	const [thumbsSwiper, setThumbsSwiper] = useState(null)
 
-	const { productInfo } = props
+	if (!productInfo) {
+		return null
+	}
 
 	return (
 		<ProductContainer>
