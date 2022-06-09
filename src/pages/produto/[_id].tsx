@@ -57,6 +57,32 @@ const Product: NextPage<Props> = (props) => {
 			<Gallery images={productInfo.images!} />
 			<div className="info-grid">
 				<div className="info">
+					<ProductInfoGrid>
+						<div className="info-grid-item">
+							<Icon iconName="size" />
+							{productInfo.size.min !== productInfo.size.max
+								? `${productInfo.size.min} a ${productInfo.size.max}m²`
+								: `${productInfo.size.min}m²`}
+						</div>
+						<div className="info-grid-item">
+							<Icon iconName="bed" />
+							{productInfo.bedrooms.min !== productInfo.bedrooms.max
+								? `${productInfo.bedrooms.min} a ${productInfo.bedrooms.max} Quartos`
+								: `${productInfo.bedrooms.min} Quarto(s)`}
+						</div>
+						<div className="info-grid-item">
+							<Icon iconName="bathtub" />
+							{productInfo.bathrooms.min !== productInfo.bathrooms.max
+								? `${productInfo.bathrooms.min} a ${productInfo.bathrooms.max} Banheiros`
+								: `${productInfo.bathrooms.min} Banheiro(s)`}
+						</div>
+						<div className="info-grid-item">
+							<Icon iconName="car" />
+							{productInfo.parking.min !== productInfo.parking.max
+								? `${productInfo.parking.min} a ${productInfo.parking.max} Vagas`
+								: `${productInfo.parking.min} Vaga(s)`}
+						</div>
+					</ProductInfoGrid>
 					<h3>Descrição</h3>
 					<p className="description">{productInfo.description}</p>
 					<h3>Diferenciais</h3>
@@ -74,8 +100,6 @@ const Product: NextPage<Props> = (props) => {
 		</ProductContainer>
 	)
 }
-
-export default Product
 
 const ProductContainer = styled(Container)`
 	padding: ${(props) => props.theme.sizes.m};
@@ -143,3 +167,26 @@ const ProductContainer = styled(Container)`
 		}
 	}
 `
+
+const ProductInfoGrid = styled.div`
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	padding: ${(props) => props.theme.sizes.m};
+	gap: ${(props) => props.theme.sizes.m};
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	border-width: ${(props) => props.theme.border.width};
+	border-color: ${(props) => props.theme.colors.dark};
+	border-style: solid;
+	margin-top: ${(props) => props.theme.sizes.m};
+	.info-grid-item {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: ${(props) => props.theme.sizes.s};
+	}
+`
+
+export default Product
