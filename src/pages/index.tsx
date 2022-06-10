@@ -52,6 +52,7 @@ const Hero = styled.div`
 	}
 	@media (max-width: ${(props) => props.theme.screens.m}) {
 		h1 {
+			max-width: 240px;
 			font-size: ${(props) => props.theme.font.sizes.h2};
 		}
 	}
@@ -99,7 +100,7 @@ const Home: NextPage<Props> = (props) => {
 		<StyledHome>
 			<HeroBackground>
 				<Hero>
-					<h1>Sonhos para chamar de lar</h1>
+					<h1>Sonhos Para Chamar de Lar</h1>
 					<SearchCard>
 						<Search direction="row" />
 					</SearchCard>
