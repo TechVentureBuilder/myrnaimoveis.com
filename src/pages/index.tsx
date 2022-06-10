@@ -50,6 +50,11 @@ const Hero = styled.div`
 	h1 {
 		text-align: center;
 	}
+	@media (max-width: ${(props) => props.theme.screens.m}) {
+		h1 {
+			font-size: ${(props) => props.theme.font.sizes.h2};
+		}
+	}
 `
 
 const SearchCard = styled.div`
