@@ -46,6 +46,7 @@ const ProductImage = styled.div`
 	background-color: ${(props) => props.theme.colors.bg};
 	background-size: 100%;
 	background-position: center;
+	background-repeat: no-repeat;
 	transition: ${(props) => props.theme.transitions.faster};
 `
 
