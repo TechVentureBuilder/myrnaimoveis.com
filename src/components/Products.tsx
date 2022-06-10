@@ -112,6 +112,12 @@ const Details = styled.div`
 	flex-direction: row;
 	align-items: center;
 	gap: ${(props) => props.theme.sizes.l};
+	@media (max-width: ${(props) => props.theme.screens.s}) {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: ${(props) => props.theme.sizes.m};
+		grid-auto-flow: row;
+	}
 `
 
 const Detail = styled.div`
@@ -119,11 +125,14 @@ const Detail = styled.div`
 	flex-direction: row;
 	align-items: center;
 	gap: ${(props) => props.theme.sizes.xs};
+	@media (max-width: ${(props) => props.theme.screens.m}) {
+	}
 `
 
 type Props = {
 	title?: string
 	products: Array<Product>
+	className?: string
 }
 
 const Products: React.FC<Props> = (props) => {
@@ -136,7 +145,7 @@ const Products: React.FC<Props> = (props) => {
 	}
 
 	return (
-		<ProductsContainer>
+		<ProductsContainer className={props.className}>
 			<Title />
 			<ProductsGrid>
 				{props.products.map((product, index) => (

@@ -20,7 +20,7 @@ const Footer: React.FC<Props> = (props) => {
 				<div className="footer-primary">
 					<ReactSVG
 						className="footer-logo"
-						src="assets/logo/logoLightVertical.svg"
+						src="/assets/logo/logoLightVertical.svg"
 					></ReactSVG>
 					<div className="footer-links">
 						<h3>Páginas</h3>

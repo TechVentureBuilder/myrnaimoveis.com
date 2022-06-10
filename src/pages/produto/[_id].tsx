@@ -103,6 +103,7 @@ const Product: NextPage<Props> = (props) => {
 
 const ProductContainer = styled(Container)`
 	padding: ${(props) => props.theme.sizes.m};
+	margin-bottom: ${(props) => props.theme.sizes.m};
 	display: flex;
 	flex-direction: column;
 	gap: ${(props) => props.theme.sizes.l};
@@ -166,6 +167,11 @@ const ProductContainer = styled(Container)`
 			grid-template-columns: 1fr 1fr;
 		}
 	}
+	@media (max-width: ${(props) => props.theme.screens.s}) {
+		.features {
+			grid-template-columns: 1fr;
+		}
+	}
 `
 
 const ProductInfoGrid = styled.div`
@@ -186,6 +192,10 @@ const ProductInfoGrid = styled.div`
 		align-items: center;
 		justify-content: center;
 		gap: ${(props) => props.theme.sizes.s};
+	}
+	@media (max-width: ${(props) => props.theme.screens.s}) {
+		grid-template-columns: 1fr 1fr;
+		row-gap: ${(props) => props.theme.sizes.l};
 	}
 `
 

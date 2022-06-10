@@ -91,7 +91,7 @@ const Home: NextPage<Props> = (props) => {
 	const products = props.products
 
 	return (
-		<>
+		<StyledHome>
 			<HeroBackground>
 				<Hero>
 					<h1>Sonhos para chamar de lar</h1>
@@ -130,9 +130,17 @@ const Home: NextPage<Props> = (props) => {
 					</FeaturesGroup>
 				</Container>
 			</FeaturesBackground>
-			<Products title="Destaques" products={products}></Products>
-		</>
+			<Products
+				className="destaques"
+				title="Destaques"
+				products={products}
+			></Products>
+		</StyledHome>
 	)
 }
+
+const StyledHome = styled.div`
+	margin-bottom: ${(props) => props.theme.sizes.xl};
+`
 
 export default Home
