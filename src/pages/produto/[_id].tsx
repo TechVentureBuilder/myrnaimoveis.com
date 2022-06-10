@@ -161,7 +161,7 @@ const ProductContainer = styled(Container)`
 	}
 	@media (max-width: ${(props) => props.theme.screens.l}) {
 		.info-grid {
-			grid-template-columns: 1fr;
+			grid-template-columns: 100%;
 		}
 	}
 	@media (max-width: ${(props) => props.theme.screens.m}) {
@@ -198,6 +198,7 @@ const ProductInfoGrid = styled.div`
 	@media (max-width: ${(props) => props.theme.screens.s}) {
 		grid-template-columns: 1fr 1fr;
 		row-gap: ${(props) => props.theme.sizes.l};
+		text-align: center;
 	}
 `
 
