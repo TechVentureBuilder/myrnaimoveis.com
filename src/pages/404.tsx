@@ -10,6 +10,7 @@ const ErrorContainer = styled(Container)`
 	gap: ${(props) => props.theme.sizes.m};
 	justify-content: center;
 	align-items: center;
+	margin-bottom: ${(props) => props.theme.sizes.l};
 `
 
 const Sobre: NextPage = (props) => {
