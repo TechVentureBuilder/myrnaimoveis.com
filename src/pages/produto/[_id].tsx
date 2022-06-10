@@ -7,6 +7,7 @@ import { useEffect, useState } from "react"
 import Gallery from "../../components/Gallery"
 import Contact from "../../components/Contact"
 import api from "../../api"
+import Loading from "../../components/Loading"
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
 	return {
@@ -41,7 +42,7 @@ const Product: NextPage<Props> = (props) => {
 	const [thumbsSwiper, setThumbsSwiper] = useState(null)
 
 	if (!productInfo) {
-		return null
+		return <StyledLoading />
 	}
 
 	return (
@@ -133,6 +134,7 @@ const ProductContainer = styled(Container)`
 		form {
 			padding: ${(props) => props.theme.sizes.m};
 			border: 1px solid ${(props) => props.theme.colors.card};
+			height: fit-content;
 		}
 	}
 	.features {
@@ -197,6 +199,14 @@ const ProductInfoGrid = styled.div`
 		grid-template-columns: 1fr 1fr;
 		row-gap: ${(props) => props.theme.sizes.l};
 	}
+`
+
+const StyledLoading = styled(Loading)`
+	min-height: 100vh;
+	position: absolute;
+	top: 0;
+	left: 0;
+	overflow: hidden;
 `
 
 export default Product

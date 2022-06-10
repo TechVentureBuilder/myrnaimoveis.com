@@ -5,6 +5,7 @@ import Container from "./Container"
 import Icon from "./Icon"
 import { Product } from "../types/Product"
 import api from "../api"
+import Loading from "./Loading"
 
 const ProductsContainer = styled(Container)`
 	text-align: center;
@@ -47,7 +48,7 @@ const ProductImage = styled.div`
 	background-size: 100%;
 	background-position: center;
 	background-repeat: no-repeat;
-	transition: ${(props) => props.theme.transitions.faster};
+	transition: ${(props) => props.theme.transitions.normal};
 `
 
 type ProductImageProps = {
@@ -77,7 +78,9 @@ const ProductImageLoaded = (props: ProductImageProps) => {
 			style={{
 				backgroundImage: `url(${imageData})`,
 			}}
-		></ProductImage>
+		>
+			{imageData == "" && <Loading />}
+		</ProductImage>
 	)
 }
 
