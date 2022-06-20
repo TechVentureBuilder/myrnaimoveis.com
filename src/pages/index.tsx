@@ -9,7 +9,7 @@ import { Product } from "../types/Product"
 import Head from "next/head"
 
 const HeroBackground = styled.section`
-	background-image: url("assets/img/hero.jpg");
+	background-image: url("/assets/img/hero.jpg");
 	background-position: center;
 	background-size: cover;
 	background-repeat: no-repeat;
