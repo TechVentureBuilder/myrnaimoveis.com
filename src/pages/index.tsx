@@ -99,6 +99,10 @@ const Home: NextPage<Props> = (props) => {
 
 	return (
 		<StyledHome>
+			<Head>
+				<title>Myrna Imóveis</title>
+				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+			</Head>
 			<HeroBackground>
 				<Hero>
 					<h1>Sonhos Para Chamar de Lar</h1>
