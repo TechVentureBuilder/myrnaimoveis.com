@@ -188,7 +188,7 @@ const Contact: React.FC = () => {
 				type="submit"
 			/>
 			<OtherContacts>
-				<Link href={"tel:+5511998502662"} passHref={true}>
+				<Link href={"tel:+5511999204878"} passHref={true}>
 					<Button
 						type="button"
 						variant="secondary"
@@ -197,7 +197,7 @@ const Contact: React.FC = () => {
 						fill={true}
 					/>
 				</Link>
-				<Link href={"https://wa.me/+5511998502662"} passHref={true}>
+				<Link href={"https://wa.me/+5511999204878"} passHref={true}>
 					<Button
 						type="button"
 						variant="secondary"
