@@ -6,6 +6,7 @@ import Icon from "../components/Icon"
 import Products from "../components/Products"
 import Search from "../components/Search"
 import { Product } from "../types/Product"
+import Head from "next/head"
 
 const HeroBackground = styled.section`
 	background-image: url("assets/img/hero.jpg");

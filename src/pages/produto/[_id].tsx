@@ -8,6 +8,7 @@ import Gallery from "../../components/Gallery"
 import Contact from "../../components/Contact"
 import api from "../../api"
 import Loading from "../../components/Loading"
+import Head from "next/head"
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
 	return {
@@ -47,6 +48,10 @@ const Product: NextPage<Props> = (props) => {
 
 	return (
 		<ProductContainer>
+			<Head>
+				<title>{productInfo.name} - Myrna Imóveis</title>
+				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+			</Head>
 			<h2>{productInfo.name}</h2>
 			<div className="sub-info">
 				{/* <div className="sub-info-left"> */}

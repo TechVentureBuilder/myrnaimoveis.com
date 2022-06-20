@@ -1,4 +1,5 @@
 import type { NextPage } from "next"
+import Head from "next/head"
 import Link from "next/link"
 import styled from "styled-components"
 import Button from "../components/Button"
@@ -16,6 +17,10 @@ const ErrorContainer = styled(Container)`
 const Sobre: NextPage = (props) => {
 	return (
 		<ErrorContainer>
+			<Head>
+				<title>Erro 404 - Myrna Imóveis</title>
+				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+			</Head>
 			<h1>404</h1>
 			<p>Página Não Encontrada</p>
 			<Link href={"/"} passHref>

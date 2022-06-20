@@ -1,4 +1,5 @@
 import type { GetServerSideProps, NextPage } from "next"
+import Head from "next/head"
 import styled from "styled-components"
 import api from "../api"
 import Container from "../components/Container"
@@ -69,6 +70,10 @@ type Props = {
 const Catalogo: NextPage<Props> = (props) => {
 	return (
 		<CatalogoPagina>
+			<Head>
+				<title>Catálogo - Myrna Imóveis</title>
+				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+			</Head>
 			<CatalogoContainer>
 				<Search
 					direction="row"

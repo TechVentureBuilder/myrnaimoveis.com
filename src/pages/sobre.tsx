@@ -1,4 +1,5 @@
 import type { NextPage } from "next"
+import Head from "next/head"
 import Image from "next/image"
 import styled from "styled-components"
 import Container from "../components/Container"
@@ -18,6 +19,10 @@ const StyledContainer = styled(Container)`
 const Sobre: NextPage = (props) => {
 	return (
 		<StyledContainer>
+			<Head>
+				<title>Sobre Nós - Myrna Imóveis</title>
+				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+			</Head>
 			<h1>Sobre Nós</h1>
 			<br />
 			<h2>Quem Somos</h2>
