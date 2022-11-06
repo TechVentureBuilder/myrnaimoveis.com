@@ -34,7 +34,7 @@ const Sobre: NextPage = (props) => {
 				realizar o sonho da casa própria ou mudar de vida investindo em imóveis.
 				<br />
 				<br />
-				Fundada por Myrna, que atua como corretora imobiliária há mais de 25
+				Fundada por Myrna, que atua como corretora imobiliária há mais de 20
 				anos, a empresa busca sempre garantir em seu atendimento, todas as
 				qualidades conhecidas e atribuídas à sua fundadora, como carisma,
 				personalidade amigável e foco em um só objetivo, clientes e investidores
@@ -69,7 +69,7 @@ const Sobre: NextPage = (props) => {
 				sonhos, objetivos e dores.
 				<br />
 				<br />
-				Baseando-nos em toda a experiência adquirida com os mais de 25 anos de
+				Baseando-nos em toda a experiência adquirida com os mais de 20 anos de
 				mercado de nossa fundadora, nosso atendimento sempre será eficiente,
 				pessoal e, o mais importante, humano.
 			</p>
