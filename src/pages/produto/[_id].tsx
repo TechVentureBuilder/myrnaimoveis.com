@@ -47,79 +47,89 @@ const Product: NextPage<Props> = (props) => {
 	}
 
 	return (
-		<ProductContainer>
-			<Head>
-				<title>{productInfo.name} - Myrna Imóveis</title>
-				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
-			</Head>
-			<h2>{productInfo.name}</h2>
-			<div className="sub-info">
-				{/* <div className="sub-info-left"> */}
-				<Icon iconName="local" />
-				{`${productInfo.address.neighborhood} - ${productInfo.address.city}, ${productInfo.address.state}`}
-				{/* </div> */}
-				{/* <div className="sub-info-right">R${productInfo.price}</div> */}
-			</div>
-			<Gallery images={productInfo.images!} />
-			<div className="info-grid">
-				<div className="info">
-					<ProductInfoGrid>
-						<div className="info-grid-item">
-							<Icon iconName="size" />
-							{productInfo.size.min !== productInfo.size.max
-								? `${productInfo.size.min} a ${productInfo.size.max}m²`
-								: `${productInfo.size.min}m²`}
-						</div>
-						<div className="info-grid-item">
-							<Icon iconName="bed" />
-							{productInfo.bedrooms.min !== productInfo.bedrooms.max
-								? `${productInfo.bedrooms.min} a ${productInfo.bedrooms.max} Quartos`
-								: `${productInfo.bedrooms.min} Quarto(s)`}
-						</div>
-						<div className="info-grid-item">
-							<Icon iconName="bathtub" />
-							{productInfo.bathrooms.min !== productInfo.bathrooms.max
-								? `${productInfo.bathrooms.min} a ${productInfo.bathrooms.max} Banheiros`
-								: `${productInfo.bathrooms.min} Banheiro(s)`}
-						</div>
-						<div className="info-grid-item">
-							<Icon iconName="car" />
-							{productInfo.parking.min !== productInfo.parking.max
-								? `${productInfo.parking.min} a ${productInfo.parking.max} Vagas`
-								: `${productInfo.parking.min} Vaga(s)`}
-						</div>
-					</ProductInfoGrid>
-					<h3>Descrição</h3>
-					<p className="description">{productInfo.description}</p>
-					<h3>Diferenciais</h3>
-					<div className="features">
-						{productInfo.features?.map((feature, index) => (
-							<div key={index} className="features-item">
-								<Icon iconName="check" />
-								{feature}
-							</div>
-						))}
-					</div>
+		<ProductWrapper>
+			<ProductContainer>
+				<Head>
+					<title>{productInfo.name} - Myrna Imóveis</title>
+					<meta
+						name="viewport"
+						content="initial-scale=1.0, width=device-width"
+					/>
+				</Head>
+				<Gallery id={productInfo._id!} />
+				<h2>{productInfo.name}</h2>
+				<div className="sub-info">
+					{/* <div className="sub-info-left"> */}
+					<Icon iconName="local" />
+					{`${productInfo.address.neighborhood} - ${productInfo.address.city}, ${productInfo.address.state}`}
+					{/* </div> */}
+					{/* <div className="sub-info-right">R${productInfo.price}</div> */}
 				</div>
-				<Contact></Contact>
-			</div>
-		</ProductContainer>
+				<div className="info-grid">
+					<div className="info">
+						<ProductInfoGrid>
+							<div className="info-grid-item">
+								<Icon iconName="size" />
+								{productInfo.size.min !== productInfo.size.max
+									? `${productInfo.size.min} a ${productInfo.size.max}m²`
+									: `${productInfo.size.min}m²`}
+							</div>
+							<div className="info-grid-item">
+								<Icon iconName="bed" />
+								{productInfo.bedrooms.min !== productInfo.bedrooms.max
+									? `${productInfo.bedrooms.min} a ${productInfo.bedrooms.max} Quartos`
+									: `${productInfo.bedrooms.min} Quarto(s)`}
+							</div>
+							<div className="info-grid-item">
+								<Icon iconName="bathtub" />
+								{productInfo.bathrooms.min !== productInfo.bathrooms.max
+									? `${productInfo.bathrooms.min} a ${productInfo.bathrooms.max} Banheiros`
+									: `${productInfo.bathrooms.min} Banheiro(s)`}
+							</div>
+							<div className="info-grid-item">
+								<Icon iconName="car" />
+								{productInfo.parking.min !== productInfo.parking.max
+									? `${productInfo.parking.min} a ${productInfo.parking.max} Vagas`
+									: `${productInfo.parking.min} Vaga(s)`}
+							</div>
+						</ProductInfoGrid>
+						<h3>Descrição</h3>
+						<p className="description">{productInfo.description}</p>
+						<h3>Diferenciais</h3>
+						<div className="features">
+							{productInfo.features?.map((feature, index) => (
+								<div key={index} className="features-item">
+									<Icon iconName="check" />
+									{feature}
+								</div>
+							))}
+						</div>
+					</div>
+					<Contact></Contact>
+				</div>
+			</ProductContainer>
+		</ProductWrapper>
 	)
 }
 
+const ProductWrapper = styled("div")`
+	background-color: ${(props) => props.theme.colors.white};
+`
+
 const ProductContainer = styled(Container)`
+	background-color: ${(props) => props.theme.colors.white};
 	padding: ${(props) => props.theme.sizes.m};
-	margin-bottom: ${(props) => props.theme.sizes.m};
+	padding-bottom: ${(props) => props.theme.sizes.xxl};
 	display: flex;
 	flex-direction: column;
 	gap: ${(props) => props.theme.sizes.l};
 	h2 {
-		text-align: center;
+		text-align: left;
 	}
 	.sub-info {
 		display: flex;
 		flex-direction: row;
-		justify-content: center;
+		justify-content: start;
 		align-items: center;
 		gap: ${(props) => props.theme.sizes.xs};
 		color: ${(props) => props.theme.colors.primary.lighter};
@@ -138,7 +148,8 @@ const ProductContainer = styled(Container)`
 		}
 		form {
 			padding: ${(props) => props.theme.sizes.m};
-			border: 1px solid ${(props) => props.theme.colors.card};
+			border: 1px solid ${(props) => props.theme.colors.lighter};
+			border-radius: 0.5rem;
 			height: fit-content;
 		}
 	}
@@ -190,7 +201,8 @@ const ProductInfoGrid = styled.div`
 	align-items: center;
 	width: 100%;
 	border-width: ${(props) => props.theme.border.width};
-	border-color: ${(props) => props.theme.colors.dark};
+	border-color: ${(props) => props.theme.colors.lighter};
+	border-radius: 0.5em;
 	border-style: solid;
 	margin-top: ${(props) => props.theme.sizes.m};
 	.info-grid-item {

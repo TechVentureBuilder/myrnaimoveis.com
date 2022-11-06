@@ -11,6 +11,7 @@ const ProductsContainer = styled(Container)`
 	text-align: center;
 	padding-top: ${(props) => props.theme.sizes.m};
 	padding-bottom: ${(props) => props.theme.sizes.m};
+	background-color: ${(props) => props.theme.colors.card};
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -49,6 +50,7 @@ const ProductImage = styled.div`
 	background-position: center;
 	background-repeat: no-repeat;
 	transition: ${(props) => props.theme.transitions.normal};
+	border-radius: ${(props) => props.theme.border.radius};
 `
 
 type ProductImageProps = {
@@ -86,9 +88,10 @@ const ProductImageLoaded = (props: ProductImageProps) => {
 
 const Product = styled.div`
 	width: 100%;
-	background-color: ${(props) => props.theme.colors.card};
+	background-color: ${(props) => props.theme.colors.white};
 	border: ${(props) => props.theme.border.width} solid;
 	border-color: ${(props) => props.theme.colors.card};
+	border-radius: ${(props) => props.theme.border.radius};
 	padding: ${(props) => props.theme.sizes.m};
 	box-sizing: border-box;
 	display: flex;

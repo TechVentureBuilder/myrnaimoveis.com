@@ -53,7 +53,9 @@ const Footer: React.FC<Props> = (props) => {
 						<p>
 							Não coletamos cookies, optamos por preservar a sua privacidade.
 						</p>
-						<p>Guardamos apenas os dados que você nos fornece.</p>
+						<p>
+							Guardamos apenas os dados que você nos fornece durante o contato.
+						</p>
 					</div>
 					<div className="footer-links info">
 						<p>CRECI: 54346-J</p>
@@ -69,7 +71,8 @@ const Footer: React.FC<Props> = (props) => {
 const StyledFooter = styled(Footer)`
 	width: 100%;
 	border-top: ${(props) => props.theme.border.width} solid
-		${(props) => props.theme.colors.card};
+		${(props) => props.theme.colors.light};
+	background-color: ${(props) => props.theme.colors.white};
 	.footer-container {
 		display: flex;
 		flex-direction: row;
@@ -111,11 +114,11 @@ const StyledFooter = styled(Footer)`
 				white-space: nowrap;
 				cursor: pointer;
 				:hover {
-					color: ${(props) => props.theme.colors.primary.light};
+					color: ${(props) => props.theme.colors.main};
 				}
 			}
 			p {
-				color: ${(props) => props.theme.colors.lighter};
+				color: ${(props) => props.theme.colors.placeholder};
 			}
 			&.info {
 				white-space: nowrap;

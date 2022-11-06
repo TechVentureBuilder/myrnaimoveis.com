@@ -4,7 +4,7 @@ export default createGlobalStyle`
     body, html {
     padding: 0;
     margin: 0;
-    background-color: ${(props) => props.theme.colors.bg};
+    background-color: ${(props) => props.theme.colors.card};
     color: ${(props) => props.theme.colors.text};
     font-size: ${(props) => props.theme.font.sizes.p};
     }

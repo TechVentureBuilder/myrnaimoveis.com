@@ -8,8 +8,8 @@ export const theme = {
 			light: "#D693B3",
 		},
 		white: "#FDFAFB",
-		light: "#F8F1F4",
-		lighter: "#B99DAA",
+		light: "#f2eeef",
+		lighter: "#e1d6db",
 		darker: "#6A535E",
 		dark: "#311C26",
 		black: "#13090E",
@@ -17,7 +17,7 @@ export const theme = {
 			return this.primary.default
 		},
 		get text() {
-			return this.white
+			return this.black
 		},
 		get inactive() {
 			return this.lighter
@@ -26,24 +26,24 @@ export const theme = {
 			return this.darker
 		},
 		get card() {
-			return this.dark
+			return this.light
 		},
 		get bg() {
-			return this.black
+			return this.white
 		},
 	},
 	sizes: {
 		xs: "0.5rem", // 8px
 		s: "0.75rem", // 12px
-		m: "1rem",    // 16px
-		l: "1.5rem",  // 24px
-		xl: "2rem",   // 32px
-		xxl: "3rem",  // 48px
+		m: "1rem", // 16px
+		l: "1.5rem", // 24px
+		xl: "2rem", // 32px
+		xxl: "3rem", // 48px
 		interaction: "2.625rem", // 42px
 		icon: {
 			small: "1.125rem",
-			big: "1.5rem"
-		}
+			big: "1.5rem",
+		},
 	},
 	screens: {
 		s: "36rem",
@@ -72,7 +72,7 @@ export const theme = {
 	},
 	border: {
 		width: "0.0625rem",
-		radius: "none",
+		radius: "0.25rem",
 	},
 	transitions: {
 		slow: "700ms ease-in-out",

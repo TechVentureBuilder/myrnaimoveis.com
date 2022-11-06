@@ -62,12 +62,13 @@ const Hero = styled.div`
 const SearchCard = styled.div`
 	background-color: ${(props) => props.theme.colors.bg};
 	padding: ${(props) => props.theme.sizes.m};
+	border-radius: 0.5em;
 `
 
 const FeaturesBackground = styled.section`
 	width: 100%;
 	padding: 0 ${(props) => props.theme.sizes.m};
-	background-color: ${(props) => props.theme.colors.card};
+	background-color: ${(props) => props.theme.colors.white};
 	margin-bottom: ${(props) => props.theme.sizes.m};
 `
 

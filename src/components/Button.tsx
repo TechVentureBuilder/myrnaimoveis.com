@@ -17,7 +17,7 @@ const StyledButton = styled.button`
 	font-size: ${(props) => props.theme.font.sizes.s};
 	font-family: ${(props) => props.theme.font.families.sans};
 	background-color: ${(props) => props.theme.colors.main};
-	color: ${(props) => props.theme.colors.text};
+	color: ${(props) => props.theme.colors.white};
 	border: ${(props) => `${props.theme.border.width} solid`};
 	border-color: ${(props) => props.theme.colors.main};
 	display: flex;
@@ -26,6 +26,7 @@ const StyledButton = styled.button`
 	transition: ${(props) => props.theme.transitions.fast};
 	text-decoration: none;
 	width: max-content;
+	border-radius: ${(props) => props.theme.border.radius};
 	cursor: pointer;
 	&.fill {
 		width: 100%;
@@ -39,8 +40,8 @@ const StyledButton = styled.button`
 		padding: ${(props) => props.theme.sizes.s};
 	}
 	:hover {
-		border-color: ${(props) => props.theme.colors.primary.light};
-		background-color: ${(props) => props.theme.colors.main};
+		background-color: ${(props) => props.theme.colors.primary.default};
+		opacity: 0.85;
 	}
 
 	/* Variants */
@@ -49,8 +50,8 @@ const StyledButton = styled.button`
 		color: ${(props) => props.theme.colors.text};
 		border-color: ${(props) => props.theme.colors.card};
 		:hover {
-			background-color: ${(props) => props.theme.colors.dark};
-			border-color: ${(props) => props.theme.colors.darker};
+			background-color: ${(props) => props.theme.colors.lighter};
+			border-color: ${(props) => props.theme.colors.lighter};
 			color: ${(props) => props.theme.colors.text};
 		}
 	}

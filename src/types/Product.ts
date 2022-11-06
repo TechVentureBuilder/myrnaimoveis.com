@@ -12,7 +12,6 @@ export interface Product {
 	bathrooms: { min: number; max: number }
 	parking: { min: number; max: number }
 	price: number
-	images?: Array<{ description: string; data: string; type: string }>
 	description?: string
 	features?: Array<string>
 }

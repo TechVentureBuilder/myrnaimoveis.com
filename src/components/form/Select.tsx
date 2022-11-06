@@ -20,9 +20,10 @@ const DisplayInput = styled.input`
 	display: block;
 	background-color: transparent;
 	border: ${(props) => props.theme.border.width} solid
-		${(props) => props.theme.colors.card};
+		${(props) => props.theme.colors.lighter};
 	font-size: ${(props) => props.theme.font.sizes.p};
 	transition: ${(props) => props.theme.transitions.fast};
+	border-radius: ${(props) => props.theme.border.radius};
 	::placeholder {
 		font-size: ${(props) => props.theme.font.sizes.s};
 		color: ${(props) => props.theme.colors.placeholder};
@@ -34,6 +35,8 @@ const DisplayInput = styled.input`
 	}
 	:focus {
 		border-color: ${(props) => props.theme.colors.main};
+		border-radius: ${(props) => props.theme.border.radius}
+			${(props) => props.theme.border.radius} 0 0;
 	}
 	&.withIcon {
 		padding-left: ${(props) => `calc(
@@ -92,6 +95,7 @@ const Options = styled.div`
 	flex-direction: column;
 	overflow-y: scroll;
 	z-index: 1;
+	border-radius: 0 0 ${props=>props.theme.border.radius} ${props=>props.theme.border.radius};
 	&.hidden {
 		transition: ${(props) => props.theme.transitions.faster};
 		pointer-events: none;
@@ -109,10 +113,11 @@ const Option = styled.div`
 	padding-left: ${(props) => props.theme.sizes.m};
 	user-select: none;
 	:hover {
-		background-color: ${(props) => props.theme.colors.primary.dark};
+		background-color: ${(props) => props.theme.colors.lighter};
 	}
 	&.active {
 		background-color: ${(props) => props.theme.colors.main};
+		color: ${(props) => props.theme.colors.white};
 	}
 `
 
@@ -173,6 +178,7 @@ const Select = (props: Props) => {
 						setFilteredOptions(props.options)
 					}
 				}}
+				autoComplete={"off"}
 			/>
 			<ValueInput name={props.name} required={props.required} value={value} />
 			{props.iconName ? <StyledIcon iconName={props.iconName} /> : ""}

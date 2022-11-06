@@ -17,9 +17,10 @@ const Input = styled.input`
 	display: block;
 	background-color: transparent;
 	border: ${(props) => props.theme.border.width} solid
-		${(props) => props.theme.colors.card};
+		${(props) => props.theme.colors.lighter};
 	font-size: ${(props) => props.theme.font.sizes.p};
 	transition: ${(props) => props.theme.transitions.fast};
+	border-radius: ${(props) => props.theme.border.radius};
 	::placeholder {
 		font-size: ${(props) => props.theme.font.sizes.s};
 		color: ${(props) => props.theme.colors.placeholder};

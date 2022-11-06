@@ -19,7 +19,7 @@ const NavWrapper = styled.div`
 	display: flex;
 	justify-content: center;
 	border-bottom: ${(props) => props.theme.border.width} solid
-		${(props) => props.theme.colors.card};
+		${(props) => props.theme.colors.light};
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -57,16 +57,18 @@ const LinksWrapper = styled.div`
 		transition: ${(props) => props.theme.transitions.fast};
 		width: fit-content;
 		text-decoration: none;
-		padding: ${(props) => props.theme.sizes.m} ${(props) => props.theme.sizes.m};
+		padding: ${(props) => props.theme.sizes.s} ${(props) => props.theme.sizes.m};
 		display: flex;
 		justify-content: center;
 		position: relative;
 		color: ${(props) => props.theme.colors.text};
+		border-radius: ${(props) => props.theme.border.radius};
 		:hover {
-			color: ${(props) => props.theme.colors.primary.light};
+			color: ${(props) => props.theme.colors.main};
 		}
 		&.active {
 			color: ${(props) => props.theme.colors.main};
+			background-color: ${(props) => props.theme.colors.card};
 		}
 		@media (max-width: ${(props) => props.theme.screens.s}) {
 			display: none;
@@ -190,7 +192,7 @@ const NavBar = (props: Props) => {
 						/>
 						<Link passHref={true} href={"/"}>
 							<a className="logoLink">
-								<ReactSVG src="/assets/logo/logoLightHorizontal.svg" />
+								<ReactSVG src="/assets/logo/logoDarkHorizontal.svg" />
 							</a>
 						</Link>
 						<Link href={"/"}>

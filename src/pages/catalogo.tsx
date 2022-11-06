@@ -99,6 +99,7 @@ const Catalogo: NextPage<Props> = (props) => {
 
 const CatalogoPagina = styled.div`
 	margin-bottom: ${(props) => props.theme.sizes.xl};
+	min-height: 75vh;
 `
 
 const CatalogoContainer = styled(Container)`
