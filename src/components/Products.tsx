@@ -100,7 +100,7 @@ const Product = styled.div`
 	text-align: start;
 	transition: ${(props) => props.theme.transitions.fast};
 	:hover {
-		border-color: ${(props) => props.theme.colors.main};
+		border-color: ${(props) => props.theme.colors.lighter};
 		${ProductImage} {
 			background-size: 105%;
 		}
