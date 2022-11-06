@@ -45,7 +45,7 @@ const ProductsGrid = styled.div`
 const ProductImage = styled.div`
 	width: 100%;
 	height: 16rem;
-	background-color: ${(props) => props.theme.colors.bg};
+	background-color: ${(props) => props.theme.colors.card};
 	background-size: 100%;
 	background-position: center;
 	background-repeat: no-repeat;
