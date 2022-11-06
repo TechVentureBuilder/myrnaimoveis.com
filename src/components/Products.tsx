@@ -91,7 +91,7 @@ const Product = styled.div`
 	background-color: ${(props) => props.theme.colors.white};
 	border: ${(props) => props.theme.border.width} solid;
 	border-color: ${(props) => props.theme.colors.card};
-	border-radius: ${(props) => props.theme.border.radius};
+	border-radius: 0.5rem;
 	padding: ${(props) => props.theme.sizes.m};
 	box-sizing: border-box;
 	display: flex;
