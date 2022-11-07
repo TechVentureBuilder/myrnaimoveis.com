@@ -38,7 +38,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 }
 
 const Hero = styled.div`
-	background-color: ${(props) => props.theme.colors.card}bf;
+	background-color: ${(props) => props.theme.colors.card}E6;
 	width: 100%;
 	display: flex;
 	justify-content: center;

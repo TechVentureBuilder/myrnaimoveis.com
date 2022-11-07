@@ -32,6 +32,7 @@ const StyledPopup = styled.div`
 	opacity: 1;
 	position: relative;
 	padding: ${(props) => props.theme.sizes.m};
+	border-radius: 0.5rem;
 	@media (max-width: ${(props) => props.theme.screens.s}) {
 		width: 100%;
 		height: 100%;

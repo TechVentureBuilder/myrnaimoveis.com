@@ -6,6 +6,7 @@ import styled from "styled-components"
 import { usePopup } from "../contexts/PopupContext"
 import Button from "./Button"
 import Contact from "./Contact"
+import Container from "./Container"
 import Popup from "./Popup"
 import Search from "./Search"
 
@@ -27,7 +28,7 @@ const NavWrapper = styled.div`
 	z-index: 2;
 `
 
-const StyledNav = styled.nav`
+const StyledNav = styled(Container)`
 	width: ${(props) => props.theme.screens.xxl};
 	padding: 0 ${(props) => props.theme.sizes.m};
 	display: flex;
@@ -35,13 +36,13 @@ const StyledNav = styled.nav`
 	justify-content: space-between;
 	.mobile-contact-button {
 		display: none;
-		@media (max-width: ${(props) => props.theme.screens.s}) {
+		@media (max-width: ${(props) => props.theme.screens.m}) {
 			display: block;
 		}
 	}
 	.desktop-contact-button {
 		display: inherit;
-		@media (max-width: ${(props) => props.theme.screens.s}) {
+		@media (max-width: ${(props) => props.theme.screens.m}) {
 			display: none;
 		}
 	}
@@ -90,7 +91,7 @@ const LinksWrapper = styled.div`
 
 const ButtonsWrapper = styled.div`
 	display: flex;
-	gap: ${(props) => props.theme.sizes.m};
+	gap: ${(props) => props.theme.sizes.s};
 	align-items: center;
 `
 

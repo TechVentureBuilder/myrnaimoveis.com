@@ -5,8 +5,8 @@ const nextConfig = {
 		styledComponents: true,
 	},
 	images: {
-		domains: ['picsum.photos']
-	}
+		domains: ["localhost:8080"],
+	},
 }
 
 module.exports = nextConfig
