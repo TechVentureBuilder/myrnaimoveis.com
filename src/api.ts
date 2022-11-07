@@ -1,11 +1,12 @@
 import axios from "axios"
 
 let baseURL: string
+let mode = process.env.NODE_ENV
 
-if (process.env.MODE == "prod") {
-	baseURL = "https://api.myrnaimoveis.com"
-} else {
+if (mode == "development") {
 	baseURL = "http://localhost:8080"
+} else {
+	baseURL = "https://api.myrnaimoveis.com"
 }
 
 const api = axios.create({
