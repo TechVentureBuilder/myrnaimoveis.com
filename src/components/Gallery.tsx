@@ -10,12 +10,14 @@ import "swiper/css/grid"
 import "swiper/css/pagination"
 import { Image as ImageType } from "../types/Image"
 import api from "../api"
+import Loading from "./Loading"
 
 type Props = {
 	id: string
 }
 
 const Gallery: React.FC<Props> = (props) => {
+	const [count, setCount] = useState<Number>(1)
 	const [images, setImages] = useState<ImageType[]>([])
 	const [lodadedImages, setLoadedImages] = useState(false)
 
@@ -29,6 +31,7 @@ const Gallery: React.FC<Props> = (props) => {
 					},
 				})
 				.then(async (res) => {
+					setCount(res.data.count)
 					for (let i = 0; i < res.data.count; i++) {
 						await api
 							.get("images", {
@@ -39,7 +42,6 @@ const Gallery: React.FC<Props> = (props) => {
 							})
 							.then((res) => {
 								setImages((prev) => [...prev, res.data.image])
-								console.log(images)
 							})
 					}
 				})
@@ -66,6 +68,13 @@ const Gallery: React.FC<Props> = (props) => {
 					/>
 				</SwiperSlide>
 			))}
+			{count > images.length ? (
+				<SwiperSlide className="gallery-item">
+					<Loading></Loading>
+				</SwiperSlide>
+			) : (
+				""
+			)}
 		</StyledGallery>
 	)
 }
