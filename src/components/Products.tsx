@@ -157,7 +157,7 @@ const Products: React.FC<Props> = (props) => {
 			<ProductsGrid>
 				{props.products.map((product, index) => (
 					<Link href={"/produto/" + product._id} key={index}>
-						<a target={"_blank"}>
+						<a>
 							<Product>
 								<ProductImageLoaded productId={product._id!} />
 								<h3>{product.name}</h3>
