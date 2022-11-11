@@ -47,9 +47,6 @@ const Gallery: React.FC<Props> = (props) => {
 										_id: props.id,
 										pos: i,
 									},
-									headers: {
-										"Cache-Control": "public, max-age: 120",
-									},
 								})
 								.then((res) => {
 									// localStorage.setItem(

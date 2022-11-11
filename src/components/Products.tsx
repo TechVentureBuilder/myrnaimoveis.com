@@ -72,9 +72,6 @@ const ProductImageLoaded = (props: ProductImageProps) => {
 				params: {
 					_id: props.productId,
 				},
-				headers: {
-					"Cache-Control": "public, max-age: 120",
-				},
 			})
 			.then((result) => {
 				localStorage.setItem(
