@@ -1,5 +1,5 @@
 import axios from "axios"
-import { setupCache } from "axios-cache-adapter"
+import { cacheAdapterEnhancer } from "axios-extensions"
 
 let baseURL: string
 let mode = process.env.NODE_ENV
@@ -10,16 +10,12 @@ if (mode == "development" || mode == "test") {
 	baseURL = "https://api.myrnaimoveis.com"
 }
 
-const cache = setupCache({
-	maxAge: 120,
-})
-
 const api = axios.create({
 	baseURL,
 	headers: {
 		"Content-Type": "application/json",
 	},
-	adapter: cache.adapter,
+	adapter: cacheAdapterEnhancer(axios.defaults.adapter!),
 })
 
 export default api

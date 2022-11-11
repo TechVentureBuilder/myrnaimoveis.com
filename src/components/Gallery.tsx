@@ -30,35 +30,21 @@ const Gallery: React.FC<Props> = (props) => {
 						_id: props.id,
 					},
 				})
-				.then(
-					async (res) => {
-						setCount(res.data.count)
-						// let storedImages = JSON.parse(
-						// 	localStorage.getItem(props.id + "-imgs")!
-						// )
-						// if (storedImages && storedImages.length == res.data.count) {
-						// 	setImages(storedImages)
-						// 	console.log("got images from localhost")
-						// } else {
-						for (let i = 0; i < res.data.count; i++) {
-							await api
-								.get("images", {
-									params: {
-										_id: props.id,
-										pos: i,
-									},
-								})
-								.then((res) => {
-									// localStorage.setItem(
-									// 	props.id + "-imgs",
-									// 	JSON.stringify([...images, res.data.image])
-									// )
-									setImages((prev) => [...prev, res.data.image])
-								})
-						}
+				.then(async (res) => {
+					setCount(res.data.count)
+					for (let i = 0; i < res.data.count; i++) {
+						await api
+							.get("images", {
+								params: {
+									_id: props.id,
+									pos: i,
+								},
+							})
+							.then((res) => {
+								setImages((prev) => [...prev, res.data.image])
+							})
 					}
-					// }
-				)
+				})
 		}
 	}, [images, lodadedImages, props.id])
 
