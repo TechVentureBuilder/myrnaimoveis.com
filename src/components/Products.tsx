@@ -61,18 +61,29 @@ const ProductImageLoaded = (props: ProductImageProps) => {
 	const [imageData, setImageData] = useState("")
 
 	useEffect(() => {
-		api
-			.get("/thumbs", {
-				params: {
-					_id: props.productId,
-				},
-			})
-			.then((result) => {
-				setImageData(result.data.thumb)
-			})
-			.catch((err) => {
-				console.log(err)
-			})
+		let storedThumb = JSON.parse(
+			localStorage.getItem(props.productId + "-thumb")!
+		)
+		if (storedThumb) {
+			setImageData(storedThumb)
+		} else {
+			api
+				.get("/thumbs", {
+					params: {
+						_id: props.productId,
+					},
+				})
+				.then((result) => {
+					localStorage.setItem(
+						props.productId + "-thumb",
+						JSON.stringify(result.data.thumb)
+					)
+					setImageData(result.data.thumb)
+				})
+				.catch((err) => {
+					console.log(err)
+				})
+		}
 	}, [props.productId])
 
 	return (
