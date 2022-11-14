@@ -117,9 +117,11 @@ const StyledGallery = styled(Swiper)`
 	}
 	.swiper-button-next {
 		color: ${(props) => props.theme.colors.main};
+		transform: scale(0.75);
 	}
 	.swiper-button-prev {
 		color: ${(props) => props.theme.colors.main};
+		transform: scale(0.75);
 	}
 	@media (max-width: ${(props) => props.theme.screens.l}) {
 		height: 50vh;
