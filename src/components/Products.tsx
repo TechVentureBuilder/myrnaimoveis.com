@@ -102,7 +102,7 @@ const Product = styled.div`
 	:hover {
 		border-color: ${(props) => props.theme.colors.lighter};
 		${ProductImage} {
-			transform: scale(1.05);
+			opacity: 0.75;
 		}
 	}
 `
