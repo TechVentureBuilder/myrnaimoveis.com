@@ -46,7 +46,7 @@ const ProductImage = styled.div`
 	width: 100%;
 	height: 16rem;
 	background-color: ${(props) => props.theme.colors.card};
-	background-size: 100%;
+	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
 	transition: ${(props) => props.theme.transitions.normal};
@@ -102,7 +102,7 @@ const Product = styled.div`
 	:hover {
 		border-color: ${(props) => props.theme.colors.lighter};
 		${ProductImage} {
-			background-size: 105%;
+			transform: scale(1.05);
 		}
 	}
 `
