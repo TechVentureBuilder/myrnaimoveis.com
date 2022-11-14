@@ -18,4 +18,5 @@ const api = axios.create({
 	adapter: cacheAdapterEnhancer(axios.defaults.adapter!),
 })
 
+export { baseURL }
 export default api

@@ -8,9 +8,11 @@ import { Grid, Navigation, Pagination } from "swiper"
 import "swiper/css"
 import "swiper/css/grid"
 import "swiper/css/pagination"
+import "swiper/css/navigation"
 import { Image as ImageType } from "../types/Image"
 import api from "../api"
 import Loading from "./Loading"
+import Icon from "./Icon"
 
 type Props = {
 	id: string
@@ -55,6 +57,7 @@ const Gallery: React.FC<Props> = (props) => {
 			pagination={{
 				clickable: true,
 			}}
+			navigation={true}
 			modules={[Pagination, Navigation]}
 			className="mySwiper"
 		>
@@ -111,6 +114,12 @@ const StyledGallery = styled(Swiper)`
 		background-color: ${(props) => props.theme.colors.primary.lighter};
 		outline: 1px solid ${(props) => props.theme.colors.main};
 		transform: rotate(45deg);
+	}
+	.swiper-button-next {
+		color: ${(props) => props.theme.colors.main};
+	}
+	.swiper-button-prev {
+		color: ${(props) => props.theme.colors.main};
 	}
 	@media (max-width: ${(props) => props.theme.screens.l}) {
 		height: 50vh;

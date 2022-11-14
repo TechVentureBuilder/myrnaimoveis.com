@@ -56,6 +56,10 @@ const Product: NextPage<Props> = (props) => {
 						content="initial-scale=1.0, width=device-width"
 					/>
 				</Head>
+				<PrevPageLink href="#" onClick={() => window.history.back()}>
+					<Icon iconName="arrowLeft"></Icon>
+					Voltar
+				</PrevPageLink>
 				<Gallery id={productInfo._id!} />
 				<h2>{productInfo.name}</h2>
 				<div className="sub-info">
@@ -225,6 +229,18 @@ const StyledLoading = styled(Loading)`
 	top: 0;
 	left: 0;
 	overflow: hidden;
+`
+
+const PrevPageLink = styled.a`
+	display: flex;
+	text-decoration: none;
+	gap: ${(props) => props.theme.sizes.xs};
+	width: fit-content;
+	color: ${(props) => props.theme.colors.primary.light};
+	transition: ${(props) => props.theme.transitions.fast};
+	:hover {
+		color: ${(props) => props.theme.colors.main};
+	}
 `
 
 export default Product
