@@ -8,13 +8,6 @@ import Search from "../components/Search"
 import { Product } from "../types/Product"
 import Head from "next/head"
 
-const HeroBackground = styled.section`
-	background-image: url("/assets/img/hero.jpg");
-	background-position: center;
-	background-size: cover;
-	background-repeat: no-repeat;
-`
-
 export const getServerSideProps: GetServerSideProps = async () => {
 	let products: Array<Product> = []
 	await api
@@ -36,60 +29,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
 		},
 	}
 }
-
-const Hero = styled.div`
-	background-color: ${(props) => props.theme.colors.card}E6;
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	gap: ${(props) => props.theme.sizes.m};
-	padding: ${(props) => props.theme.sizes.xl} ${(props) => props.theme.sizes.m};
-	min-height: 75vh;
-	position: relative;
-	h1 {
-		text-align: center;
-	}
-	@media (max-width: ${(props) => props.theme.screens.m}) {
-		h1 {
-			max-width: 240px;
-			font-size: ${(props) => props.theme.font.sizes.h2};
-		}
-	}
-`
-
-const SearchCard = styled.div`
-	background-color: ${(props) => props.theme.colors.bg};
-	padding: ${(props) => props.theme.sizes.m};
-	border-radius: 0.5em;
-`
-
-const FeaturesBackground = styled.section`
-	width: 100%;
-	padding: 0 ${(props) => props.theme.sizes.m};
-	background-color: ${(props) => props.theme.colors.white};
-	margin-bottom: ${(props) => props.theme.sizes.m};
-`
-
-const FeaturesGroup = styled.div`
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	width: 100%;
-	@media (max-width: ${(props) => props.theme.screens.m}) {
-		grid-template-columns: 1fr;
-	}
-`
-
-const Feature = styled.div`
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	gap: ${(props) => props.theme.sizes.xs};
-	padding: ${(props) => props.theme.sizes.xl};
-	text-align: center;
-`
 
 type Props = {
 	products: []
@@ -153,6 +92,67 @@ const Home: NextPage<Props> = (props) => {
 
 const StyledHome = styled.div`
 	margin-bottom: ${(props) => props.theme.sizes.xl};
+`
+
+const HeroBackground = styled.section`
+	background-image: url("/assets/img/hero.jpg");
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+`
+
+const Hero = styled.div`
+	background-color: ${(props) => props.theme.colors.card}E6;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	gap: ${(props) => props.theme.sizes.m};
+	padding: ${(props) => props.theme.sizes.xl} ${(props) => props.theme.sizes.m};
+	min-height: 75vh;
+	position: relative;
+	h1 {
+		text-align: center;
+	}
+	@media (max-width: ${(props) => props.theme.screens.m}) {
+		h1 {
+			max-width: 240px;
+			font-size: ${(props) => props.theme.font.sizes.h2};
+		}
+	}
+`
+
+const SearchCard = styled.div`
+	background-color: ${(props) => props.theme.colors.bg};
+	padding: ${(props) => props.theme.sizes.m};
+	border-radius: 0.5em;
+`
+
+const FeaturesBackground = styled.section`
+	width: 100%;
+	padding: 0 ${(props) => props.theme.sizes.m};
+	background-color: ${(props) => props.theme.colors.white};
+	margin-bottom: ${(props) => props.theme.sizes.m};
+`
+
+const FeaturesGroup = styled.div`
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	width: 100%;
+	@media (max-width: ${(props) => props.theme.screens.m}) {
+		grid-template-columns: 1fr;
+	}
+`
+
+const Feature = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: ${(props) => props.theme.sizes.xs};
+	padding: ${(props) => props.theme.sizes.xl};
+	text-align: center;
 `
 
 export default Home
