@@ -77,9 +77,10 @@ const PopupBehind = styled.div`
 
 type Props = {
 	opened: boolean
+	children: any
 }
 
-const Popup: React.FC<Props> = (props) => {
+const Popup = (props: Props) => {
 	const { setOpened } = usePopup()
 
 	return (
