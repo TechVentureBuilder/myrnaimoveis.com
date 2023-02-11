@@ -83,7 +83,7 @@ const Popup: React.FC<Props> = (props) => {
 	const { setOpened } = usePopup()
 
 	return (
-		<PopupWrapper className={props.opened == false ? "hidden" : ""}>
+		<PopupWrapper className={props.opened != true ? "hidden" : ""}>
 			<PopupBehind onClick={() => setOpened(false)} />
 			<StyledPopup>
 				<CloseButton

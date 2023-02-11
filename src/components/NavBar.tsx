@@ -166,48 +166,45 @@ const NavBar = (props: Props) => {
 											setOpened(false)
 										}}
 									>
-										<Link href={"/"}>
-											<a className={router.pathname == "/" ? "active" : ""}>
-												Início
-											</a>
+										<Link
+											href={"/"}
+											className={router.pathname == "/" ? "active" : ""}
+										>
+											Início
 										</Link>
-										<Link href={"/catalogo"}>
-											<a
-												className={
-													router.pathname == "/catalogo" ? "active" : ""
-												}
-											>
-												Catálogo
-											</a>
+										<Link
+											href={"/catalogo"}
+											className={router.pathname == "/catalogo" ? "active" : ""}
+										>
+											Catálogo
 										</Link>
-										<Link href={"/sobre"}>
-											<a
-												className={router.pathname == "/sobre" ? "active" : ""}
-											>
-												Sobre Nós
-											</a>
+										<Link
+											href={"/sobre"}
+											className={router.pathname == "/sobre" ? "active" : ""}
+										>
+											Sobre Nós
 										</Link>
 									</MobileMenu>
 								)
 							}}
 						/>
-						<Link passHref={true} href={"/"}>
-							<a className="logoLink">
-								<ReactSVG src="/assets/logo/logoDarkHorizontal.svg" />
-							</a>
+						<Link passHref={true} href={"/"} className="logoLink">
+							<ReactSVG src="/assets/logo/logoDarkHorizontal.svg" />
 						</Link>
-						<Link href={"/"}>
-							<a className={router.pathname == "/" ? "active" : ""}>Início</a>
+						<Link href={"/"} className={router.pathname == "/" ? "active" : ""}>
+							Início
 						</Link>
-						<Link href={"/catalogo"}>
-							<a className={router.pathname == "/catalogo" ? "active" : ""}>
-								Catálogo
-							</a>
+						<Link
+							href={"/catalogo"}
+							className={router.pathname == "/catalogo" ? "active" : ""}
+						>
+							Catálogo
 						</Link>
-						<Link href={"/sobre"}>
-							<a className={router.pathname == "/sobre" ? "active" : ""}>
-								Sobre Nós
-							</a>
+						<Link
+							href={"/sobre"}
+							className={router.pathname == "/sobre" ? "active" : ""}
+						>
+							Sobre Nós
 						</Link>
 					</LinksWrapper>
 

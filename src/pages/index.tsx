@@ -7,6 +7,7 @@ import Products from "../components/Products"
 import Search from "../components/Search"
 import { Product } from "../types/Product"
 import Head from "next/head"
+import { motion } from "framer-motion"
 
 export const getServerSideProps: GetServerSideProps = async () => {
 	let products: Array<Product> = []
@@ -43,7 +44,15 @@ const Home: NextPage<Props> = (props) => {
 				<title>Myrna Imóveis</title>
 				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 			</Head>
-			<HeroBackground>
+			<HeroBackground
+				initial={{ opacity: 0, translateY: -50 }}
+				animate={{ opacity: 1, translateY: 0 }}
+				transition={{
+					type: "spring",
+					stiffness: 500,
+					damping: 100,
+				}}
+			>
 				<Hero>
 					<h1>Sonhos Para Chamar de Lar</h1>
 					<SearchCard>
@@ -54,7 +63,16 @@ const Home: NextPage<Props> = (props) => {
 			<FeaturesBackground>
 				<Container>
 					<FeaturesGroup>
-						<Feature>
+						<Feature
+							initial={{ opacity: 0, translateY: -50 }}
+							animate={{ opacity: 1, translateY: 0 }}
+							transition={{
+								type: "spring",
+								stiffness: 500,
+								damping: 100,
+								delay: 0.2,
+							}}
+						>
 							<Icon iconName="size" size="big"></Icon>
 							<h3>Imoveis Na Planta</h3>
 							<p>
@@ -62,7 +80,16 @@ const Home: NextPage<Props> = (props) => {
 								merece.
 							</p>
 						</Feature>
-						<Feature>
+						<Feature
+							initial={{ opacity: 0, translateY: -50 }}
+							animate={{ opacity: 1, translateY: 0 }}
+							transition={{
+								type: "spring",
+								stiffness: 500,
+								damping: 100,
+								delay: 0.4,
+							}}
+						>
 							<Icon iconName="chat" size="big"></Icon>
 							<h3>Atendimento Eficiente</h3>
 							<p>
@@ -70,7 +97,16 @@ const Home: NextPage<Props> = (props) => {
 								encontrar o que precisa.
 							</p>
 						</Feature>
-						<Feature>
+						<Feature
+							initial={{ opacity: 0, translateY: -50 }}
+							animate={{ opacity: 1, translateY: 0 }}
+							transition={{
+								type: "spring",
+								stiffness: 500,
+								damping: 100,
+								delay: 0.6,
+							}}
+						>
 							<Icon iconName="local" size="big"></Icon>
 							<h3>Ótimas Localizações</h3>
 							<p>
@@ -94,7 +130,7 @@ const StyledHome = styled.div`
 	margin-bottom: ${(props) => props.theme.sizes.xl};
 `
 
-const HeroBackground = styled.section`
+const HeroBackground = styled(motion.section)`
 	background-image: url("/assets/img/hero.jpg");
 	background-position: center;
 	background-size: cover;
@@ -145,7 +181,7 @@ const FeaturesGroup = styled.div`
 	}
 `
 
-const Feature = styled.div`
+const Feature = styled(motion.div)`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
