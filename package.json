@@ -24,8 +24,8 @@
 	},
 	"devDependencies": {
 		"@types/node": "18.11.9",
-    "@types/react": "18.0.25",
-    "@types/react-dom": "18.0.9",
+		"@types/react": "18.0.25",
+		"@types/react-dom": "18.0.9",
 		"@types/react-svg": "^5.0.0",
 		"@types/styled-components": "^5.1.24",
 		"babel-plugin-styled-components": "^2.0.6",
