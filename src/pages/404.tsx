@@ -12,6 +12,7 @@ const ErrorContainer = styled(Container)`
 	justify-content: center;
 	align-items: center;
 	margin-bottom: ${(props) => props.theme.sizes.l};
+	min-height: 75vh;
 `
 
 const Sobre: NextPage = (props) => {
