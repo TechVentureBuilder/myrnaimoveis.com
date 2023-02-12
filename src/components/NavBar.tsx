@@ -169,18 +169,21 @@ const NavBar = (props: Props) => {
 										<Link
 											href={"/"}
 											className={router.pathname == "/" ? "active" : ""}
+											scroll={false}
 										>
 											Início
 										</Link>
 										<Link
 											href={"/catalogo"}
 											className={router.pathname == "/catalogo" ? "active" : ""}
+											scroll={false}
 										>
 											Catálogo
 										</Link>
 										<Link
 											href={"/sobre"}
 											className={router.pathname == "/sobre" ? "active" : ""}
+											scroll={false}
 										>
 											Sobre Nós
 										</Link>
@@ -188,21 +191,32 @@ const NavBar = (props: Props) => {
 								)
 							}}
 						/>
-						<Link passHref={true} href={"/"} className="logoLink">
+						<Link
+							passHref={true}
+							href={"/"}
+							className="logoLink"
+							scroll={false}
+						>
 							<ReactSVG src="/assets/logo/logoDarkHorizontal.svg" />
 						</Link>
-						<Link href={"/"} className={router.pathname == "/" ? "active" : ""}>
+						<Link
+							href={"/"}
+							className={router.pathname == "/" ? "active" : ""}
+							scroll={false}
+						>
 							Início
 						</Link>
 						<Link
 							href={"/catalogo"}
 							className={router.pathname == "/catalogo" ? "active" : ""}
+							scroll={false}
 						>
 							Catálogo
 						</Link>
 						<Link
 							href={"/sobre"}
 							className={router.pathname == "/sobre" ? "active" : ""}
+							scroll={false}
 						>
 							Sobre Nós
 						</Link>

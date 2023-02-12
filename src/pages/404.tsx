@@ -24,7 +24,7 @@ const Sobre: NextPage = (props) => {
 			</Head>
 			<h1>404</h1>
 			<p>Página Não Encontrada</p>
-			<Link href={"/"} passHref>
+			<Link href={"/"} passHref scroll={false}>
 				<Button type="button" iconName="arrowLeft" text="Voltar ao Início" />
 			</Link>
 		</ErrorContainer>

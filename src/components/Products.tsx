@@ -156,7 +156,7 @@ const Products: React.FC<Props> = (props) => {
 			<Title />
 			<ProductsGrid>
 				{props.products.map((product, index) => (
-					<Link href={"/produto/" + product._id} key={index}>
+					<Link href={"/produto/" + product._id} key={index} scroll={false}>
 						<a>
 							<Product>
 								<ProductImageLoaded productId={product._id!} />
