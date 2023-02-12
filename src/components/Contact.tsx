@@ -23,6 +23,10 @@ const OtherContacts = styled.div`
 	display: flex;
 	flex-direction: row;
 	gap: ${(props) => props.theme.sizes.m};
+	a {
+		width: 100%;
+		text-decoration: none;
+	}
 	@media (max-width: ${(props) => props.theme.screens.s}) {
 		flex-direction: column;
 	}
