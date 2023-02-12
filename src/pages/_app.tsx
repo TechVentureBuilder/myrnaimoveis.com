@@ -4,14 +4,15 @@ import ThemeComponent from "../styles/ThemeComponent" // Website Theme
 import NavBar from "../components/NavBar"
 import PopupProvider from "../contexts/PopupContext"
 import Footer from "../components/Footer"
+import Layout from "../components/Layout"
 
 function MyApp({ Component, pageProps }: AppProps) {
 	return (
 		<ThemeComponent>
 			<PopupProvider>
-				<NavBar />
-				<Component {...pageProps} />
-				<Footer />
+				<Layout>
+					<Component {...pageProps} />
+				</Layout>
 			</PopupProvider>
 		</ThemeComponent>
 	)
