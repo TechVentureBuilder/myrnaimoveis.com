@@ -24,9 +24,15 @@ const Footer: React.FC<Props> = (props) => {
 					></ReactSVG>
 					<div className="footer-links">
 						<h3>Páginas</h3>
-						<Link href={"/"}>Pagina Inicial</Link>
-						<Link href={"/catalogo"}>Catálogo</Link>
-						<Link href={"/sobre"}>Sobre Nós</Link>
+						<Link href={"/"} scroll={false}>
+							Pagina Inicial
+						</Link>
+						<Link href={"/catalogo"} scroll={false}>
+							Catálogo
+						</Link>
+						<Link href={"/sobre"} scroll={false}>
+							Sobre Nós
+						</Link>
 					</div>
 					<div className="footer-links">
 						<h3>Atendimento</h3>
