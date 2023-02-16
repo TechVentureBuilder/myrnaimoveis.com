@@ -13,10 +13,16 @@ const Layout = (props: Props) => {
 	return (
 		<>
 			<NavBar />
-			<AnimatePresence mode="wait">
+			<AnimatePresence
+				mode="wait"
+				onExitComplete={() => {
+					window.scrollTo({ top: 0 })
+				}}
+			>
 				<motion.div
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
+					exit={{ opacity: 0 }}
 					transition={{ duration: 0.3 }}
 					key={router.asPath}
 				>
