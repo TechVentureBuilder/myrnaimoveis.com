@@ -91,7 +91,7 @@ const Sobre: NextPage = (props) => {
 			<p>
 				<b>CRECI</b>
 				<br />
-				54346-J
+				54346-F
 			</p>
 		</StyledContainer>
 	)

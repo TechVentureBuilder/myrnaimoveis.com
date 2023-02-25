@@ -64,7 +64,7 @@ const Footer: React.FC<Props> = (props) => {
 						</p>
 					</div>
 					<div className="footer-links info">
-						<p>CRECI: 54346-J</p>
+						<p>CRECI: 54346-F</p>
 						<p>CNPJ: 40.841.676/0001-22</p>
 						<p>Myrna Imóveis ® 2022</p>
 					</div>
