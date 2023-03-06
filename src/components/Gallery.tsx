@@ -34,6 +34,9 @@ const Gallery: React.FC<Props> = (props) => {
 				<SwiperSlide className="gallery-item" key={index}>
 					<Image
 						src={baseURL + "/images/" + image._id}
+						loader={() => {
+							return baseURL + "/images/" + image._id
+						}}
 						alt={image.description}
 						layout="fill"
 						objectFit="contain"
