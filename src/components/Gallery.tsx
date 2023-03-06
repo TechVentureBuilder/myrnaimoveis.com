@@ -26,6 +26,8 @@ const Gallery: React.FC<Props> = (props) => {
 			pagination={{
 				clickable: true,
 			}}
+			centeredSlides={true}
+			centeredSlidesBounds={true}
 			navigation={true}
 			modules={[Pagination, Navigation]}
 			className="mySwiper"
@@ -57,14 +59,12 @@ const StyledGallery = styled(Swiper)`
 	border-color: ${(props) => props.theme.colors.card};
 	.gallery-item {
 		width: auto;
-		max-width: 100%;
 		height: 100%;
 		cursor: grab;
 		img {
 			position: relative !important;
 			height: 100%;
 			width: auto;
-			max-width: 100%;
 			transition: ${(props) => props.theme.transitions.faster};
 		}
 	}
@@ -122,10 +122,14 @@ const StyledGallery = styled(Swiper)`
 		opacity: 0;
 	}
 	@media (max-width: ${(props) => props.theme.screens.l}) {
-		height: 50vh;
+		height: 40vh;
 	}
 	@media (max-width: ${(props) => props.theme.screens.m}) {
-		height: 40vh;
+		height: 30vh;
+		.swiper-button-prev,
+		.swiper-button-next {
+			display: none;
+		}
 	}
 	@media (max-width: ${(props) => props.theme.screens.s}) {
 		height: 30vh;
