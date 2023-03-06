@@ -33,7 +33,7 @@ const Gallery: React.FC<Props> = (props) => {
 			{props.images.map((image, index) => (
 				<SwiperSlide className="gallery-item" key={index}>
 					<Image
-						src={`${baseURL}/images/${image._id}`}
+						src={baseURL + "/images/" + image._id}
 						alt={image.description}
 						layout="fill"
 						objectFit="contain"
