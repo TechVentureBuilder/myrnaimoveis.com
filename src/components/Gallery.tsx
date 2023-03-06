@@ -22,7 +22,7 @@ const Gallery: React.FC<Props> = (props) => {
 	return (
 		<StyledGallery
 			slidesPerView={"auto"}
-			spaceBetween={1}
+			spaceBetween={0}
 			pagination={{
 				clickable: true,
 			}}
@@ -51,18 +51,20 @@ const StyledGallery = styled(Swiper)`
 	width: 100%;
 	height: 60vh;
 	position: relative;
-	/* background-color: ${(props) => props.theme.colors.card}; */
+	background-color: ${(props) => props.theme.colors.card};
 	border-radius: 0.5rem;
 	border-width: 2px;
 	border-color: ${(props) => props.theme.colors.card};
 	.gallery-item {
 		width: auto;
+		max-width: 100%;
 		height: 100%;
 		cursor: grab;
 		img {
 			position: relative !important;
 			height: 100%;
 			width: auto;
+			max-width: 100%;
 			transition: ${(props) => props.theme.transitions.faster};
 		}
 	}
@@ -79,8 +81,11 @@ const StyledGallery = styled(Swiper)`
 		scale: 1.2;
 	}
 	.swiper-button-next {
+		top: 50%;
+		right: -8px !important;
+		transform: translateY(-50%) !important;
 		color: ${(props) => props.theme.colors.primary.default};
-		transform: scale(0.5);
+		scale: 0.5;
 		right: 0;
 		box-sizing: content-box;
 		width: 56px;
@@ -95,8 +100,11 @@ const StyledGallery = styled(Swiper)`
 		}
 	}
 	.swiper-button-prev {
+		top: 50%;
+		left: -8px !important;
+		transform: translateY(-50%) !important;
 		color: ${(props) => props.theme.colors.primary.default};
-		transform: scale(0.5);
+		scale: 0.5;
 		right: 0;
 		box-sizing: content-box;
 		width: 56px;
