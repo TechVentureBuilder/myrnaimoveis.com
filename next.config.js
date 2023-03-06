@@ -5,7 +5,7 @@ const nextConfig = {
 		styledComponents: true,
 	},
 	images: {
-		domains: ["localhost:8080", "https://api.myrnaimoveis.com"],
+		domains: ["localhost", "https://api.myrnaimoveis.com"],
 	},
 }
 

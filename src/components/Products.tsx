@@ -4,7 +4,7 @@ import styled from "styled-components"
 import Container from "./Container"
 import Icon from "./Icon"
 import { Product } from "../types/Product"
-import api from "../api"
+import api, { baseURL } from "../api"
 import Loading from "./Loading"
 
 const ProductsContainer = styled(Container)`
@@ -55,35 +55,6 @@ const ProductImage = styled.div`
 
 type ProductImageProps = {
 	productId: string
-}
-
-const ProductImageLoaded = (props: ProductImageProps) => {
-	const [imageData, setImageData] = useState("")
-
-	useEffect(() => {
-		api
-			.get("/thumbs", {
-				params: {
-					_id: props.productId,
-				},
-			})
-			.then((result) => {
-				setImageData(result.data.thumb)
-			})
-			.catch((err) => {
-				console.log(err)
-			})
-	}, [props.productId])
-
-	return (
-		<ProductImage
-			style={{
-				backgroundImage: `url(${imageData})`,
-			}}
-		>
-			{imageData == "" && <Loading />}
-		</ProductImage>
-	)
 }
 
 const Product = styled.div`
@@ -156,60 +127,66 @@ const Products: React.FC<Props> = (props) => {
 			<Title />
 			<ProductsGrid>
 				{props.products.map((product, index) => (
-					<Link href={"/produto/" + product._id} key={index} scroll={false}>
-						<a>
-							<Product>
-								<ProductImageLoaded productId={product._id!} />
-								<h3>{product.name}</h3>
-								<Local>
-									<Icon iconName="local" />
+					<Link
+						passHref
+						href={"/produto/" + product._id}
+						key={index}
+						scroll={false}
+					>
+						<Product>
+							<ProductImage
+								style={{
+									backgroundImage: `url(${baseURL}/images/${product.images[0]._id})`,
+								}}
+							/>
+							<h3>{product.name}</h3>
+							<Local>
+								<Icon iconName="local" />
+								<p>
+									{product.address.neighborhood} - {product.address.city},{" "}
+									{product.address.state}
+								</p>
+							</Local>
+							<Details>
+								<Detail>
+									<Icon iconName="size" />
 									<p>
-										{product.address.neighborhood} - {product.address.city},{" "}
-										{product.address.state}
+										{product.size.min !== product.size.max ? (
+											<>
+												{product.size.min} a {product.size.max}m²
+											</>
+										) : (
+											<>{product.size.max}m²</>
+										)}
 									</p>
-								</Local>
-								<Details>
-									<Detail>
-										<Icon iconName="size" />
-										<p>
-											{product.size.min !== product.size.max ? (
-												<>
-													{product.size.min} a {product.size.max}m²
-												</>
-											) : (
-												<>{product.size.max}m²</>
-											)}
-										</p>
-									</Detail>
-									<Detail>
-										<Icon iconName="bed" />
-										<p>
-											{product.bedrooms.min !== product.bedrooms.max ? (
-												<>
-													{product.bedrooms.min} a {product.bedrooms.max}{" "}
-													Quartos
-												</>
-											) : (
-												<>{product.bedrooms.max} Quartos</>
-											)}
-										</p>
-									</Detail>
-									<Detail>
-										<Icon iconName="bathtub" />
-										<p>
-											{product.bathrooms.min !== product.bathrooms.max ? (
-												<>
-													{product.bathrooms.min} a {product.bathrooms.max}{" "}
-													Banheiros
-												</>
-											) : (
-												<>{product.bathrooms.max} Banheiros</>
-											)}
-										</p>
-									</Detail>
-								</Details>
-							</Product>
-						</a>
+								</Detail>
+								<Detail>
+									<Icon iconName="bed" />
+									<p>
+										{product.bedrooms.min !== product.bedrooms.max ? (
+											<>
+												{product.bedrooms.min} a {product.bedrooms.max} Quartos
+											</>
+										) : (
+											<>{product.bedrooms.max} Quartos</>
+										)}
+									</p>
+								</Detail>
+								<Detail>
+									<Icon iconName="bathtub" />
+									<p>
+										{product.bathrooms.min !== product.bathrooms.max ? (
+											<>
+												{product.bathrooms.min} a {product.bathrooms.max}{" "}
+												Banheiros
+											</>
+										) : (
+											<>{product.bathrooms.max} Banheiros</>
+										)}
+									</p>
+								</Detail>
+							</Details>
+						</Product>
 					</Link>
 				))}
 			</ProductsGrid>

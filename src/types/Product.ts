@@ -13,5 +13,6 @@ export interface Product {
 	parking: { min: number; max: number }
 	price: number
 	description?: string
+	images: [{ _id: string; description: string }]
 	features?: Array<string>
 }

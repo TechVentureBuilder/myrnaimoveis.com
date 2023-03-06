@@ -60,7 +60,7 @@ const Product: NextPage<Props> = (props) => {
 					<Icon iconName="arrowLeft"></Icon>
 					Voltar
 				</PrevPageLink>
-				<Gallery id={productInfo._id!} />
+				<Gallery images={productInfo.images} />
 				<h2>{productInfo.name}</h2>
 				<div className="sub-info">
 					{/* <div className="sub-info-left"> */}

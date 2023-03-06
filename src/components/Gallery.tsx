@@ -10,46 +10,15 @@ import "swiper/css/grid"
 import "swiper/css/pagination"
 import "swiper/css/navigation"
 import { Image as ImageType } from "../types/Image"
-import api from "../api"
+import api, { baseURL } from "../api"
 import Loading from "./Loading"
 import Icon from "./Icon"
 
 type Props = {
-	id: string
+	images: [{ _id: string; description: string }]
 }
 
 const Gallery: React.FC<Props> = (props) => {
-	const [count, setCount] = useState<Number>(1)
-	const [images, setImages] = useState<ImageType[]>([])
-	const [lodadedImages, setLoadedImages] = useState(false)
-
-	useEffect(() => {
-		if (lodadedImages != true) {
-			setLoadedImages(true)
-			api
-				.get("images/count", {
-					params: {
-						_id: props.id,
-					},
-				})
-				.then(async (res) => {
-					setCount(res.data.count)
-					for (let i = 0; i < res.data.count; i++) {
-						await api
-							.get("images", {
-								params: {
-									_id: props.id,
-									pos: i,
-								},
-							})
-							.then((res) => {
-								setImages((prev) => [...prev, res.data.image])
-							})
-					}
-				})
-		}
-	}, [images, lodadedImages, props.id])
-
 	return (
 		<StyledGallery
 			slidesPerView={1}
@@ -61,23 +30,16 @@ const Gallery: React.FC<Props> = (props) => {
 			modules={[Pagination, Navigation]}
 			className="mySwiper"
 		>
-			{images.map((image, index) => (
+			{props.images.map((image, index) => (
 				<SwiperSlide className="gallery-item" key={index}>
 					<Image
-						src={image.data}
+						src={`${baseURL}/images/${image._id}`}
 						alt={image.description}
 						layout="fill"
 						objectFit="contain"
 					/>
 				</SwiperSlide>
 			))}
-			{count > images.length ? (
-				<SwiperSlide className="gallery-item">
-					<Loading></Loading>
-				</SwiperSlide>
-			) : (
-				""
-			)}
 		</StyledGallery>
 	)
 }
