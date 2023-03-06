@@ -21,7 +21,7 @@ type Props = {
 const Gallery: React.FC<Props> = (props) => {
 	return (
 		<StyledGallery
-			slidesPerView={1}
+			slidesPerView={"auto"}
 			spaceBetween={1}
 			pagination={{
 				clickable: true,
@@ -51,42 +51,67 @@ const StyledGallery = styled(Swiper)`
 	width: 100%;
 	height: 60vh;
 	position: relative;
-	background-color: ${(props) => props.theme.colors.card};
+	/* background-color: ${(props) => props.theme.colors.card}; */
 	border-radius: 0.5rem;
 	border-width: 2px;
 	border-color: ${(props) => props.theme.colors.card};
 	.gallery-item {
+		width: auto;
 		height: 100%;
 		cursor: grab;
 		img {
+			position: relative !important;
+			height: 100%;
+			width: auto;
 			transition: ${(props) => props.theme.transitions.faster};
 		}
 	}
-	.gallery-item:hover {
-		img {
-			transform: scale(1.02);
-		}
-	}
 	.swiper-pagination-bullet {
-		border-radius: 0;
+		border-radius: 100px;
 		opacity: 1;
-		background-color: ${(props) => props.theme.colors.darker};
-		outline: 1px solid ${(props) => props.theme.colors.dark};
+		background-color: ${(props) => props.theme.colors.white};
 		transition: ${(props) => props.theme.transitions.faster};
-		transform: scale(1);
+		scale: 1;
+		opacity: 0.5;
 	}
 	.swiper-pagination-bullet-active {
-		background-color: ${(props) => props.theme.colors.primary.lighter};
-		outline: 1px solid ${(props) => props.theme.colors.main};
-		transform: rotate(45deg);
+		opacity: 1;
+		scale: 1.2;
 	}
 	.swiper-button-next {
-		color: ${(props) => props.theme.colors.main};
-		transform: scale(0.75);
+		color: ${(props) => props.theme.colors.primary.default};
+		transform: scale(0.5);
+		right: 0;
+		box-sizing: content-box;
+		width: 56px;
+		height: 56px;
+		padding: 16px;
+		border-radius: 1000px;
+		background-color: ${(props) => props.theme.colors.white};
+		opacity: 0.9;
+		transition: 200ms;
+		::after {
+			transform: translateX(2px);
+		}
 	}
 	.swiper-button-prev {
-		color: ${(props) => props.theme.colors.main};
-		transform: scale(0.75);
+		color: ${(props) => props.theme.colors.primary.default};
+		transform: scale(0.5);
+		right: 0;
+		box-sizing: content-box;
+		width: 56px;
+		height: 56px;
+		padding: 16px;
+		border-radius: 1000px;
+		background-color: ${(props) => props.theme.colors.white};
+		opacity: 0.9;
+		transition: 200ms;
+		::after {
+			transform: translateX(-2px);
+		}
+	}
+	.swiper-button-disabled {
+		opacity: 0;
 	}
 	@media (max-width: ${(props) => props.theme.screens.l}) {
 		height: 50vh;
